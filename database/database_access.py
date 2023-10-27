@@ -6,9 +6,8 @@ from typing import List
 from database.database_connection import DatabaseConnection
 
 
-class DatabaseHelper:
-    ''' A class for database methods
-    '''
+class DatabaseAccess:
+    ''' A class for database methods'''
 
     @staticmethod
     def read_from_database(query: str, data: tuple = None) -> List:
