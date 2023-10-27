@@ -1,0 +1,3 @@
+27-10-2023 11:44:47 DEBUG    [app.py:9] app.py running
+27-10-2023 11:44:47 DEBUG    [app.py:19] Initialization Complete
+27-10-2023 11:46:38 DEBUG    [app.py:9] app.py running
