@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "dc5dc7dbcb1a9612cb4a4405a882be02e0299963559a964b79ff71352abae806"
+            "sha256": "6bc2594502fe030c51d111393e31916a7e931a0bf97787638b900d042bcac117"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -48,6 +48,14 @@
             "markers": "python_full_version >= '3.8.0'",
             "version": "==5.12.0"
         },
+        "maskpass": {
+            "hashes": [
+                "sha256:49a9b46ae3838f21040c81d169cf2dca0b946881e1b44c0c55df9e2d50f7b623",
+                "sha256:73448856147a611cb7c9d98ff417f1e55884419e0864504584e0db9c6a57b60c"
+            ],
+            "index": "pypi",
+            "version": "==0.3.7"
+        },
         "mccabe": {
             "hashes": [
                 "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325",
@@ -73,6 +81,14 @@
             "markers": "python_full_version >= '3.8.0'",
             "version": "==3.0.2"
         },
+        "pynput": {
+            "hashes": [
+                "sha256:19861b2a0c430d646489852f89500e0c9332e295f2c020e7c2775e7046aa2e2f",
+                "sha256:264429fbe676e98e9050ad26a7017453bdd08768adb25cafb918347cf9f1eb4a",
+                "sha256:3a5726546da54116b687785d38b1db56997ce1d28e53e8d22fc656d8b92e533c"
+            ],
+            "version": "==1.7.6"
+        },
         "shortuuid": {
             "hashes": [
                 "sha256:27ea8f28b1bd0bf8f15057a3ece57275d2059d2b0bb02854f02189962c13b6aa",
@@ -81,6 +97,14 @@
             "index": "pypi",
             "markers": "python_version >= '3.5'",
             "version": "==1.0.11"
+        },
+        "six": {
+            "hashes": [
+                "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
+                "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==1.16.0"
         },
         "tomlkit": {
             "hashes": [

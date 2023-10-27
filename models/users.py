@@ -49,7 +49,7 @@ class SuperAdmin(Person):
     def save_user_to_database(self) -> None:
         '''method to add user to database'''
 
-        insert_into_users_query = Queries.INSERT_USER
+        insert_into_users_query = Queries.INSERT_USER_DATA
         insert_into_credentials_query = Queries.INSERT_CREDENTIALS
 
         super_admin_data = (
@@ -93,7 +93,7 @@ class Admin(Person):
     def save_user_to_database(self) -> None:
         '''method to add user to database'''
 
-        insert_into_users_query = Queries.INSERT_USER
+        insert_into_users_query = Queries.INSERT_USER_DATA
         insert_into_credentials_query = Queries.INSERT_CREDENTIALS
 
         admin_data = (
@@ -137,7 +137,7 @@ class User(Person):
     def save_user_to_database(self) -> None:
         '''method to add user to database'''
 
-        insert_into_users_query = Queries.INSERT_USER
+        insert_into_users_query = Queries.INSERT_USER_DATA
         insert_into_credentials_query = Queries.INSERT_CREDENTIALS
 
         user_data = (

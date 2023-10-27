@@ -1,12 +1,15 @@
 '''
     Runs at the start to create super admin and other tables in database
 '''
+import logging
 
-from super_admin_credentials import SuperAdminCredentials
-from models.users import SuperAdmin
-from database.queries import InitializationQueries
+import super_admin_credentials
 from database.database_access import DatabaseAccess as DAO
+from database.queries import InitializationQueries
+from models.users import SuperAdmin
 
+
+logger = logging.getLogger(__name__)
 
 class Initializer:
     '''Class containing methods to create super admin'''
@@ -15,13 +18,11 @@ class Initializer:
     def create_super_admin():
         '''method to create a super admin '''
 
-        name, email, username, password = SuperAdminCredentials.credentials.values()
-
         super_admin_obj = {}
-        super_admin_obj['name'] = name
-        super_admin_obj['email'] = email
-        super_admin_obj['username'] = username
-        super_admin_obj['password'] = password
+        super_admin_obj['name'] = super_admin_credentials.NAME
+        super_admin_obj['email'] = super_admin_credentials.EMAIL
+        super_admin_obj['username'] = super_admin_credentials.USERNAME
+        super_admin_obj['password'] = super_admin_credentials.HASHED_PASSWORD
 
         super_admin = SuperAdmin(super_admin_obj)
         super_admin.save_user_to_database()
@@ -38,6 +39,9 @@ class Initializer:
         InitializeDatabase.create_questions_table()
         InitializeDatabase.create_options_table()
         Initializer.create_super_admin()
+
+        logger.debug("Initialization Complete")
+        print("\nInitialization Complete!\n")
 
 
 class InitializeDatabase:
