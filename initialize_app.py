@@ -26,7 +26,7 @@ class Initializer:
 
         super_admin = SuperAdmin(super_admin_obj)
         super_admin.save_user_to_database()
-        print("Super Admin created!")
+        print('Super Admin created!')
 
     @staticmethod
     def initialize_app():
@@ -40,8 +40,8 @@ class Initializer:
         InitializeDatabase.create_options_table()
         Initializer.create_super_admin()
 
-        logger.debug("Initialization Complete")
-        print("\nInitialization Complete!\n")
+        logger.debug('Initialization Complete')
+        print('\nInitialization Complete!\n')
 
 
 class InitializeDatabase:

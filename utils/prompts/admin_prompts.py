@@ -1,3 +1,0 @@
-'''
-    Contains prompts for admin
-'''
