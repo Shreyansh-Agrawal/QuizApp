@@ -4,6 +4,7 @@
 
 import sqlite3
 
+
 class DatabaseConnection:
     ''' A class for sqlite3 database connection
         Automatically opens, commits and closes the connections

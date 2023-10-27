@@ -1,6 +1,7 @@
 '''
     Contains Super Admin, Admin, User classes
 '''
+
 from abc import ABC, abstractmethod
 from datetime import datetime, timezone
 from typing import Dict
@@ -10,9 +11,11 @@ import shortuuid
 from database.database_helper import DatabaseHelper as DB
 from database.queries import Queries
 
+
 class Person(ABC):
     '''abstract base class
     '''
+    
     def __init__(self, name: str, email: str, role: str, username: str, password: str) -> None:
         self.name = name
         self.email = email
@@ -23,12 +26,12 @@ class Person(ABC):
 
     @abstractmethod
     def save_user_to_database(self) -> None:
-        '''' abstract method to create a new user
+        ''''abstract method to create a new user
         '''
 
 
 class SuperAdmin(Person):
-    '''_summary_
+    '''Super Admin class
 
     Args:
         Person (_type_): _description_
@@ -47,7 +50,7 @@ class SuperAdmin(Person):
         self.is_password_changed = 1
 
     def save_user_to_database(self) -> None:
-        '''_summary_
+        '''method to add user to db
         '''
 
         insert_into_users_query = Queries.INSERT_USER
@@ -73,7 +76,7 @@ class SuperAdmin(Person):
 
 
 class Admin(Person):
-    '''_summary_
+    '''Admin class
 
     Args:
         Person (_type_): _description_
@@ -92,7 +95,7 @@ class Admin(Person):
         self.is_password_changed = 0
 
     def save_user_to_database(self) -> None:
-        '''_summary_
+        '''method to add user to db
         '''
 
         insert_into_users_query = Queries.INSERT_USER
@@ -118,11 +121,12 @@ class Admin(Person):
 
 
 class User(Person):
-    '''_summary_
+    '''User class
 
     Args:
         Person (_type_): _description_
     '''
+    
     def __init__(self, user_obj: Dict) -> None:
         super().__init__(
             user_obj.get('name'),
@@ -136,7 +140,7 @@ class User(Person):
         self.is_password_changed = 1
 
     def save_user_to_database(self) -> None:
-        '''_summary_
+        '''method to add user to db
         '''
 
         insert_into_users_query = Queries.INSERT_USER

@@ -5,6 +5,7 @@
 from typing import List
 from database.database_connection import DatabaseConnection
 
+
 class DatabaseHelper:
     ''' A class for database methods
     '''

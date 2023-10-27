@@ -1,10 +1,12 @@
 '''
     Runs at the start to create super admin and other tables in database
 '''
+
 from super_admin_credentials import SuperAdminCredentials
 from users import SuperAdmin
 from database.queries import InitializationQueries
 from database.database_helper import DatabaseHelper as DB
+
 
 class Initializer:
     '''Class containing methods to create super admin
@@ -26,6 +28,18 @@ class Initializer:
         super_admin = SuperAdmin(super_admin_obj)
         super_admin.save_user_to_database()
         print("Super Admin created!")
+
+    @staticmethod
+    def initialize_app():
+        '''method to initialize application
+        '''
+        InitializeDatabase.create_users_table()
+        InitializeDatabase.create_credentials_table()
+        InitializeDatabase.create_scores_table()
+        InitializeDatabase.create_categories_table()
+        InitializeDatabase.create_questions_table()
+        InitializeDatabase.create_options_table()
+        Initializer.create_super_admin()
 
 
 class InitializeDatabase:
