@@ -20,7 +20,7 @@ class InitializationQueries:
             username TEXT UNIQUE,
             password TEXT,
             isPasswordChanged INTEGER,
-            FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
+            FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE
         )'''
 
     CREATE_SCORES_TABLE = '''
@@ -29,7 +29,7 @@ class InitializationQueries:
             user_id TEXT,
             score INTEGER,
             timestamp TEXT,
-            FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
+            FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE
         )'''
 
     CREATE_CATEGORIES_TABLE = '''
@@ -50,7 +50,7 @@ class InitializationQueries:
             question_text TEXT,
             question_type TEXT,
             FOREIGN KEY (admin_id) REFERENCES users (user_id),
-            FOREIGN KEY (category_id) REFERENCES categories (category_id) ON DELETE CASCADE
+            FOREIGN KEY (category_id) REFERENCES categories (category_id) ON DELETE CASCADE ON UPDATE CASCADE
         )'''
 
     CREATE_OPTIONS_TABLE = '''
@@ -59,7 +59,7 @@ class InitializationQueries:
             question_id TEXT,
             option_text TEXT,
             isCorrect INTEGER,
-            FOREIGN KEY (question_id) REFERENCES questions (question_id) ON DELETE CASCADE
+            FOREIGN KEY (question_id) REFERENCES questions (question_id) ON DELETE CASCADE ON UPDATE CASCADE
         )'''
 
     ENABLE_FOREIGN_KEYS = 'PRAGMA foreign_keys = 1'
@@ -105,12 +105,20 @@ class Queries:
     '''
 
     GET_ALL_CATEGORIES = 'SELECT category_name, admin_name FROM categories'
+
     GET_CATEGORY_ID_BY_NAME = 'SELECT category_id FROM categories WHERE category_name = ?'
+
     GET_ALL_QUESTIONS = '''
         SELECT category_name, question_text, question_type, questions.admin_name
         FROM questions 
         INNER JOIN categories ON questions.category_id = categories.category_id
         ORDER BY category_name
+    '''
+
+    UPDATE_ADMIN_PASSWORD = '''
+        UPDATE credentials 
+        SET password = ?, isPasswordChanged = ? 
+        WHERE username = ?
     '''
 
     DELETE_USER_BY_EMAIL = 'DELETE FROM users WHERE email = ?'

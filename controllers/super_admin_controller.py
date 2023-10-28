@@ -2,6 +2,7 @@
     Handlers for super admin operations
 '''
 
+import logging
 from typing import List, Tuple
 
 from password_generator import PasswordGenerator
@@ -19,6 +20,7 @@ class SuperAdminController:
     def create_admin() -> None:
         '''Create a new Admin Account'''
 
+        logging.debug('Creating Admin')
         print('\n-----Create a new Admin-----\n')
 
         admin_data = {}
@@ -32,6 +34,7 @@ class SuperAdminController:
         admin = Admin(admin_data)
         admin.save_user_to_database()
 
+        logging.debug('Admin created')
         print('\nAdmin created successfully!\n')
 
     @staticmethod
@@ -46,6 +49,7 @@ class SuperAdminController:
     def delete_admin() -> None:
         '''Delete an Admin'''
 
+        logging.debug('Deleting Admin')
         print('\n-----Delete Admin-----\n')
 
         data = SuperAdminController.get_all_admins()
@@ -77,4 +81,6 @@ class SuperAdminController:
             return
 
         DAO.write_to_database(Queries.DELETE_USER_BY_EMAIL, (email, ))
+
+        logging.debug('Admin deleted')
         print(f'\nAdmin: {email} deleted successfully!\n')

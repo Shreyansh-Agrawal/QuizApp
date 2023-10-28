@@ -12,12 +12,15 @@ from models.user import SuperAdmin
 
 logger = logging.getLogger(__name__)
 
+
 class Initializer:
     '''Class containing methods to create super admin'''
 
     @staticmethod
     def create_super_admin():
         '''method to create a super admin '''
+
+        logger.debug('Creating Super Admin')
 
         super_admin_obj = {}
         super_admin_obj['name'] = super_admin_credentials.NAME
@@ -27,6 +30,8 @@ class Initializer:
 
         super_admin = SuperAdmin(super_admin_obj)
         super_admin.save_user_to_database()
+
+        logger.debug('Created Super Admin')
         print('Super Admin created!')
 
     @staticmethod

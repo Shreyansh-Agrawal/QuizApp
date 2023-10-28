@@ -3,6 +3,7 @@
 '''
 
 import hashlib
+import logging
 from typing import Tuple
 
 import maskpass
@@ -18,6 +19,8 @@ class Authenticate:
     @staticmethod
     def login() -> Tuple:
         '''Method for user login'''
+
+        logging.debug('Login Initiated')
 
         username = input('Enter username: ').lower()
         password = maskpass.askpass(mask='*')
@@ -38,12 +41,16 @@ class Authenticate:
             print('\nInvalid Credentials! Please Try Again or Sign Up...')
             return ()
 
+        logging.debug('Login Successful')
         print('\nSuccessfully Logged In!\n')
+
         return (username, role, is_password_changed)
 
     @staticmethod
     def signup() -> str:
         '''Method for signup, only for user'''
+
+        logging.debug('Signup Initiated')
 
         user_data = {}
         user_data['name'] = input('Enter your name: ').title()
@@ -56,5 +63,7 @@ class Authenticate:
         user = User(user_data)
         user.save_user_to_database()
 
+        logging.debug('Signup Successful')
         print('\nAccount created successfully!\n')
+
         return user_data['username']

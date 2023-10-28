@@ -1,12 +1,20 @@
 '''
     Assign menu as per the role
 '''
+
+import hashlib
 import logging
+
+import maskpass
 from tabulate import tabulate
+
 from utils import prompts
 from controllers.auth_controller import Authenticate
 from controllers.super_admin_controller import SuperAdminController
 from controllers.admin_controller import AdminController
+from database.database_access import DatabaseAccess as DAO
+from database.queries import Queries
+
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +26,7 @@ class Menu:
     def super_admin_menu(username: str):
         '''Menu for Super Admin'''
 
-        logging.debug("Running Super Admin Menu")
+        logging.debug('Running Super Admin Menu')
         print('----Super Admin Dashboard----')
         print(f'\n----Welcome {username}----\n')
 
@@ -59,7 +67,7 @@ class Menu:
     def manage_users_menu():
         '''Admin: manage users menu'''
 
-        logging.debug("Running Admin: Manage Users Menu")
+        logging.debug('Running Admin: Manage Users Menu')
         while True:
             user_sub_choice = input(prompts.ADMIN_MANAGE_USER_PROMPTS)
 
@@ -95,7 +103,7 @@ class Menu:
     def manage_quizzes_menu(username: str):
         '''Admin: manage quizzes menu'''
 
-        logging.debug("Running Admin: Manage Quizzes Menu")
+        logging.debug('Running Admin: Manage Quizzes Menu')
         while True:
             user_sub_choice = input(prompts.ADMIN_MANAGE_QUIZZES_PROMPTS)
 
@@ -149,22 +157,44 @@ class Menu:
     def admin_menu(username: str, is_password_changed: int):
         '''Menu for Admin'''
 
-        logging.debug("Running Admin Menu")
+        logging.debug('Running Admin Menu')
         print('----Admin Dashboard----')
         print(f'\n----Welcome {username}----\n')
 
         if not is_password_changed:
-            print('Please change your password')
+            logger.debug('Changing Default Admin Password')
+            print('\nPlease change your password...\n')
+
+            new_password = maskpass.askpass(prompt='Enter New Password: ', mask='*')
+            confirm_password = ''
+
+            while True:
+                confirm_password =  maskpass.askpass(prompt='Confirm Password: ', mask='*')
+                if new_password != confirm_password:
+                    print('Password does not match. Please enter your password again!\n')
+                else:
+                    break
+
+            hashed_password = hashlib.sha256(confirm_password.encode('utf-8')).hexdigest()
+            is_password_changed = 1
+
+            DAO.write_to_database(
+                Queries.UPDATE_ADMIN_PASSWORD,
+                (hashed_password, is_password_changed, username)
+            )
+
+            logger.debug('Default Admin Password Changed')
+            print('\nPassword changed successfully!\n')
 
         while True:
             user_choice = input(prompts.ADMIN_PROMPTS)
 
             match user_choice:
                 case '1':
-                    print("Managing users...")
+                    print('Managing users...')
                     Menu.manage_users_menu()
                 case '2':
-                    print("Managing quizzes...")
+                    print('Managing quizzes...')
                     Menu.manage_quizzes_menu(username)
                 case 'q':
                     break
@@ -175,7 +205,7 @@ class Menu:
     def user_menu(username: str):
         '''Menu for User'''
 
-        logging.debug("Running User Menu")
+        logging.debug('Running User Menu')
         print('\n----User Dashboard----\n')
         print(f'\n----Welcome {username}----\n')
 
@@ -185,11 +215,11 @@ class Menu:
             match user_choice:
 
                 case '1':
-                    print("Quiz Starting...")
+                    print('Quiz Starting...')
                 case '2':
-                    print("Leaderboard...")
+                    print('Leaderboard...')
                 case '3':
-                    print("Your scores History...")
+                    print('Your scores History...')
                 case 'q':
                     break
                 case _:
@@ -203,7 +233,7 @@ class App:
     def assign_menu(data):
         '''Assign menu according to the role'''
 
-        logging.debug("Running Assign Menu")
+        logging.debug('Running Assign Menu')
         username, role, is_password_changed = data
 
         match role:
@@ -220,7 +250,7 @@ class App:
     def start():
         '''Menu for Login / Sign Up'''
 
-        logging.debug("Running App.start()")
+        logging.debug('Running App.start()')
         print('\n---------WELCOME TO QUIZ APP---------\n')
 
         while True:

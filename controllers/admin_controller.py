@@ -2,10 +2,12 @@
     Handlers for admin operations
 '''
 
+import logging
 from tabulate import tabulate
 from database.database_access import DatabaseAccess as DAO
 from database.queries import Queries
 from models.quiz import Category, Question, Option
+
 
 class AdminController:
     '''Admin Controller Class'''
@@ -39,6 +41,7 @@ class AdminController:
         data = DAO.read_from_database(Queries.GET_ADMIN_ID_NAME_BY_USERNAME, (username, ))
         admin_id, admin_name = data[0]
 
+        logging.debug('Creating Category')
         print('\n-----Create a new Quiz Category-----\n')
 
         category_data = {}
@@ -47,7 +50,11 @@ class AdminController:
         category_data['category_name'] = input('Enter Category Name: ').title()
 
         category = Category(category_data)
+
         category.save_to_database()
+
+        logging.debug('Category Created')
+        print('\nCategory Created!\n')
 
     @staticmethod
     def create_question(username: str):
@@ -58,6 +65,7 @@ class AdminController:
             print('\nNo Categories Currently, Please add a Category!!\n')
             return
 
+        logging.debug('Creating Question')
         print('\n-----Create a new Quiz Question-----\n')
 
         print(
@@ -116,6 +124,9 @@ class AdminController:
 
         question.save_to_database()
 
+        logging.debug('Question Created')
+        print('\nQuestion Created!\n')
+
     @staticmethod
     def delete_user():
         '''Delete a User'''
@@ -125,6 +136,7 @@ class AdminController:
             print('\nNo User Currently\n')
             return
 
+        logging.debug('Deleting User')
         print('\n-----Delete a User-----\n')
 
         print(
@@ -150,4 +162,6 @@ class AdminController:
             return
 
         DAO.write_to_database(Queries.DELETE_USER_BY_EMAIL, (email, ))
+
+        logging.debug('User deleted')
         print(f'\nUser: {email} deleted successfully!\n')
