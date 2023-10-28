@@ -2,52 +2,16 @@
     Assign menu as per the role
 '''
 import logging
-
+from tabulate import tabulate
 from utils import prompts
 from controllers.auth_controller import Authenticate
-
+from controllers.super_admin_controller import SuperAdminController
 
 logger = logging.getLogger(__name__)
 
+
 class Menu:
     '''Menu class to assign menu'''
-
-    @staticmethod
-    def start():
-        '''Menu for Login / Sign Up'''
-
-        logging.debug("Running Auth Menu")
-        print('\n---------WELCOME TO QUIZ APP---------\n')
-
-        while True:
-            user_choice = input(prompts.AUTH_PROMPTS)
-
-            match user_choice:
-                case '1':
-                    print('\n----SignUp----\n')
-                    username = Authenticate.signup()
-                    Menu.user_menu(username)
-                case '2':
-                    print('\n----Login----\n')
-                    attempts_remaining = prompts.ATTEMPT_LIMIT
-
-                    data = Authenticate.login()
-                    while not data:
-                        attempts_remaining -= 1
-                        print(f'Remaining attempts: {attempts_remaining}\n')
-
-                        if attempts_remaining == 0:
-                            print('Account Not Found! Please Sign up!\n')
-                            break
-
-                        data = Authenticate.login()
-
-                    if data:
-                        Menu.assign_menu(data)
-                case 'q':
-                    break
-                case _:
-                    print('Wrong input! Please choose from the above given options...')
 
     @staticmethod
     def super_admin_menu(username: str):
@@ -59,13 +23,32 @@ class Menu:
 
         while True:
             user_choice = input(prompts.SUPER_ADMIN_PROMPTS)
+
             match user_choice:
                 case '1':
-                    print("Creating a new admin...")
+                    SuperAdminController.create_admin()
                 case '2':
-                    print("Viewing all admins...")
+                    data = SuperAdminController.get_all_admins()
+
+                    if not data:
+                        print('\nNo Admins Currently, Please Create One!\n')
+                        continue
+
+                    print('\n-----List of Admins-----\n')
+                    print(
+                        tabulate(
+                            data,
+                            headers={
+                                'Username': 'username', 
+                                'Name': 'name', 
+                                'Email': 'email', 
+                                'Registration Date': 'registration_date'
+                            },
+                            tablefmt='rounded_outline'
+                        )
+                    )
                 case '3':
-                    print("Deleting an admin...")
+                    SuperAdminController.delete_admin()
                 case 'q':
                     break
                 case _:
@@ -78,6 +61,7 @@ class Menu:
         logging.debug("Running Admin: Manage Users Menu")
         while True:
             user_sub_choice = input(prompts.ADMIN_MANAGE_USER_PROMPTS)
+
             match user_sub_choice:
                 case '1':
                     print("Viewing all users...")
@@ -95,6 +79,7 @@ class Menu:
         logging.debug("Running Admin: Manage Quizzes Menu")
         while True:
             user_sub_choice = input(prompts.ADMIN_MANAGE_QUIZZES_PROMPTS)
+
             match user_sub_choice:
                 case '1':
                     print("Viewing all categories...")
@@ -122,6 +107,7 @@ class Menu:
 
         while True:
             user_choice = input(prompts.ADMIN_PROMPTS)
+
             match user_choice:
                 case '1':
                     print("Managing users...")
@@ -139,11 +125,12 @@ class Menu:
         '''Menu for User'''
 
         logging.debug("Running User Menu")
-        print('----User Dashboard----')
+        print('\n----User Dashboard----\n')
         print(f'\n----Welcome {username}----\n')
 
         while True:
             user_choice = input(prompts.USER_PROMPTS)
+
             match user_choice:
 
                 case '1':
@@ -157,12 +144,17 @@ class Menu:
                 case _:
                     print('Wrong input! Please choose from the above given options...')
 
+
+class App:
+    '''Contains methods to assign menu and start the application'''
+
     @staticmethod
     def assign_menu(data):
         '''Assign menu according to the role'''
 
         logging.debug("Running Assign Menu")
         username, role, is_password_changed = data
+
         match role:
             case 'super admin':
                 Menu.super_admin_menu(username)
@@ -172,3 +164,41 @@ class Menu:
                 Menu.user_menu(username)
             case _:
                 print('Invalid Role!: ', role)
+
+    @staticmethod
+    def start():
+        '''Menu for Login / Sign Up'''
+
+        logging.debug("Running App.start()")
+        print('\n---------WELCOME TO QUIZ APP---------\n')
+
+        while True:
+            user_choice = input(prompts.AUTH_PROMPTS)
+
+            match user_choice:
+                case '1':
+                    print('\n----SignUp----\n')
+                    username = Authenticate.signup()
+                    print('Redirecting...')
+                    Menu.user_menu(username)
+                case '2':
+                    print('\n----Login----\n')
+                    attempts_remaining = prompts.ATTEMPT_LIMIT
+
+                    data = Authenticate.login()
+                    while not data:
+                        attempts_remaining -= 1
+                        print(f'Remaining attempts: {attempts_remaining}\n')
+
+                        if attempts_remaining == 0:
+                            print('Account Not Found! Please Sign up!\n')
+                            break
+
+                        data = Authenticate.login()
+
+                    if data:
+                        App.assign_menu(data)
+                case 'q':
+                    break
+                case _:
+                    print('Wrong input! Please choose from the above given options...')

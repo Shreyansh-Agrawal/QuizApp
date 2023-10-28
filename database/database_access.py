@@ -4,7 +4,7 @@
 
 from typing import List, Tuple
 from database.database_connection import DatabaseConnection
-
+from database.queries import InitializationQueries
 
 class DatabaseAccess:
     ''' A class for database methods'''
@@ -40,8 +40,8 @@ class DatabaseAccess:
         '''
 
         with DatabaseConnection('database\\data.db') as connection:
-            print(connection)
             cursor = connection.cursor()
+            cursor.execute(InitializationQueries.ENABLE_FOREIGN_KEYS)
             if not data:
                 cursor.execute(query)
             else:

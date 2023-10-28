@@ -30,7 +30,11 @@ class Authenticate:
 
         user_password, role, is_password_changed = user_data[0]
 
-        if user_password != hashed_password:
+        if not is_password_changed and user_password != password:
+            print('\nInvalid Credentials! Please Try Again or Sign Up...')
+            return ()
+
+        if is_password_changed and user_password != hashed_password:
             print('\nInvalid Credentials! Please Try Again or Sign Up...')
             return ()
 
@@ -52,5 +56,5 @@ class Authenticate:
         user = User(user_data)
         user.save_user_to_database()
 
-        print('\nAccount created successfully! Redirecting...\n')
+        print('\nAccount created successfully!\n')
         return user_data['username']

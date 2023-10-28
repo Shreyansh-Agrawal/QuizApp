@@ -7,6 +7,8 @@ name = "pypi"
 pylint = "*"
 shortuuid = "*"
 maskpass = "*"
+random-password-generator = "*"
+tabulate = "*"
 
 [dev-packages]
 

@@ -1,50 +1,112 @@
-27-10-2023 14:40:20 DEBUG    [app.py:20] app.py running
-27-10-2023 14:40:20 DEBUG    [app.py:24] Initialization Complete
-27-10-2023 16:17:07 DEBUG    [app.py:20] app.py running
-27-10-2023 16:17:21 DEBUG    [app.py:20] app.py running
-27-10-2023 16:17:21 DEBUG    [app.py:24] Initialization Complete
-27-10-2023 16:22:19 DEBUG    [app.py:20] app.py running
-27-10-2023 16:22:19 DEBUG    [app.py:24] Initialization Complete
-27-10-2023 16:28:04 DEBUG    [app.py:20] app.py running
-27-10-2023 16:28:04 DEBUG    [app.py:24] Initialization Complete
-27-10-2023 16:30:27 DEBUG    [app.py:20] app.py running
-27-10-2023 16:48:23 DEBUG    [app.py:27] app.py running
-27-10-2023 16:49:47 DEBUG    [app.py:27] app.py running
-27-10-2023 16:50:47 DEBUG    [app.py:27] app.py running
-27-10-2023 16:51:14 DEBUG    [app.py:27] app.py running
-27-10-2023 16:51:23 DEBUG    [app.py:27] app.py running
-27-10-2023 16:55:03 DEBUG    [app.py:27] app.py running
-27-10-2023 17:23:55 DEBUG    [app.py:27] app.py running
-27-10-2023 17:26:03 DEBUG    [app.py:27] app.py running
-27-10-2023 17:26:03 DEBUG    [initialize_app.py:43] Initialization Complete
-27-10-2023 20:23:22 DEBUG    [app.py:27] app.py running
-27-10-2023 20:23:50 DEBUG    [app.py:27] app.py running
-27-10-2023 20:26:31 DEBUG    [app.py:27] app.py running
-27-10-2023 20:28:53 DEBUG    [app.py:27] app.py running
-27-10-2023 20:29:01 DEBUG    [app.py:27] app.py running
-27-10-2023 23:23:57 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:26:57 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:29:29 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:30:44 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:33:01 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:36:02 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:36:21 DEBUG    [app.py:24                  ] app.py running
-27-10-2023 23:40:39 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:48:10 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:50:50 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:55:09 DEBUG    [app.py:25                  ] app.py running
-27-10-2023 23:57:24 DEBUG    [app.py:25                  ] app.py running
-28-10-2023 00:00:02 DEBUG    [app.py:25                  ] app.py running
-28-10-2023 00:01:58 DEBUG    [app.py:25                  ] app.py running
-28-10-2023 08:03:57 DEBUG    [app.py:18                  ] app.py running
-28-10-2023 08:03:57 DEBUG    [menu.py:19                  ] Running Auth Menu
-28-10-2023 08:04:37 DEBUG    [menu.py:141                 ] Running User Menu
-28-10-2023 08:07:18 DEBUG    [menu.py:164                 ] Running Assign Menu
-28-10-2023 08:07:18 DEBUG    [menu.py:56                  ] Running Super Admin Menu
-28-10-2023 08:31:39 DEBUG    [app.py:18                  ] app.py running
-28-10-2023 08:31:39 DEBUG    [menu.py:19                  ] Running Auth Menu
-28-10-2023 08:32:05 DEBUG    [menu.py:141                 ] Running User Menu
-28-10-2023 08:32:33 DEBUG    [menu.py:164                 ] Running Assign Menu
-28-10-2023 08:32:33 DEBUG    [menu.py:141                 ] Running User Menu
-28-10-2023 08:33:04 DEBUG    [menu.py:164                 ] Running Assign Menu
-28-10-2023 08:33:04 DEBUG    [menu.py:56                  ] Running Super Admin Menu
+28-10-2023 09:51:46 DEBUG    [app.py:18] app.py running
+28-10-2023 09:51:46 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 09:51:46 DEBUG    [menu.py:148] Running App.start()
+28-10-2023 09:57:31 DEBUG    [app.py:18] app.py running
+28-10-2023 09:57:31 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 09:57:31 DEBUG    [menu.py:148] Running App.start()
+28-10-2023 10:01:48 DEBUG    [app.py:18] app.py running
+28-10-2023 10:01:48 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 10:01:48 DEBUG    [menu.py:148] Running App.start()
+28-10-2023 10:03:55 DEBUG    [app.py:18] app.py running
+28-10-2023 10:03:55 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 10:03:55 DEBUG    [menu.py:148] Running App.start()
+28-10-2023 10:04:32 DEBUG    [menu.py:105] Running User Menu
+28-10-2023 10:05:03 DEBUG    [menu.py:132] Running Assign Menu
+28-10-2023 10:05:03 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 10:05:13 DEBUG    [app.py:23] Stopping application
+28-10-2023 10:41:31 DEBUG    [app.py:18] app.py running
+28-10-2023 10:41:31 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 10:41:31 DEBUG    [menu.py:149] Running App.start()
+28-10-2023 10:41:40 DEBUG    [menu.py:133] Running Assign Menu
+28-10-2023 10:41:40 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 10:54:23 DEBUG    [app.py:18] app.py running
+28-10-2023 10:54:23 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 10:54:23 DEBUG    [menu.py:149] Running App.start()
+28-10-2023 10:54:59 DEBUG    [menu.py:133] Running Assign Menu
+28-10-2023 10:54:59 DEBUG    [menu.py:81] Running Admin Menu
+28-10-2023 10:55:02 DEBUG    [menu.py:43] Running Admin: Manage Users Menu
+28-10-2023 10:55:14 DEBUG    [menu.py:60] Running Admin: Manage Quizzes Menu
+28-10-2023 10:55:33 DEBUG    [app.py:23] Stopping application
+28-10-2023 11:40:23 DEBUG    [app.py:18] app.py running
+28-10-2023 11:40:23 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 11:40:23 DEBUG    [menu.py:166] Running App.start()
+28-10-2023 11:40:44 DEBUG    [menu.py:149] Running Assign Menu
+28-10-2023 11:40:44 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 11:43:27 DEBUG    [app.py:23] Stopping application
+28-10-2023 11:43:30 DEBUG    [app.py:18] app.py running
+28-10-2023 11:43:30 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 11:43:30 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 11:44:03 DEBUG    [app.py:18] app.py running
+28-10-2023 11:44:03 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 11:44:03 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 11:44:11 DEBUG    [menu.py:150] Running Assign Menu
+28-10-2023 11:44:11 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 11:47:53 DEBUG    [app.py:18] app.py running
+28-10-2023 11:48:15 DEBUG    [app.py:18] app.py running
+28-10-2023 11:48:15 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 11:48:15 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 11:48:26 DEBUG    [menu.py:150] Running Assign Menu
+28-10-2023 11:48:26 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 11:48:56 DEBUG    [app.py:23] Stopping application
+28-10-2023 11:50:06 DEBUG    [app.py:18] app.py running
+28-10-2023 11:50:06 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 11:50:06 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 11:55:14 DEBUG    [app.py:18] app.py running
+28-10-2023 11:55:14 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 11:55:14 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 11:55:46 DEBUG    [app.py:18] app.py running
+28-10-2023 11:55:46 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 11:55:46 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 11:57:41 DEBUG    [app.py:18] app.py running
+28-10-2023 11:57:41 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 11:57:41 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 12:01:48 DEBUG    [app.py:18] app.py running
+28-10-2023 12:01:48 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:01:48 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 12:02:20 DEBUG    [app.py:18] app.py running
+28-10-2023 12:02:20 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:02:20 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 12:04:39 DEBUG    [app.py:18] app.py running
+28-10-2023 12:04:39 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:04:39 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 12:04:58 DEBUG    [menu.py:122] Running User Menu
+28-10-2023 12:05:34 DEBUG    [menu.py:150] Running Assign Menu
+28-10-2023 12:05:34 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 12:07:27 DEBUG    [app.py:18] app.py running
+28-10-2023 12:07:27 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:07:27 DEBUG    [menu.py:167] Running App.start()
+28-10-2023 12:07:34 DEBUG    [menu.py:150] Running Assign Menu
+28-10-2023 12:07:34 DEBUG    [menu.py:122] Running User Menu
+28-10-2023 12:07:48 DEBUG    [menu.py:150] Running Assign Menu
+28-10-2023 12:07:48 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 12:10:29 DEBUG    [app.py:18] app.py running
+28-10-2023 12:10:29 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:10:29 DEBUG    [menu.py:172] Running App.start()
+28-10-2023 12:10:36 DEBUG    [menu.py:155] Running Assign Menu
+28-10-2023 12:10:36 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 12:11:46 DEBUG    [app.py:18] app.py running
+28-10-2023 12:11:46 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:11:46 DEBUG    [menu.py:172] Running App.start()
+28-10-2023 12:12:03 DEBUG    [menu.py:155] Running Assign Menu
+28-10-2023 12:12:03 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 12:14:47 DEBUG    [app.py:18] app.py running
+28-10-2023 12:14:47 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:14:47 DEBUG    [menu.py:172] Running App.start()
+28-10-2023 12:14:55 DEBUG    [menu.py:155] Running Assign Menu
+28-10-2023 12:14:55 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 12:16:28 DEBUG    [app.py:18] app.py running
+28-10-2023 12:16:28 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:16:28 DEBUG    [menu.py:172] Running App.start()
+28-10-2023 12:16:36 DEBUG    [menu.py:155] Running Assign Menu
+28-10-2023 12:16:36 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 12:18:22 DEBUG    [app.py:18] app.py running
+28-10-2023 12:18:22 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:18:22 DEBUG    [menu.py:172] Running App.start()
+28-10-2023 12:18:31 DEBUG    [menu.py:155] Running Assign Menu
+28-10-2023 12:18:31 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 12:22:03 DEBUG    [app.py:18] app.py running
+28-10-2023 12:22:03 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 12:22:03 DEBUG    [menu.py:172] Running App.start()
+28-10-2023 12:22:24 DEBUG    [menu.py:155] Running Assign Menu
+28-10-2023 12:22:24 DEBUG    [menu.py:20] Running Super Admin Menu
+28-10-2023 12:23:30 DEBUG    [app.py:23] Stopping application

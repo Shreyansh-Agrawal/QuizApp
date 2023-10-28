@@ -2,7 +2,7 @@
     Runs at the start to create super admin and other tables in database
 '''
 import logging
-
+import sqlite3
 import super_admin_credentials
 from database.database_access import DatabaseAccess as DAO
 from database.queries import InitializationQueries
@@ -38,7 +38,11 @@ class Initializer:
         InitializeDatabase.create_categories_table()
         InitializeDatabase.create_questions_table()
         InitializeDatabase.create_options_table()
-        Initializer.create_super_admin()
+
+        try:
+            Initializer.create_super_admin()
+        except sqlite3.IntegrityError:
+            print("Super Admin Already Created")
 
         logger.debug('Initialization Complete')
         print('\nInitialization Complete!\n')
