@@ -15,7 +15,7 @@ Enter -
         2> View All Admins
         3> Delete Admin
         
-        Press q to Quit
+        Press q to Logout
 
 Enter your choice: '''
 
@@ -24,7 +24,7 @@ Enter -
         1> Manage Users
         2> Manage Quizzes
         
-        Press q to Quit
+        Press q to Logout
 
 Enter your choice: '''
 
@@ -33,7 +33,7 @@ Enter -
         1> View All Users
         2> Delete a User
         
-        Press q to quit
+        Press q to Go Back
 
 Enter your choice: '''
 
@@ -44,7 +44,7 @@ Enter -
         3> Add a New Category
         4> Add a Question
         
-        Press q to quit
+        Press q to Go Back
 
 Enter your choice: '''
 
@@ -54,7 +54,7 @@ Enter -
         2> View Leaderboard
         3> View Scores History
         
-        Press q to Quit
+        Press q to Logout
 
 Enter your choice: '''
 

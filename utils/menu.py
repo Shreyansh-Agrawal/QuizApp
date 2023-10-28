@@ -6,6 +6,7 @@ from tabulate import tabulate
 from utils import prompts
 from controllers.auth_controller import Authenticate
 from controllers.super_admin_controller import SuperAdminController
+from controllers.admin_controller import AdminController
 
 logger = logging.getLogger(__name__)
 
@@ -64,16 +65,34 @@ class Menu:
 
             match user_sub_choice:
                 case '1':
-                    print("Viewing all users...")
+                    data = AdminController.get_all_users()
+
+                    if not data:
+                        print('\nNo Users Currently!\n')
+                        continue
+
+                    print('\n-----List of Users-----\n')
+                    print(
+                        tabulate(
+                            data,
+                            headers={
+                                'Username': 'username', 
+                                'Name': 'name', 
+                                'Email': 'email', 
+                                'Registration Date': 'registration_date'
+                            },
+                            tablefmt='rounded_outline'
+                        )
+                    )
                 case '2':
-                    print("Deleting a user...")
+                    AdminController.delete_user()
                 case 'q':
                     break
                 case _:
                     print('Wrong input! Please choose from the above given options...')
 
     @staticmethod
-    def manage_quizzes_menu():
+    def manage_quizzes_menu(username: str):
         '''Admin: manage quizzes menu'''
 
         logging.debug("Running Admin: Manage Quizzes Menu")
@@ -82,13 +101,45 @@ class Menu:
 
             match user_sub_choice:
                 case '1':
-                    print("Viewing all categories...")
+                    data = AdminController.get_all_categories()
+
+                    if not data:
+                        print('\nNo Categories Currently, Please add a Category!!\n')
+                        continue
+
+                    print(
+                        tabulate(
+                            data,
+                            headers={
+                                'Category': 'category_name', 
+                                'Created By': 'admin_name', 
+                            },
+                            tablefmt='rounded_outline'
+                        )
+                    )
                 case '2':
-                    print("Viewing questions...")
+                    data = AdminController.get_all_questions()
+
+                    if not data:
+                        print('\nNo Questions Currently, Please add a question!!\n')
+                        continue
+
+                    print(
+                        tabulate(
+                            data,
+                            headers={
+                                'Category': 'category_name',
+                                'Question': 'question_text',
+                                'Question Type': 'question_type',
+                                'Created By': 'questions.admin_name',
+                            },
+                            tablefmt='rounded_outline'
+                        )
+                    )
                 case '3':
-                    print("Adding a new category...")
+                    AdminController.create_category(username)
                 case '4':
-                    print("Adding a question...")
+                    AdminController.create_question(username)
                 case 'q':
                     break
                 case _:
@@ -114,7 +165,7 @@ class Menu:
                     Menu.manage_users_menu()
                 case '2':
                     print("Managing quizzes...")
-                    Menu.manage_quizzes_menu()
+                    Menu.manage_quizzes_menu(username)
                 case 'q':
                     break
                 case _:

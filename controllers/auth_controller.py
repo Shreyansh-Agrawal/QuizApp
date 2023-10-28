@@ -9,7 +9,7 @@ import maskpass
 
 from database.database_access import DatabaseAccess as DAO
 from database.queries import Queries
-from models.users import User
+from models.user import User
 
 
 class Authenticate:
@@ -23,7 +23,7 @@ class Authenticate:
         password = maskpass.askpass(mask='*')
         hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
-        user_data = DAO.read_from_database(Queries.GET_CREDENTIALS, (username, ))
+        user_data = DAO.read_from_database(Queries.GET_CREDENTIALS_BY_USERNAME, (username, ))
         if not user_data:
             print('\nInvalid Credentials! Please Try Again or Sign Up...')
             return ()

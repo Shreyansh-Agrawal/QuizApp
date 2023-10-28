@@ -1,12 +1,13 @@
 '''
     Runs at the start to create super admin and other tables in database
 '''
+
 import logging
 import sqlite3
 import super_admin_credentials
 from database.database_access import DatabaseAccess as DAO
 from database.queries import InitializationQueries
-from models.users import SuperAdmin
+from models.user import SuperAdmin
 
 
 logger = logging.getLogger(__name__)
@@ -42,7 +43,7 @@ class Initializer:
         try:
             Initializer.create_super_admin()
         except sqlite3.IntegrityError:
-            print("Super Admin Already Created")
+            pass
 
         logger.debug('Initialization Complete')
         print('\nInitialization Complete!\n')

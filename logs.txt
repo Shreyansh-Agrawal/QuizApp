@@ -110,3 +110,73 @@
 28-10-2023 12:22:24 DEBUG    [menu.py:155] Running Assign Menu
 28-10-2023 12:22:24 DEBUG    [menu.py:20] Running Super Admin Menu
 28-10-2023 12:23:30 DEBUG    [app.py:23] Stopping application
+28-10-2023 19:03:19 DEBUG    [app.py:18] app.py running
+28-10-2023 19:03:19 DEBUG    [initialize_app.py:47] Initialization Complete
+28-10-2023 19:03:19 DEBUG    [menu.py:224] Running App.start()
+28-10-2023 19:04:37 DEBUG    [menu.py:179] Running User Menu
+28-10-2023 19:09:10 DEBUG    [app.py:18] app.py running
+28-10-2023 19:09:10 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:09:10 DEBUG    [menu.py:224] Running App.start()
+28-10-2023 19:09:28 DEBUG    [menu.py:207] Running Assign Menu
+28-10-2023 19:09:28 DEBUG    [menu.py:21] Running Super Admin Menu
+28-10-2023 19:11:05 DEBUG    [menu.py:207] Running Assign Menu
+28-10-2023 19:11:05 DEBUG    [menu.py:153] Running Admin Menu
+28-10-2023 19:11:10 DEBUG    [menu.py:62] Running Admin: Manage Users Menu
+28-10-2023 19:12:10 DEBUG    [menu.py:98] Running Admin: Manage Quizzes Menu
+28-10-2023 19:12:38 DEBUG    [menu.py:98] Running Admin: Manage Quizzes Menu
+28-10-2023 19:14:37 DEBUG    [app.py:23] Stopping application
+28-10-2023 19:15:00 DEBUG    [app.py:18] app.py running
+28-10-2023 19:15:00 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:15:00 DEBUG    [menu.py:224] Running App.start()
+28-10-2023 19:15:06 DEBUG    [app.py:18] app.py running
+28-10-2023 19:15:06 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:15:06 DEBUG    [menu.py:224] Running App.start()
+28-10-2023 19:16:14 DEBUG    [app.py:18] app.py running
+28-10-2023 19:16:14 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:16:14 DEBUG    [menu.py:224] Running App.start()
+28-10-2023 19:16:42 DEBUG    [menu.py:207] Running Assign Menu
+28-10-2023 19:16:42 DEBUG    [menu.py:153] Running Admin Menu
+28-10-2023 19:16:46 DEBUG    [menu.py:62] Running Admin: Manage Users Menu
+28-10-2023 19:17:35 DEBUG    [menu.py:98] Running Admin: Manage Quizzes Menu
+28-10-2023 19:20:16 DEBUG    [app.py:18] app.py running
+28-10-2023 19:20:16 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:20:16 DEBUG    [menu.py:224] Running App.start()
+28-10-2023 19:20:23 DEBUG    [app.py:18] app.py running
+28-10-2023 19:20:23 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:20:23 DEBUG    [menu.py:224] Running App.start()
+28-10-2023 19:20:53 DEBUG    [menu.py:207] Running Assign Menu
+28-10-2023 19:20:53 DEBUG    [menu.py:153] Running Admin Menu
+28-10-2023 19:21:04 DEBUG    [menu.py:62] Running Admin: Manage Users Menu
+28-10-2023 19:21:09 DEBUG    [menu.py:98] Running Admin: Manage Quizzes Menu
+28-10-2023 19:39:16 DEBUG    [app.py:18] app.py running
+28-10-2023 19:39:16 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:39:16 DEBUG    [menu.py:224] Running App.start()
+28-10-2023 19:39:41 DEBUG    [menu.py:207] Running Assign Menu
+28-10-2023 19:39:41 DEBUG    [menu.py:153] Running Admin Menu
+28-10-2023 19:39:46 DEBUG    [menu.py:62] Running Admin: Manage Users Menu
+28-10-2023 19:39:51 DEBUG    [menu.py:98] Running Admin: Manage Quizzes Menu
+28-10-2023 19:41:57 DEBUG    [app.py:18] app.py running
+28-10-2023 19:41:57 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:41:57 DEBUG    [menu.py:221] Running App.start()
+28-10-2023 19:42:08 DEBUG    [menu.py:204] Running Assign Menu
+28-10-2023 19:42:08 DEBUG    [menu.py:150] Running Admin Menu
+28-10-2023 19:42:11 DEBUG    [menu.py:98] Running Admin: Manage Quizzes Menu
+28-10-2023 19:51:27 DEBUG    [app.py:18] app.py running
+28-10-2023 19:51:27 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:51:27 DEBUG    [menu.py:223] Running App.start()
+28-10-2023 19:51:49 DEBUG    [menu.py:206] Running Assign Menu
+28-10-2023 19:51:49 DEBUG    [menu.py:152] Running Admin Menu
+28-10-2023 19:51:52 DEBUG    [menu.py:98] Running Admin: Manage Quizzes Menu
+28-10-2023 19:57:31 DEBUG    [app.py:23] Stopping application
+28-10-2023 19:58:49 DEBUG    [app.py:18] app.py running
+28-10-2023 19:58:49 DEBUG    [initialize_app.py:48] Initialization Complete
+28-10-2023 19:58:49 DEBUG    [menu.py:223] Running App.start()
+28-10-2023 19:59:00 DEBUG    [menu.py:206] Running Assign Menu
+28-10-2023 19:59:00 DEBUG    [menu.py:21] Running Super Admin Menu
+28-10-2023 19:59:32 DEBUG    [menu.py:206] Running Assign Menu
+28-10-2023 19:59:32 DEBUG    [menu.py:178] Running User Menu
+28-10-2023 20:00:14 DEBUG    [menu.py:206] Running Assign Menu
+28-10-2023 20:00:14 DEBUG    [menu.py:152] Running Admin Menu
+28-10-2023 20:00:27 DEBUG    [menu.py:62] Running Admin: Manage Users Menu
+28-10-2023 20:00:42 DEBUG    [menu.py:98] Running Admin: Manage Quizzes Menu
+28-10-2023 20:01:31 DEBUG    [app.py:23] Stopping application

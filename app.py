@@ -21,4 +21,4 @@ Initializer.initialize_app()
 App.start()
 
 logger.debug('Stopping application')
-print('---------END OF APP---------')
+print('\n---------END OF APP---------\n')

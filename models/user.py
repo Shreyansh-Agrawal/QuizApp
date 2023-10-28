@@ -1,5 +1,5 @@
 '''
-    Contains Super Admin, Admin, User classes
+    Contains classes for Super Admin, Admin, User
 '''
 
 from abc import ABC, abstractmethod
@@ -13,7 +13,7 @@ from database.queries import Queries
 
 
 class Person(ABC):
-    '''abstract base class'''
+    '''Abstract Base Class'''
 
     def __init__(self, name: str, email: str, username: str, password: str) -> None:
         self.name = name
@@ -49,9 +49,6 @@ class SuperAdmin(Person):
     def save_user_to_database(self) -> None:
         '''method to add user to database'''
 
-        insert_into_users_query = Queries.INSERT_USER_DATA
-        insert_into_credentials_query = Queries.INSERT_CREDENTIALS
-
         super_admin_data = (
             self.user_id,
             self.name,
@@ -67,8 +64,8 @@ class SuperAdmin(Person):
             self.is_password_changed
         )
 
-        DAO.write_to_database(insert_into_users_query, super_admin_data)
-        DAO.write_to_database(insert_into_credentials_query, credentials)
+        DAO.write_to_database(Queries.INSERT_USER_DATA, super_admin_data)
+        DAO.write_to_database(Queries.INSERT_CREDENTIALS, credentials)
 
 
 class Admin(Person):
@@ -93,9 +90,6 @@ class Admin(Person):
     def save_user_to_database(self) -> None:
         '''method to add user to database'''
 
-        insert_into_users_query = Queries.INSERT_USER_DATA
-        insert_into_credentials_query = Queries.INSERT_CREDENTIALS
-
         admin_data = (
             self.user_id,
             self.name,
@@ -111,8 +105,8 @@ class Admin(Person):
             self.is_password_changed
         )
 
-        DAO.write_to_database(insert_into_users_query, admin_data)
-        DAO.write_to_database(insert_into_credentials_query, credentials)
+        DAO.write_to_database(Queries.INSERT_USER_DATA, admin_data)
+        DAO.write_to_database(Queries.INSERT_CREDENTIALS, credentials)
 
 
 class User(Person):
@@ -137,9 +131,6 @@ class User(Person):
     def save_user_to_database(self) -> None:
         '''method to add user to database'''
 
-        insert_into_users_query = Queries.INSERT_USER_DATA
-        insert_into_credentials_query = Queries.INSERT_CREDENTIALS
-
         user_data = (
             self.user_id,
             self.name,
@@ -155,5 +146,5 @@ class User(Person):
             self.is_password_changed
         )
 
-        DAO.write_to_database(insert_into_users_query, user_data)
-        DAO.write_to_database(insert_into_credentials_query, credentials)
+        DAO.write_to_database(Queries.INSERT_USER_DATA, user_data)
+        DAO.write_to_database(Queries.INSERT_CREDENTIALS, credentials)

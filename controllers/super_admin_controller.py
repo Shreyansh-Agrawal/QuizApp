@@ -2,18 +2,21 @@
     Handlers for super admin operations
 '''
 
+from typing import List, Tuple
+
 from password_generator import PasswordGenerator
 from tabulate import tabulate
+
 from database.database_access import DatabaseAccess as DAO
 from database.queries import Queries
-from models.users import Admin
+from models.user import Admin
 
 
 class SuperAdminController:
     '''Super Admin Controller Class'''
 
     @staticmethod
-    def create_admin():
+    def create_admin() -> None:
         '''Create a new Admin Account'''
 
         print('\n-----Create a new Admin-----\n')
@@ -30,18 +33,17 @@ class SuperAdminController:
         admin.save_user_to_database()
 
         print('\nAdmin created successfully!\n')
-        return admin_data['username']
 
     @staticmethod
-    def get_all_admins():
+    def get_all_admins() -> List[Tuple]:
         '''Return all admins with their details'''
 
         role = 'admin'
-        data = DAO.read_from_database(Queries.GET_USER_DATA_BY_ROLE, (role, ))
+        data = DAO.read_from_database(Queries.GET_USER_BY_ROLE, (role, ))
         return data
 
     @staticmethod
-    def delete_admin():
+    def delete_admin() -> None:
         '''Delete an Admin'''
 
         print('\n-----Delete Admin-----\n')
@@ -65,7 +67,7 @@ class SuperAdminController:
             )
         )
 
-        email = input('\nEnter admin email: ')
+        email = input('\nEnter Admin Email: ')
 
         for data in data:
             if data[2] == email:
@@ -74,5 +76,5 @@ class SuperAdminController:
             print('No such admin! Please choose from above!!')
             return
 
-        DAO.write_to_database(Queries.DELETE_USER_DATA_BY_EMAIL, (email, ))
+        DAO.write_to_database(Queries.DELETE_USER_BY_EMAIL, (email, ))
         print(f'\nAdmin: {email} deleted successfully!\n')
