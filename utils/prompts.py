@@ -57,3 +57,5 @@ Enter -
         Press q to Quit
 
 Enter your choice: '''
+
+ATTEMPT_LIMIT = 3

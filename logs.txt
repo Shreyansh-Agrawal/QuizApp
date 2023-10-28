@@ -36,3 +36,15 @@
 27-10-2023 23:57:24 DEBUG    [app.py:25                  ] app.py running
 28-10-2023 00:00:02 DEBUG    [app.py:25                  ] app.py running
 28-10-2023 00:01:58 DEBUG    [app.py:25                  ] app.py running
+28-10-2023 08:03:57 DEBUG    [app.py:18                  ] app.py running
+28-10-2023 08:03:57 DEBUG    [menu.py:19                  ] Running Auth Menu
+28-10-2023 08:04:37 DEBUG    [menu.py:141                 ] Running User Menu
+28-10-2023 08:07:18 DEBUG    [menu.py:164                 ] Running Assign Menu
+28-10-2023 08:07:18 DEBUG    [menu.py:56                  ] Running Super Admin Menu
+28-10-2023 08:31:39 DEBUG    [app.py:18                  ] app.py running
+28-10-2023 08:31:39 DEBUG    [menu.py:19                  ] Running Auth Menu
+28-10-2023 08:32:05 DEBUG    [menu.py:141                 ] Running User Menu
+28-10-2023 08:32:33 DEBUG    [menu.py:164                 ] Running Assign Menu
+28-10-2023 08:32:33 DEBUG    [menu.py:141                 ] Running User Menu
+28-10-2023 08:33:04 DEBUG    [menu.py:164                 ] Running Assign Menu
+28-10-2023 08:33:04 DEBUG    [menu.py:56                  ] Running Super Admin Menu

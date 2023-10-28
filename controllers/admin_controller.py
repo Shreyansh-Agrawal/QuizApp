@@ -1,9 +1,30 @@
 '''
     Handlers for admin operations
-        view_users()
-        delete_user()
-        add_quiz_category()
-        view_quiz_categories()
-        view_quiz_questions()
-        add_quiz_question()
 '''
+
+class AdminController:
+    '''Admin Controller Class'''
+
+    @staticmethod
+    def get_all_users():
+        '''Return all users with their details'''
+
+    @staticmethod
+    def get_quiz_categories():
+        '''Return all Quiz Categories'''
+
+    @staticmethod
+    def get_quiz_questions():
+        '''Return all quiz questions'''
+
+    @staticmethod
+    def create_quiz_category():
+        '''Add a Quiz Category'''
+
+    @staticmethod
+    def create_quiz_question():
+        '''Add Questions in a Category'''
+
+    @staticmethod
+    def delete_user():
+        '''Delete a User'''

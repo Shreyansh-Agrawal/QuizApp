@@ -1,7 +1,18 @@
 '''
     Handlers for user operations
-    
-    start_quiz()
-    view_leaderboard()
-    view_history()
 '''
+
+class UserController:
+    '''User Controller Class'''
+
+    @staticmethod
+    def start_quiz():
+        '''Start a New Quiz'''
+
+    @staticmethod
+    def get_all_scores():
+        '''Return all scores for leaderboard'''
+
+    @staticmethod
+    def get_user_scores():
+        '''Return user's scores'''
