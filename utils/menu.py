@@ -8,12 +8,13 @@ import logging
 import maskpass
 from tabulate import tabulate
 
-from utils import prompts
+from controllers.admin_controller import AdminController
 from controllers.auth_controller import Authenticate
 from controllers.super_admin_controller import SuperAdminController
-from controllers.admin_controller import AdminController
+from controllers.user_controller import UserController
 from database.database_access import DatabaseAccess as DAO
 from database.queries import Queries
+from utils import prompts
 
 
 logger = logging.getLogger(__name__)
@@ -210,19 +211,51 @@ class Menu:
 
         logging.debug('Running User Menu')
         print('\n----User Dashboard----\n')
-        print(f'\n----Welcome {username}----\n')
+        print(f'\n----Welcome {username.upper()}----\n')
 
         while True:
             user_choice = input(prompts.USER_PROMPTS)
 
             match user_choice:
-
                 case '1':
                     print('Quiz Starting...')
                 case '2':
-                    print('Leaderboard...')
+                    data = UserController.get_leaderboard()
+
+                    if not data:
+                        print('\nNo data! Take a Quiz...\n')
+                        continue
+
+                    print('\n-----Leaderboard-----\n')
+                    print(
+                        tabulate(
+                            data,
+                            headers={
+                                'Username': 'username',
+                                'Score': 'score',
+                                'Time': 'timestamp',
+                            },
+                            tablefmt='rounded_outline'
+                        )
+                    )
                 case '3':
-                    print('Your scores History...')
+                    data = UserController.get_user_scores(username)
+
+                    if not data:
+                        print('\nNo data! Take a Quiz...\n')
+                        continue
+
+                    print('\n-----Score History-----\n')
+                    print(
+                        tabulate(
+                            data,
+                            headers={
+                                'Time': 'timestamp',
+                                'Score': 'score',
+                            },
+                            tablefmt='rounded_outline'
+                        )
+                    )
                 case 'q':
                     break
                 case _:

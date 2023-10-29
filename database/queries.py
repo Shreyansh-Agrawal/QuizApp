@@ -117,6 +117,23 @@ class Queries:
         ORDER BY category_name
     '''
 
+    GET_LEADERBOARD = '''
+        SELECT username, MAX(score), timestamp 
+        FROM scores
+        INNER JOIN credentials ON scores.user_id = credentials.user_id
+        GROUP BY username
+        ORDER BY score DESC, timestamp ASC
+        LIMIT 10
+    '''
+
+    GET_USER_SCORES_BY_USERNAME = '''
+        SELECT timestamp, score 
+        FROM scores 
+        INNER JOIN credentials ON scores.user_id = credentials.user_id
+        WHERE username = ?
+        ORDER BY timestamp DESC
+    '''
+
     UPDATE_ADMIN_PASSWORD = '''
         UPDATE credentials 
         SET password = ?, isPasswordChanged = ? 
