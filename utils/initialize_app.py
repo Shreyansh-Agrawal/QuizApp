@@ -4,7 +4,7 @@
 
 import logging
 import sqlite3
-import super_admin_credentials
+import utils.super_admin_credentials as super_admin_credentials
 from database.database_access import DatabaseAccess as DAO
 from database.queries import InitializationQueries
 from models.user import SuperAdmin

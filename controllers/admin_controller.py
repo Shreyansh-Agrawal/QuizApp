@@ -119,24 +119,30 @@ class AdminController:
 
         match question_data['question_type']:
             case 'MCQ':
-                for _ in range(4):
-                    option_data = {}
-                    option_data['question_id'] = question.question_id
-                    option_data['option_text'] = input('Enter Option Text: ').title()
-                    option_data['is_correct'] = int(input('Enter 1 if correct else 0: '))
+                option_data = {}
+                option_data['question_id'] = question.question_id
+                option_data['option_text'] = input('Enter Answer: ').title()
+                option_data['is_correct'] = 1
+                option = Option(option_data)
+                question.add_option(option)
 
+                for _ in range(3):
+                    option_data['question_id'] = question.question_id
+                    option_data['option_text'] = input('Enter Other Option: ').title()
+                    option_data['is_correct'] = 0
                     option = Option(option_data)
                     question.add_option(option)
             case 'T/F' | 'ONE WORD':
                 option_data = {}
                 option_data['question_id'] = question.question_id
-                option_data['option_text'] = input('Enter Option Text: ').title()
+                option_data['option_text'] = input('Enter Answer: ').title()
                 option_data['is_correct'] = 1
 
                 option = Option(option_data)
                 question.add_option(option)
             case _:
                 print('Invalid Type!')
+                return
 
         question.save_to_database()
 
