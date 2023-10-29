@@ -115,6 +115,7 @@ class Menu:
                         print('\nNo Categories Currently, Please add a Category!!\n')
                         continue
 
+                    print('\n-----Quiz Categories-----\n')
                     print(
                         tabulate(
                             data,
@@ -132,6 +133,7 @@ class Menu:
                         print('\nNo Questions Currently, Please add a question!!\n')
                         continue
 
+                    print('\n-----Quiz Questions-----\n')
                     print(
                         tabulate(
                             data,
@@ -139,6 +141,7 @@ class Menu:
                                 'Category': 'category_name',
                                 'Question': 'question_text',
                                 'Question Type': 'question_type',
+                                'Answer': 'option_text',
                                 'Created By': 'questions.admin_name',
                             },
                             tablefmt='rounded_outline'
@@ -233,7 +236,7 @@ class App:
     def assign_menu(data):
         '''Assign menu according to the role'''
 
-        logging.debug('Running Assign Menu')
+        logging.debug('Assigning menu according to the role')
         username, role, is_password_changed = data
 
         match role:

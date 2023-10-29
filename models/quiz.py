@@ -30,7 +30,7 @@ class Category(QuizEntity):
         super().__init__(category_data.get('category_name'))
         self.category_id = 'C' + shortuuid.ShortUUID().random(length=5)
         self.admin_id = category_data.get('admin_id')
-        self.admin_name = category_data.get('admin_name')
+        self.admin_username = category_data.get('admin_username')
 
     def save_to_database(self) -> None:
         '''method to add category to database'''
@@ -38,7 +38,7 @@ class Category(QuizEntity):
         category_data = (
             self.category_id,
             self.admin_id,
-            self.admin_name,
+            self.admin_username,
             self.text
         )
 
@@ -75,7 +75,7 @@ class Question(QuizEntity):
         self.question_id = 'Q' + shortuuid.ShortUUID().random(length=5)
         self.category_id = question_data.get('category_id')
         self.admin_id = question_data.get('admin_id')
-        self.admin_name = question_data.get('admin_name')
+        self.admin_username = question_data.get('admin_username')
         self.question_type = question_data.get('question_type')
         self.options = []
 
@@ -91,7 +91,7 @@ class Question(QuizEntity):
             self.question_id,
             self.category_id,
             self.admin_id,
-            self.admin_name,
+            self.admin_username,
             self.text,
             self.question_type
         )

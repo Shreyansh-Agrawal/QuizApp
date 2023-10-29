@@ -38,16 +38,29 @@ class AdminController:
     def create_category(username: str):
         '''Add a Quiz Category'''
 
-        data = DAO.read_from_database(Queries.GET_ADMIN_ID_NAME_BY_USERNAME, (username, ))
-        admin_id, admin_name = data[0]
+        admin_data = DAO.read_from_database(Queries.GET_ADMIN_ID_BY_USERNAME, (username, ))
+        admin_id = admin_data[0][0]
+
+        data = AdminController.get_all_categories()
 
         logging.debug('Creating Category')
         print('\n-----Create a new Quiz Category-----\n')
 
+        print(
+            tabulate(
+                data,
+                headers={
+                    'Category': 'category_name', 
+                    'Created By': 'admin_username', 
+                },
+                tablefmt='rounded_outline'
+            )
+        )
+
         category_data = {}
         category_data['admin_id'] = admin_id
-        category_data['admin_name'] = admin_name
-        category_data['category_name'] = input('Enter Category Name: ').title()
+        category_data['admin_username'] = username
+        category_data['category_name'] = input('Enter New Category Name: ').title()
 
         category = Category(category_data)
 
@@ -73,13 +86,13 @@ class AdminController:
                 data,
                 headers={
                     'Category': 'category_name', 
-                    'Created By': 'admin_name', 
+                    'Created By': 'admin_username', 
                 },
                 tablefmt='rounded_outline'
             )
         )
 
-        category_name = input('\nEnter Category Name: ')
+        category_name = input('\nEnter Category Name: ').title()
 
         for data in data:
             if data[0] == category_name:
@@ -89,13 +102,13 @@ class AdminController:
             return
 
         category_id = DAO.read_from_database(Queries.GET_CATEGORY_ID_BY_NAME, (category_name, ))
-        data = DAO.read_from_database(Queries.GET_ADMIN_ID_NAME_BY_USERNAME, (username, ))
-        admin_id, admin_name = data[0]
+        data = DAO.read_from_database(Queries.GET_ADMIN_ID_BY_USERNAME, (username, ))
+        admin_id = data[0][0]
 
         question_data = {}
         question_data['category_id'] = category_id[0][0]
         question_data['admin_id'] = admin_id
-        question_data['admin_name'] = admin_name
+        question_data['admin_username'] = username
         question_data['question_text'] = input('Enter Question Text: ').title()
         question_data['question_type'] = input('Enter Question Type (MCQ, T/F, ONE WORD): ').upper()
 

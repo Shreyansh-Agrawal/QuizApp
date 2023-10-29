@@ -20,5 +20,5 @@ logger.debug('app.py running')
 Initializer.initialize_app()
 App.start()
 
-logger.debug('Stopping application')
+logger.debug('Stopping Application')
 print('\n---------END OF APP---------\n')

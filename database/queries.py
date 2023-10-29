@@ -91,8 +91,8 @@ class Queries:
         WHERE username = ?
     '''
 
-    GET_ADMIN_ID_NAME_BY_USERNAME = '''
-        SELECT users.user_id, name
+    GET_ADMIN_ID_BY_USERNAME = '''
+        SELECT users.user_id
         FROM users 
         INNER JOIN credentials ON users.user_id = credentials.user_id
         WHERE username = ?
@@ -109,9 +109,11 @@ class Queries:
     GET_CATEGORY_ID_BY_NAME = 'SELECT category_id FROM categories WHERE category_name = ?'
 
     GET_ALL_QUESTIONS = '''
-        SELECT category_name, question_text, question_type, questions.admin_name
+        SELECT category_name, question_text, question_type, option_text, questions.admin_name
         FROM questions 
         INNER JOIN categories ON questions.category_id = categories.category_id
+        INNER JOIN options ON questions.question_id = options.question_id
+        WHERE options.isCorrect = 1
         ORDER BY category_name
     '''
 

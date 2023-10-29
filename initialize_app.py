@@ -48,7 +48,7 @@ class Initializer:
         try:
             Initializer.create_super_admin()
         except sqlite3.IntegrityError:
-            pass
+            logger.debug('Super Admin Present')
 
         logger.debug('Initialization Complete')
         print('\nInitialization Complete!\n')
