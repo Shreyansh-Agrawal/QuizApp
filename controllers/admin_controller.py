@@ -9,6 +9,9 @@ from database.queries import Queries
 from models.quiz import Category, Question, Option
 
 
+logger = logging.getLogger(__name__)
+
+
 class AdminController:
     '''Admin Controller Class'''
 
@@ -43,7 +46,7 @@ class AdminController:
 
         data = AdminController.get_all_categories()
 
-        logging.debug('Creating Category')
+        logger.debug('Creating Category')
         print('\n-----Create a new Quiz Category-----\n')
 
         print(
@@ -66,7 +69,7 @@ class AdminController:
 
         category.save_to_database()
 
-        logging.debug('Category Created')
+        logger.debug('Category Created')
         print('\nCategory Created!\n')
 
     @staticmethod
@@ -78,7 +81,7 @@ class AdminController:
             print('\nNo Categories Currently, Please add a Category!!\n')
             return
 
-        logging.debug('Creating Question')
+        logger.debug('Creating Question')
         print('\n-----Create a new Quiz Question-----\n')
 
         print(
@@ -137,7 +140,7 @@ class AdminController:
 
         question.save_to_database()
 
-        logging.debug('Question Created')
+        logger.debug('Question Created')
         print('\nQuestion Created!\n')
 
     @staticmethod
@@ -149,7 +152,7 @@ class AdminController:
             print('\nNo User Currently\n')
             return
 
-        logging.debug('Deleting User')
+        logger.debug('Deleting User')
         print('\n-----Delete a User-----\n')
 
         print(
@@ -176,5 +179,5 @@ class AdminController:
 
         DAO.write_to_database(Queries.DELETE_USER_BY_EMAIL, (email, ))
 
-        logging.debug('User deleted')
+        logger.debug('User deleted')
         print(f'\nUser: {email} deleted successfully!\n')

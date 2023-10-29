@@ -36,7 +36,7 @@ class InitializationQueries:
         CREATE TABLE IF NOT EXISTS categories (
             category_id TEXT PRIMARY KEY,
             admin_id TEXT,
-            admin_name TEXT,
+            admin_username TEXT,
             category_name TEXT UNIQUE,
             FOREIGN KEY (admin_id) REFERENCES users (user_id)
         )'''
@@ -46,7 +46,7 @@ class InitializationQueries:
             question_id TEXT PRIMARY KEY,
             category_id TEXT,
             admin_id TEXT,
-            admin_name TEXT,
+            admin_username TEXT,
             question_text TEXT,
             question_type TEXT,
             FOREIGN KEY (admin_id) REFERENCES users (user_id),
@@ -104,12 +104,12 @@ class Queries:
         WHERE username = ?
     '''
 
-    GET_ALL_CATEGORIES = 'SELECT category_name, admin_name FROM categories'
+    GET_ALL_CATEGORIES = 'SELECT category_name, admin_username FROM categories'
 
     GET_CATEGORY_ID_BY_NAME = 'SELECT category_id FROM categories WHERE category_name = ?'
 
     GET_ALL_QUESTIONS = '''
-        SELECT category_name, question_text, question_type, option_text, questions.admin_name
+        SELECT category_name, question_text, question_type, option_text, questions.admin_username
         FROM questions 
         INNER JOIN categories ON questions.category_id = categories.category_id
         INNER JOIN options ON questions.question_id = options.question_id

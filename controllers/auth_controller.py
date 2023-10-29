@@ -13,6 +13,9 @@ from database.queries import Queries
 from models.user import User
 
 
+logger = logging.getLogger(__name__)
+
+
 class Authenticate:
     '''Authenticates user'''
 
@@ -20,7 +23,7 @@ class Authenticate:
     def login() -> Tuple:
         '''Method for user login'''
 
-        logging.debug('Login Initiated')
+        logger.debug('Login Initiated')
 
         username = input('Enter username: ').lower()
         password = maskpass.askpass(mask='*')
@@ -41,7 +44,7 @@ class Authenticate:
             print('\nInvalid Credentials! Please Try Again or Sign Up...')
             return ()
 
-        logging.debug('Login Successful')
+        logger.debug('Login Successful')
         print('\nSuccessfully Logged In!\n')
 
         return (username, role, is_password_changed)
@@ -50,7 +53,7 @@ class Authenticate:
     def signup() -> str:
         '''Method for signup, only for user'''
 
-        logging.debug('Signup Initiated')
+        logger.debug('Signup Initiated')
 
         user_data = {}
         user_data['name'] = input('Enter your name: ').title()
@@ -63,7 +66,7 @@ class Authenticate:
         user = User(user_data)
         user.save_user_to_database()
 
-        logging.debug('Signup Successful')
+        logger.debug('Signup Successful')
         print('\nAccount created successfully!\n')
 
         return user_data['username']

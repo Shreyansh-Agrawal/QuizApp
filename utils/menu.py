@@ -27,9 +27,9 @@ class Menu:
     def super_admin_menu(username: str):
         '''Menu for Super Admin'''
 
-        logging.debug('Running Super Admin Menu')
+        logger.debug('Running Super Admin Menu')
         print('----Super Admin Dashboard----')
-        print(f'\n----Welcome {username}----\n')
+        print(f'\n----Welcome {username.upper()}----\n')
 
         while True:
             user_choice = input(prompts.SUPER_ADMIN_PROMPTS)
@@ -68,7 +68,7 @@ class Menu:
     def manage_users_menu():
         '''Admin: manage users menu'''
 
-        logging.debug('Running Admin: Manage Users Menu')
+        logger.debug('Running Admin: Manage Users Menu')
         while True:
             user_sub_choice = input(prompts.ADMIN_MANAGE_USER_PROMPTS)
 
@@ -104,7 +104,7 @@ class Menu:
     def manage_quizzes_menu(username: str):
         '''Admin: manage quizzes menu'''
 
-        logging.debug('Running Admin: Manage Quizzes Menu')
+        logger.debug('Running Admin: Manage Quizzes Menu')
         while True:
             user_sub_choice = input(prompts.ADMIN_MANAGE_QUIZZES_PROMPTS)
 
@@ -161,9 +161,9 @@ class Menu:
     def admin_menu(username: str, is_password_changed: int):
         '''Menu for Admin'''
 
-        logging.debug('Running Admin Menu')
+        logger.debug('Running Admin Menu')
         print('----Admin Dashboard----')
-        print(f'\n----Welcome {username}----\n')
+        print(f'\n----Welcome {username.upper()}----\n')
 
         if not is_password_changed:
             logger.debug('Changing Default Admin Password')
@@ -209,7 +209,7 @@ class Menu:
     def user_menu(username: str):
         '''Menu for User'''
 
-        logging.debug('Running User Menu')
+        logger.debug('Running User Menu')
         print('\n----User Dashboard----\n')
         print(f'\n----Welcome {username.upper()}----\n')
 
@@ -269,7 +269,7 @@ class App:
     def assign_menu(data):
         '''Assign menu according to the role'''
 
-        logging.debug('Assigning menu according to the role')
+        logger.debug('Assigning menu according to the role')
         username, role, is_password_changed = data
 
         match role:
@@ -286,7 +286,7 @@ class App:
     def start():
         '''Menu for Login / Sign Up'''
 
-        logging.debug('Running App.start()')
+        logger.debug('Running App.start()')
         print('\n---------WELCOME TO QUIZ APP---------\n')
 
         while True:

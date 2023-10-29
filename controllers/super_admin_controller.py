@@ -13,6 +13,9 @@ from database.queries import Queries
 from models.user import Admin
 
 
+logger = logging.getLogger(__name__)
+
+
 class SuperAdminController:
     '''Super Admin Controller Class'''
 
@@ -20,7 +23,7 @@ class SuperAdminController:
     def create_admin() -> None:
         '''Create a new Admin Account'''
 
-        logging.debug('Creating Admin')
+        logger.debug('Creating Admin')
         print('\n-----Create a new Admin-----\n')
 
         admin_data = {}
@@ -34,7 +37,7 @@ class SuperAdminController:
         admin = Admin(admin_data)
         admin.save_user_to_database()
 
-        logging.debug('Admin created')
+        logger.debug('Admin created')
         print('\nAdmin created successfully!\n')
 
     @staticmethod
@@ -49,7 +52,7 @@ class SuperAdminController:
     def delete_admin() -> None:
         '''Delete an Admin'''
 
-        logging.debug('Deleting Admin')
+        logger.debug('Deleting Admin')
         print('\n-----Delete Admin-----\n')
 
         data = SuperAdminController.get_all_admins()
@@ -82,5 +85,5 @@ class SuperAdminController:
 
         DAO.write_to_database(Queries.DELETE_USER_BY_EMAIL, (email, ))
 
-        logging.debug('Admin deleted')
+        logger.debug('Admin deleted')
         print(f'\nAdmin: {email} deleted successfully!\n')
