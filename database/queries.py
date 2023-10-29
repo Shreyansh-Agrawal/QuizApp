@@ -78,6 +78,8 @@ class Queries:
 
     INSERT_QUESTION = 'INSERT INTO questions VALUES (?, ?, ?, ?, ?, ?)'
 
+    INSERT_USER_QUIZ_SCORE = 'INSERT INTO scores VALUES (?, ?, ?, ?)'
+
     GET_USER_BY_ROLE = '''
         SELECT username, name, email, registration_date
         FROM users INNER JOIN credentials ON users.user_id = credentials.user_id
@@ -91,7 +93,7 @@ class Queries:
         WHERE username = ?
     '''
 
-    GET_ADMIN_ID_BY_USERNAME = '''
+    GET_USER_ID_BY_USERNAME = '''
         SELECT users.user_id
         FROM users 
         INNER JOIN credentials ON users.user_id = credentials.user_id
@@ -108,13 +110,22 @@ class Queries:
 
     GET_CATEGORY_ID_BY_NAME = 'SELECT category_id FROM categories WHERE category_name = ?'
 
-    GET_ALL_QUESTIONS = '''
+    GET_ALL_QUESTIONS_DETAIL = '''
         SELECT category_name, question_text, question_type, option_text, questions.admin_username
         FROM questions 
         INNER JOIN categories ON questions.category_id = categories.category_id
         INNER JOIN options ON questions.question_id = options.question_id
         WHERE options.isCorrect = 1
         ORDER BY category_name
+    '''
+
+    GET_RANDOM_QUESTIONS_BY_CATEGORY = '''
+        SELECT question_text, question_type, option_text
+        FROM questions 
+        INNER JOIN categories ON questions.category_id = categories.category_id
+        INNER JOIN options ON questions.question_id = options.question_id
+        WHERE options.isCorrect = 1 AND category_name = ?
+        ORDER BY RANDOM() LIMIT 10
     '''
 
     GET_LEADERBOARD = '''

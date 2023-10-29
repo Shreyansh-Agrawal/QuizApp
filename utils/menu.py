@@ -194,10 +194,10 @@ class Menu:
 
             match user_choice:
                 case '1':
-                    print('Managing users...')
+                    print('\n----Manage Users----\n')
                     Menu.manage_users_menu()
                 case '2':
-                    print('Managing quizzes...')
+                    print('\n----Manage Quizes----\n')
                     Menu.manage_quizzes_menu(username)
                 case 'q':
                     break
@@ -217,7 +217,38 @@ class Menu:
 
             match user_choice:
                 case '1':
-                    print('Quiz Starting...')
+                    print('\n-----Quiz Starting-----\n')
+
+                    data = QuizController.get_all_categories()
+
+                    if not data:
+                        print('\nNo Categories Currently, Please add a Category!!\n')
+                        continue
+
+                    print('\n-----Quiz Categories-----\n')
+
+                    categories = [(tup[0], ) for tup in data]
+                    print(
+                        tabulate(
+                            categories,
+                            headers={
+                                'Categories': 'category_name',
+                            },
+                            tablefmt='rounded_outline'
+                        )
+                    )
+
+                    category = input('Select Quiz Category: ').title()
+
+                    for data in data:
+                        if data[0] == category:
+                            break
+                    else:
+                        print('No such Category! Please choose from above!!')
+                        continue
+
+                    QuizController.start_quiz(category, username)
+
                 case '2':
                     data = QuizController.get_leaderboard()
 

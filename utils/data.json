@@ -318,22 +318,6 @@
       }
     },
     {
-      "question_id": "Q020",
-      "question_text": "What is the largest planet in our solar system?",
-      "question_type": "one word",
-      "category_id": "C002",
-      "category": "Science",
-      "admin_id": "A002",
-      "admin_username": "sciencenerd",
-      "options": {
-        "answer": {
-          "option_id": "A023",
-          "text": "Jupiter"
-        },
-        "other_options": []
-      }
-    },
-    {
       "question_id": "Q021",
       "question_text": "Is the Moon a star? (True/False)",
       "question_type": "t/f",
