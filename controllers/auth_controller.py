@@ -58,8 +58,8 @@ class Authenticate:
         user_data = {}
         user_data['name'] = input('Enter your name: ').title()
         user_data['email'] = input('Enter your email: ').lower()
-        user_data['username'] = input('Enter your username: ').lower()
-        password = maskpass.askpass(mask='*')
+        user_data['username'] = input('Create your username: ').lower()
+        password = maskpass.askpass(mask='*', prompt='Create your password')
         hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
         user_data['password'] = hashed_password
 

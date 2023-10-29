@@ -1,5 +1,5 @@
 '''
-    Handlers for admin operations
+    Handlers for Quiz Operations
 '''
 
 import logging
@@ -12,16 +12,8 @@ from models.quiz import Category, Question, Option
 logger = logging.getLogger(__name__)
 
 
-class AdminController:
-    '''Admin Controller Class'''
-
-    @staticmethod
-    def get_all_users():
-        '''Return all users with their details'''
-
-        role = 'user'
-        data = DAO.read_from_database(Queries.GET_USER_BY_ROLE, (role, ))
-        return data
+class QuizController:
+    '''Quiz Controller Class'''
 
     @staticmethod
     def get_all_categories():
@@ -38,13 +30,20 @@ class AdminController:
         return data
 
     @staticmethod
+    def get_leaderboard():
+        '''Return top 10 scores for leaderboard'''
+
+        data = DAO.read_from_database(Queries.GET_LEADERBOARD)
+        return data
+
+    @staticmethod
     def create_category(username: str):
         '''Add a Quiz Category'''
 
         admin_data = DAO.read_from_database(Queries.GET_ADMIN_ID_BY_USERNAME, (username, ))
         admin_id = admin_data[0][0]
 
-        data = AdminController.get_all_categories()
+        data = QuizController.get_all_categories()
 
         logger.debug('Creating Category')
         print('\n-----Create a new Quiz Category-----\n')
@@ -76,7 +75,7 @@ class AdminController:
     def create_question(username: str):
         '''Add Questions in a Category'''
 
-        data = AdminController.get_all_categories()
+        data = QuizController.get_all_categories()
         if not data:
             print('\nNo Categories Currently, Please add a Category!!\n')
             return
@@ -150,40 +149,5 @@ class AdminController:
         print('\nQuestion Created!\n')
 
     @staticmethod
-    def delete_user():
-        '''Delete a User'''
-
-        data = AdminController.get_all_users()
-        if not data:
-            print('\nNo User Currently\n')
-            return
-
-        logger.debug('Deleting User')
-        print('\n-----Delete a User-----\n')
-
-        print(
-            tabulate(
-                data,
-                headers={
-                    'Username': 'username', 
-                    'Name': 'name', 
-                    'Email': 'email', 
-                    'Registration Date': 'registration_date'
-                },
-                tablefmt='rounded_outline'
-            )
-        )
-
-        email = input('\nEnter User Email: ')
-
-        for data in data:
-            if data[2] == email:
-                break
-        else:
-            print('No such User! Please choose from above!!')
-            return
-
-        DAO.write_to_database(Queries.DELETE_USER_BY_EMAIL, (email, ))
-
-        logger.debug('User deleted')
-        print(f'\nUser: {email} deleted successfully!\n')
+    def start_quiz():
+        '''Start a New Quiz'''

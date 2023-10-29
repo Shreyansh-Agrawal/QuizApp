@@ -8,10 +8,9 @@ import logging
 import maskpass
 from tabulate import tabulate
 
-from controllers.admin_controller import AdminController
 from controllers.auth_controller import Authenticate
-from controllers.super_admin_controller import SuperAdminController
 from controllers.user_controller import UserController
+from controllers.quiz_controller import QuizController
 from database.database_access import DatabaseAccess as DAO
 from database.queries import Queries
 from utils import prompts
@@ -36,9 +35,9 @@ class Menu:
 
             match user_choice:
                 case '1':
-                    SuperAdminController.create_admin()
+                    UserController.create_admin()
                 case '2':
-                    data = SuperAdminController.get_all_admins()
+                    data = UserController.get_all_users_by_role('admin')
 
                     if not data:
                         print('\nNo Admins Currently, Please Create One!\n')
@@ -58,7 +57,7 @@ class Menu:
                         )
                     )
                 case '3':
-                    SuperAdminController.delete_admin()
+                    UserController.delete_user_by_email('admin')
                 case 'q':
                     break
                 case _:
@@ -74,7 +73,7 @@ class Menu:
 
             match user_sub_choice:
                 case '1':
-                    data = AdminController.get_all_users()
+                    data = UserController.get_all_users_by_role('user')
 
                     if not data:
                         print('\nNo Users Currently!\n')
@@ -94,7 +93,7 @@ class Menu:
                         )
                     )
                 case '2':
-                    AdminController.delete_user()
+                    UserController.delete_user_by_email('user')
                 case 'q':
                     break
                 case _:
@@ -110,7 +109,7 @@ class Menu:
 
             match user_sub_choice:
                 case '1':
-                    data = AdminController.get_all_categories()
+                    data = QuizController.get_all_categories()
 
                     if not data:
                         print('\nNo Categories Currently, Please add a Category!!\n')
@@ -128,7 +127,7 @@ class Menu:
                         )
                     )
                 case '2':
-                    data = AdminController.get_all_questions()
+                    data = QuizController.get_all_questions()
 
                     if not data:
                         print('\nNo Questions Currently, Please add a question!!\n')
@@ -149,9 +148,9 @@ class Menu:
                         )
                     )
                 case '3':
-                    AdminController.create_category(username)
+                    QuizController.create_category(username)
                 case '4':
-                    AdminController.create_question(username)
+                    QuizController.create_question(username)
                 case 'q':
                     break
                 case _:
@@ -220,7 +219,7 @@ class Menu:
                 case '1':
                     print('Quiz Starting...')
                 case '2':
-                    data = UserController.get_leaderboard()
+                    data = QuizController.get_leaderboard()
 
                     if not data:
                         print('\nNo data! Take a Quiz...\n')
@@ -239,7 +238,7 @@ class Menu:
                         )
                     )
                 case '3':
-                    data = UserController.get_user_scores(username)
+                    data = UserController.get_user_scores_by_username(username)
 
                     if not data:
                         print('\nNo data! Take a Quiz...\n')
