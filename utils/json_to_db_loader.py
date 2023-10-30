@@ -20,7 +20,7 @@ class LoadData:
         for question in data['questions']:
             question_id = question['question_id']
             question_text = question['question_text']
-            question_type = question['question_type']
+            question_type = question['question_type'].upper()
             category_id = question['category_id']
             category = question['category']
             admin_id = question['admin_id']

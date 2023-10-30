@@ -13,6 +13,8 @@ from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
 from models.user import Admin
 from utils import validations
+from utils.custom_error import LoginError
+
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +56,7 @@ class UserController:
         try:
             admin.save_user_to_database()
         except sqlite3.IntegrityError as e:
-            print(f'{e}\nUsername already exists!')
+            raise LoginError('\nUser already exists! Login or Sign Up with different credentials...') from e
 
         logger.debug('Admin created')
         print('\nAdmin created successfully!\n')

@@ -5,6 +5,7 @@
 import hashlib
 import logging
 from typing import Tuple
+import sqlite3
 
 import maskpass
 
@@ -12,6 +13,8 @@ from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
 from models.user import User
 from utils import validations
+from utils.custom_error import LoginError
+
 
 logger = logging.getLogger(__name__)
 
@@ -73,7 +76,11 @@ class Authenticate:
         user_data['password'] = hashed_password
 
         user = User(user_data)
-        user.save_user_to_database()
+
+        try:
+            user.save_user_to_database()
+        except sqlite3.IntegrityError as e:
+            raise LoginError('User already exists! Login or Sign Up with different credentials...') from e
 
         logger.debug('Signup Successful')
         print('\nAccount created successfully!\n')

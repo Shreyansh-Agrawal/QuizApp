@@ -3,8 +3,8 @@
 '''
 
 import logging
+from menu.main_menu import App
 from utils.initialize_app import Initializer
-from utils.menu import App
 from utils.json_to_db_loader import LoadData
 
 

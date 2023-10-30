@@ -2,6 +2,7 @@
     Custom Error Classes
 '''
 
+
 class LoginError(Exception):
     '''Exception raised when Login attempts exhausted'''
 
