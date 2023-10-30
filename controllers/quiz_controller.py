@@ -10,8 +10,10 @@ import shortuuid
 from tabulate import tabulate
 
 from database.database_access import DatabaseAccess as DAO
-from database.queries import Queries
+from constants.queries import Queries
 from models.quiz import Category, Question, Option
+from constants import prompts
+from utils import validations
 
 
 logger = logging.getLogger(__name__)
@@ -74,7 +76,7 @@ class QuizController:
         category_data = {}
         category_data['admin_id'] = admin_id
         category_data['admin_username'] = username
-        category_data['category_name'] = input('Enter New Category Name: ').title()
+        category_data['category_name'] = validations.validate_name(prompt='Enter New Category Name: ')
 
         category = Category(category_data)
 
@@ -106,7 +108,7 @@ class QuizController:
             )
         )
 
-        category_name = input('\nEnter Category Name: ').title()
+        category_name = validations.validate_name(prompt='\nEnter Category Name: ')
 
         for data in data:
             if data[0] == category_name:
@@ -123,8 +125,23 @@ class QuizController:
         question_data['category_id'] = category_id[0][0]
         question_data['admin_id'] = admin_id
         question_data['admin_username'] = username
-        question_data['question_text'] = input('Enter Question Text: ').title()
-        question_data['question_type'] = input('Enter Question Type (MCQ, T/F, ONE WORD): ').upper()
+        question_data['question_text'] = validations.validate_question_text(prompt='Enter Question Text: ')
+
+        while True:
+            question_type_input = input(prompts.QUESTION_TYPE_PROMPTS)
+            match question_type_input:
+                case '1':
+                    question_data['question_type'] = 'MCQ'
+                    break
+                case '2':
+                    question_data['question_type'] = 'T/F'
+                    break
+                case '3':
+                    question_data['question_type'] = 'ONE WORD'
+                    break
+                case _:
+                    print('Invalid Question Type! Please choose from above!!')
+                    continue
 
         question = Question(question_data)
 
@@ -132,21 +149,21 @@ class QuizController:
             case 'MCQ':
                 option_data = {}
                 option_data['question_id'] = question.question_id
-                option_data['option_text'] = input('Enter Answer: ').title()
+                option_data['option_text'] = validations.validate_option_text('Enter Answer: ')
                 option_data['is_correct'] = 1
                 option = Option(option_data)
                 question.add_option(option)
 
                 for _ in range(3):
                     option_data['question_id'] = question.question_id
-                    option_data['option_text'] = input('Enter Other Option: ').title()
+                    option_data['option_text'] = validations.validate_option_text('Enter Other Option: ')
                     option_data['is_correct'] = 0
                     option = Option(option_data)
                     question.add_option(option)
             case 'T/F' | 'ONE WORD':
                 option_data = {}
                 option_data['question_id'] = question.question_id
-                option_data['option_text'] = input('Enter Answer: ').title()
+                option_data['option_text'] = validations.validate_option_text('Enter Answer: ')
                 option_data['is_correct'] = 1
 
                 option = Option(option_data)
@@ -168,9 +185,10 @@ class QuizController:
         score = 0
 
         for question_data in data:
-            correct_answer = QuizController.display_question(question_data)
+            question_id, question_text, question_type, correct_answer = question_data
+            QuizController.display_question(question_id, question_text, question_type)
 
-            user_answer = input('Enter your answer: ')
+            user_answer = validations.validate_option_text('Enter your answer: ')
 
             if user_answer.lower() == correct_answer.lower():
                 score += 10
@@ -179,17 +197,17 @@ class QuizController:
         QuizController.save_quiz_score(username, score)
 
     @staticmethod
-    def display_question(question_data: Tuple) -> str:
+    def display_question(question_id: str, question: str, question_type: str):
         '''Display question and its options to user'''
 
-        question, question_type, correct_answer = question_data
         print(f'\n{question}')
 
-        if question_type == 'mcq':
-            # todo: display options
-            pass
+        if question_type.lower() == 'mcq':
+            options_data = DAO.read_from_database(Queries.GET_OPTIONS_FOR_MCQ, (question_id, ))
+            options = [option[0] for option in options_data]
 
-        return correct_answer
+            for count, option in enumerate(options, 1):
+                print(f'{count}. {option}')
 
     @staticmethod
     def save_quiz_score(username: str, score: int):

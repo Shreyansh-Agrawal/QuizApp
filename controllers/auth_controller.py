@@ -9,9 +9,9 @@ from typing import Tuple
 import maskpass
 
 from database.database_access import DatabaseAccess as DAO
-from database.queries import Queries
+from constants.queries import Queries
 from models.user import User
-
+from utils import validations
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +25,7 @@ class Authenticate:
 
         logger.debug('Login Initiated')
 
-        username = input('Enter username: ').lower()
+        username = validations.validate_username(prompt='Enter your username: ')
         password = maskpass.askpass(mask='*')
         hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
@@ -54,13 +54,22 @@ class Authenticate:
         '''Method for signup, only for user'''
 
         logger.debug('Signup Initiated')
-
+        # Todo: check if email or username already exist
         user_data = {}
-        user_data['name'] = input('Enter your name: ').title()
-        user_data['email'] = input('Enter your email: ').lower()
-        user_data['username'] = input('Create your username: ').lower()
-        password = maskpass.askpass(mask='*', prompt='Create your password')
-        hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+        user_data['name'] = validations.validate_name(prompt='Enter your name: ')
+        user_data['email'] = validations.validate_email(prompt='Enter your email: ')
+        user_data['username'] = validations.validate_username(prompt='Create your username: ')
+        password = maskpass.askpass(mask='*', prompt='Create your password: ')
+        confirm_password = ''
+
+        while True:
+            confirm_password =  maskpass.askpass(prompt='Confirm Password: ', mask='*')
+            if password != confirm_password:
+                print('Password does not match. Please re-enter your password!\n')
+            else:
+                break
+
+        hashed_password = hashlib.sha256(confirm_password.encode('utf-8')).hexdigest()
         user_data['password'] = hashed_password
 
         user = User(user_data)

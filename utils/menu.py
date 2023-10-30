@@ -12,8 +12,9 @@ from controllers.auth_controller import Authenticate
 from controllers.user_controller import UserController
 from controllers.quiz_controller import QuizController
 from database.database_access import DatabaseAccess as DAO
-from database.queries import Queries
-from utils import prompts
+from constants.queries import Queries
+from constants import prompts
+from utils import validations
 
 
 logger = logging.getLogger(__name__)
@@ -238,7 +239,7 @@ class Menu:
                         )
                     )
 
-                    category = input('Select Quiz Category: ').title()
+                    category = validations.validate_name(prompt='Select Quiz Category: ')
 
                     for data in data:
                         if data[0] == category:
@@ -324,11 +325,6 @@ class App:
 
             match user_choice:
                 case '1':
-                    print('\n----SignUp----\n')
-                    username = Authenticate.signup()
-                    print('Redirecting...')
-                    Menu.user_menu(username)
-                case '2':
                     print('\n----Login----\n')
                     attempts_remaining = prompts.ATTEMPT_LIMIT
 
@@ -345,6 +341,11 @@ class App:
 
                     if data:
                         App.assign_menu(data)
+                case '2':
+                    print('\n----SignUp----\n')
+                    username = Authenticate.signup()
+                    print('Redirecting...')
+                    Menu.user_menu(username)
                 case 'q':
                     break
                 case _:

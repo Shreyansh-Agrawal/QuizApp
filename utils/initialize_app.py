@@ -2,13 +2,21 @@
     Runs at the start to create super admin and other tables in database
 '''
 
+import hashlib
 import logging
+import os
+from pathlib import Path
 import sqlite3
-import utils.super_admin_credentials as super_admin_credentials
+
+from dotenv import load_dotenv
+
 from database.database_access import DatabaseAccess as DAO
-from database.queries import InitializationQueries
+from constants.queries import InitializationQueries
 from models.user import SuperAdmin
 
+
+dotenv_path = Path('.env')
+load_dotenv(dotenv_path=dotenv_path)
 
 logger = logging.getLogger(__name__)
 
@@ -22,13 +30,16 @@ class Initializer:
 
         logger.debug('Creating Super Admin')
 
-        super_admin_obj = {}
-        super_admin_obj['name'] = super_admin_credentials.NAME
-        super_admin_obj['email'] = super_admin_credentials.EMAIL
-        super_admin_obj['username'] = super_admin_credentials.USERNAME
-        super_admin_obj['password'] = super_admin_credentials.HASHED_PASSWORD
+        super_admin_data = {}
+        super_admin_data['name'] = os.getenv('NAME')
+        super_admin_data['email'] = os.getenv('EMAIL')
+        super_admin_data['username'] = os.getenv('USERNAME')
 
-        super_admin = SuperAdmin(super_admin_obj)
+        password = os.getenv('PASSWORD')
+        hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+        super_admin_data['password'] = hashed_password
+        super_admin = SuperAdmin(super_admin_data)
         super_admin.save_user_to_database()
 
         logger.debug('Created Super Admin')

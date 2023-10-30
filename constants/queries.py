@@ -120,13 +120,15 @@ class Queries:
     '''
 
     GET_RANDOM_QUESTIONS_BY_CATEGORY = '''
-        SELECT question_text, question_type, option_text
+        SELECT questions.question_id, question_text, question_type, option_text
         FROM questions 
         INNER JOIN categories ON questions.category_id = categories.category_id
         INNER JOIN options ON questions.question_id = options.question_id
         WHERE options.isCorrect = 1 AND category_name = ?
         ORDER BY RANDOM() LIMIT 10
     '''
+
+    GET_OPTIONS_FOR_MCQ = 'SELECT option_text FROM options WHERE question_id = ?'
 
     GET_LEADERBOARD = '''
         SELECT username, MAX(score), timestamp 

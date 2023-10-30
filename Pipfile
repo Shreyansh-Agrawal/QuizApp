@@ -9,6 +9,7 @@ shortuuid = "*"
 maskpass = "*"
 random-password-generator = "*"
 tabulate = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

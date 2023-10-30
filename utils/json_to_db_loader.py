@@ -4,7 +4,7 @@
 
 import json
 from database.database_access import DatabaseAccess as DAO
-from database.queries import Queries
+from constants.queries import Queries
 
 
 class LoadData:

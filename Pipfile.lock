@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d0d5da8e8e247eee31eddc8b80d8c71c9a1642bf13daeb58f26f03519a1f512c"
+            "sha256": "e67bc31628a0f7e772081b667833ab1821bcdb099982b9c5a0d0d1174e0c8e3e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -88,6 +88,15 @@
                 "sha256:3a5726546da54116b687785d38b1db56997ce1d28e53e8d22fc656d8b92e533c"
             ],
             "version": "==1.7.6"
+        },
+        "python-dotenv": {
+            "hashes": [
+                "sha256:a8df96034aae6d2d50a4ebe8216326c61c3eb64836776504fcca410e5937a3ba",
+                "sha256:f5971a9226b701070a4bf2c38c89e5a3f0d64de8debda981d1db98583009122a"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==1.0.0"
         },
         "random-password-generator": {
             "hashes": [

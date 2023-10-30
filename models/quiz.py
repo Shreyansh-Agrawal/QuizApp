@@ -8,7 +8,7 @@ from typing import Dict
 import shortuuid
 
 from database.database_access import DatabaseAccess as DAO
-from database.queries import Queries
+from constants.queries import Queries
 from utils.custom_error import EmptyOptionListError
 
 

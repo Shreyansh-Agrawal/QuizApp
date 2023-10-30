@@ -3,15 +3,16 @@
 '''
 
 import logging
+import sqlite3
 from typing import List, Tuple
 
 from password_generator import PasswordGenerator
 from tabulate import tabulate
 
 from database.database_access import DatabaseAccess as DAO
-from database.queries import Queries
+from constants.queries import Queries
 from models.user import Admin
-
+from utils import validations
 
 logger = logging.getLogger(__name__)
 
@@ -41,15 +42,19 @@ class UserController:
         print('\n-----Create a new Admin-----\n')
 
         admin_data = {}
-        admin_data['name'] = input('Enter admin name: ').title()
-        admin_data['email'] = input('Enter admin email: ').lower()
-        admin_data['username'] = input('Enter admin username: ').lower()
+        admin_data['name'] = validations.validate_name('Enter admin name: ')
+        admin_data['email'] = validations.validate_email('Enter admin email: ')
+        admin_data['username'] = validations.validate_username('Create admin username: ')
         pwo = PasswordGenerator()
         password = pwo.non_duplicate_password(7)
         admin_data['password'] = password
 
         admin = Admin(admin_data)
-        admin.save_user_to_database()
+
+        try:
+            admin.save_user_to_database()
+        except sqlite3.IntegrityError as e:
+            print(f'{e}\nUsername already exists!')
 
         logger.debug('Admin created')
         print('\nAdmin created successfully!\n')
@@ -79,7 +84,7 @@ class UserController:
             )
         )
 
-        email = input(f'\nEnter {role.title()} Email: ')
+        email = validations.validate_email(prompt=f'\nEnter {role.title()} Email: ')
 
         for data in data:
             if data[2] == email:

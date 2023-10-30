@@ -2,8 +2,8 @@
 
 AUTH_PROMPTS = '''
 Enter -
-        1> Signup
-        2> Login
+        1> Login
+        2> Signup
         
         Press q to Quit
 
@@ -59,3 +59,10 @@ Enter -
 Enter your choice: '''
 
 ATTEMPT_LIMIT = 3
+
+QUESTION_TYPE_PROMPTS = '''
+        1> Multiple Choice Question Type
+        2> True or False Type
+        3> One Word Type
+
+Select Question Type: '''
