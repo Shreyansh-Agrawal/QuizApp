@@ -1,6 +1,4 @@
-'''
-    Runs at the start to create super admin and other tables in database
-'''
+'''Runs at the start to create super admin and other tables in database'''
 
 import hashlib
 import logging

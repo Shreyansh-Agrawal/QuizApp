@@ -1,6 +1,4 @@
-'''
-    Context Manager for the database
-'''
+'''Context Manager for the database'''
 
 import sqlite3
 

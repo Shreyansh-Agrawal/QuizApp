@@ -127,31 +127,27 @@ def manage_quizzes_menu(username: str):
 
         match user_sub_choice:
             case '1':
-                data = QuizController.get_all_categories()
                 try:
-                    QuizHandler.display_categories(role='admin', data=data, header=['Category', 'Created By'])
+                    QuizHandler.display_categories(role='admin', header=['Category', 'Created By'])
                 except DataNotFoundError as e:
                     print(e)
                     continue
             case '2':
-                data = QuizController.get_all_questions()
                 try:
-                    QuizHandler.display_questions(data=data)
+                    QuizHandler.display_questions()
                 except DataNotFoundError as e:
                     print(e)
                     continue
             case '3':
-                data = QuizController.get_all_categories()
                 try:
-                    QuizHandler.display_categories(role='admin', data=data, header=['Category', 'Created By'])
+                    QuizHandler.display_categories(role='admin', header=['Category', 'Created By'])
                     QuizController.create_category(username)
                 except DuplicateEntryError as e:
                     print(e)
                     continue
             case '4':
-                data = QuizController.get_all_categories()
                 try:
-                    QuizHandler.display_categories(role='admin', data=data, header=['Category', 'Created By'])
+                    QuizHandler.display_categories(role='admin', header=['Category', 'Created By'])
                     QuizController.create_question(username)
                 except DuplicateEntryError as e:
                     print(e)
@@ -205,12 +201,10 @@ def user_menu(username: str):
                     print(e)
                     continue
             case '2':
-                data = QuizController.get_leaderboard()
-                QuizHandler.display_leaderboard(data)
+                QuizHandler.display_leaderboard()
             case '3':
-                data = UserController.get_user_scores_by_username(username)
                 try:
-                    UserHandler.display_user_score(data=data)
+                    UserHandler.display_user_score(username)
                 except DataNotFoundError as e:
                     print(e)
                     continue

@@ -1,6 +1,4 @@
-'''
-    Contains classes for Quiz, Category, Question and Option
-'''
+'''Contains classes for Quiz, Category, Question and Option'''
 
 from abc import ABC, abstractmethod
 from typing import Dict

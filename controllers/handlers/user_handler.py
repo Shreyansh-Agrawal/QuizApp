@@ -1,7 +1,6 @@
 '''Handlers related to generic users: Super Admin, Admin, User'''
 
 import logging
-from typing import List, Tuple
 
 from controllers import user_controller as UserController
 from utils.display import pretty_print
@@ -26,8 +25,10 @@ def display_users_by_role(role: str):
     )
 
 
-def display_user_score(data: List[Tuple]):
+def display_user_score(username: str):
     '''Display past scores of user'''
+
+    data = UserController.get_user_scores_by_username(username)
 
     if not data:
         raise DataNotFoundError('No data! Take a Quiz...')

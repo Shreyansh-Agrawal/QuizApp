@@ -1,6 +1,4 @@
-'''
-    Functions to load data to database from json file
-'''
+'''Functions to load data to database from json file'''
 
 import json
 from database.database_access import DatabaseAccess as DAO

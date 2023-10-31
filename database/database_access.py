@@ -1,6 +1,4 @@
-'''
-    Contains methods for establishing database connection
-'''
+'''Contains methods for establishing database connection'''
 
 from typing import List, Tuple
 from database.database_connection import DatabaseConnection

@@ -1,6 +1,4 @@
-'''
-    Pretty print using tabulate library
-'''
+'''Pretty print using tabulate library'''
 
 from typing import List, Tuple
 from tabulate import tabulate

@@ -1,7 +1,7 @@
 '''Handlers related to Quiz'''
 
 import logging
-from typing import List, Tuple
+from typing import List
 from controllers import quiz_controller as QuizController
 from utils import validations
 from utils.display import pretty_print
@@ -10,8 +10,10 @@ from utils.custom_error import DataNotFoundError
 
 logger = logging.getLogger(__name__)
 
-def display_categories(role: str, data: List[Tuple], header: List):
+def display_categories(role: str, header: List):
     '''Display Categories on Console'''
+
+    data = QuizController.get_all_categories()
 
     if not data:
         raise DataNotFoundError('No Categories Currently, Please add a Category!!')
@@ -24,8 +26,11 @@ def display_categories(role: str, data: List[Tuple], header: List):
     pretty_print(data=data, headers=header)
 
 
-def display_questions(data: List[Tuple]):
+def display_questions():
     '''Display Questions on Console'''
+
+    data = QuizController.get_all_questions()
+
     if not data:
         raise DataNotFoundError('No Questions Currently, Please add a question!!')
 
@@ -33,8 +38,10 @@ def display_questions(data: List[Tuple]):
     pretty_print(data=data, headers=['Category', 'Question', 'Question Type', 'Answer', 'Created By'])
 
 
-def display_leaderboard(data: List[Tuple]):
+def display_leaderboard():
     '''Display Leaderboard'''
+
+    data = QuizController.get_leaderboard()
 
     if not data:
         raise DataNotFoundError('No data! Take a Quiz...')
@@ -50,7 +57,7 @@ def handle_start_quiz(username: str):
 
     data = QuizController.get_all_categories()
     categories = [(tup[0], ) for tup in data]
-    display_categories(role='user', data=categories, header=['Categories'])
+    display_categories(role='user', header=['Categories'])
 
     category = validations.validate_name(prompt='Select Quiz Category: ')
 

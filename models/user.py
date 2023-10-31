@@ -1,6 +1,4 @@
-'''
-    Contains classes for Super Admin, Admin, User
-'''
+'''Contains classes for Super Admin, Admin, User'''
 
 from abc import ABC, abstractmethod
 from datetime import datetime, timezone
