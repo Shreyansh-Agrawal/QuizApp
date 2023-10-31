@@ -2,7 +2,6 @@
     Custom Error Classes
 '''
 
-
 class LoginError(Exception):
     '''Exception raised when Login attempts exhausted'''
 
@@ -10,8 +9,8 @@ class LoginError(Exception):
         super().__init__(f"{message}")
 
 
-class EmptyOptionListError(Exception):
-    '''Exception raised when no Options are added for a Question'''
+class DataNotFoundError(Exception):
+    '''Exception raised when Data is Empty'''
 
     def __init__(self, message):
         super().__init__(f"{message}")
@@ -19,6 +18,13 @@ class EmptyOptionListError(Exception):
 
 class InvalidInputError(Exception):
     '''Exception raised when received invalid input'''
+
+    def __init__(self, message):
+        super().__init__(f"{message}")
+
+
+class DuplicateEntryError(Exception):
+    '''Exception raised when a duplicate data is entered into db'''
 
     def __init__(self, message):
         super().__init__(f"{message}")

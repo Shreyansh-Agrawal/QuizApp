@@ -1,101 +1,83 @@
-'''
-    Handlers for Operations related to Users: SuperAdmin, Admin, User
-'''
+'''Handlers for Operations related to Users: SuperAdmin, Admin, User'''
 
 import logging
 import sqlite3
 from typing import List, Tuple
 
 from password_generator import PasswordGenerator
-from tabulate import tabulate
 
 from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
 from models.user import Admin
 from utils import validations
 from utils.custom_error import LoginError
+from utils import display
 
 
 logger = logging.getLogger(__name__)
 
+def get_user_scores_by_username(username: str):
+    '''Return user's scores'''
 
-class UserController:
-    '''User Controller Class'''
+    data = DAO.read_from_database(Queries.GET_USER_SCORES_BY_USERNAME, (username, ))
+    return data
 
-    @staticmethod
-    def get_user_scores_by_username(username: str):
-        '''Return user's scores'''
 
-        data = DAO.read_from_database(Queries.GET_USER_SCORES_BY_USERNAME, (username, ))
-        return data
+def get_all_users_by_role(role: str) -> List[Tuple]:
+    '''Return all users with their details'''
 
-    @staticmethod
-    def get_all_users_by_role(role: str) -> List[Tuple]:
-        '''Return all users with their details'''
+    data = DAO.read_from_database(Queries.GET_USER_BY_ROLE, (role, ))
+    return data
 
-        data = DAO.read_from_database(Queries.GET_USER_BY_ROLE, (role, ))
-        return data
 
-    @staticmethod
-    def create_admin() -> None:
-        '''Create a new Admin Account'''
+def create_admin() -> None:
+    '''Create a new Admin Account'''
 
-        logger.debug('Creating Admin')
-        print('\n-----Create a new Admin-----\n')
+    logger.debug('Creating Admin')
+    print('\n-----Create a new Admin-----\n')
 
-        admin_data = {}
-        admin_data['name'] = validations.validate_name('Enter admin name: ')
-        admin_data['email'] = validations.validate_email('Enter admin email: ')
-        admin_data['username'] = validations.validate_username('Create admin username: ')
-        pwo = PasswordGenerator()
-        password = pwo.non_duplicate_password(7)
-        admin_data['password'] = password
+    admin_data = {}
+    admin_data['name'] = validations.validate_name('Enter admin name: ')
+    admin_data['email'] = validations.validate_email('Enter admin email: ')
+    admin_data['username'] = validations.validate_username('Create admin username: ')
+    pwo = PasswordGenerator()
+    password = pwo.non_duplicate_password(7)
+    admin_data['password'] = password
 
-        admin = Admin(admin_data)
+    admin = Admin(admin_data)
 
-        try:
-            admin.save_user_to_database()
-        except sqlite3.IntegrityError as e:
-            raise LoginError('\nUser already exists! Login or Sign Up with different credentials...') from e
+    try:
+        admin.save_user_to_database()
+    except sqlite3.IntegrityError as e:
+        raise LoginError('\nUser already exists! Try with different credentials...') from e
 
-        logger.debug('Admin created')
-        print('\nAdmin created successfully!\n')
+    logger.debug('Admin created')
+    print('\nAdmin created successfully!\n')
 
-    @staticmethod
-    def delete_user_by_email(role: str):
-        '''Delete a User'''
 
-        data = UserController.get_all_users_by_role(role)
-        if not data:
-            print(f'\nNo {role.title()} Currently\n')
-            return
+def delete_user_by_email(role: str):
+    '''Delete a User'''
 
-        logger.debug('Deleting %s', {role.title()})
-        print(f'\n-----Delete a {role.title()}-----\n')
+    data = get_all_users_by_role(role)
+    if not data:
+        print(f'\nNo {role.title()} Currently\n')
+        return
 
-        print(
-            tabulate(
-                data,
-                headers={
-                    'Username': 'username', 
-                    'Name': 'name', 
-                    'Email': 'email', 
-                    'Registration Date': 'registration_date'
-                },
-                tablefmt='rounded_outline'
-            )
-        )
+    logger.debug('Deleting %s', {role.title()})
+    print(f'\n-----Delete a {role.title()}-----\n')
 
-        email = validations.validate_email(prompt=f'\nEnter {role.title()} Email: ')
+    display.pretty_print(data=data, headers=['Username', 'Name', 'Email', 'Registration Date'])
 
-        for data in data:
-            if data[2] == email:
-                break
-        else:
-            print(f'No such {role.title()}! Please choose from above!!')
-            return
+    email = validations.validate_email(prompt=f'\nEnter {role.title()} Email: ')
 
-        DAO.write_to_database(Queries.DELETE_USER_BY_EMAIL, (email, ))
+    for data in data:
+        if data[2] == email:
+            break
+    else:
+        print(f'No such {role.title()}! Please choose from above!!')
+        return
 
-        logger.debug('User deleted')
-        print(f'\n{role.title()}: {email} deleted successfully!\n')
+    DAO.write_to_database(Queries.DELETE_USER_BY_EMAIL, (email, ))
+
+    logger.debug('User deleted')
+    print(f'\n{role.title()}: {email} deleted successfully!\n')

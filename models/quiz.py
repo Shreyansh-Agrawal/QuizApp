@@ -9,7 +9,7 @@ import shortuuid
 
 from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
-from utils.custom_error import EmptyOptionListError
+from utils.custom_error import DataNotFoundError
 
 
 class QuizEntity(ABC):
@@ -97,7 +97,7 @@ class Question(QuizEntity):
         )
 
         if not self.options:
-            raise EmptyOptionListError("No Options added for this Question!")
+            raise DataNotFoundError("No Options added for this Question!")
 
         DAO.write_to_database(Queries.INSERT_QUESTION, question_data)
 

@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 from database.database_access import DatabaseAccess as DAO
 from constants.queries import InitializationQueries
 from models.user import SuperAdmin
+from utils.custom_error import DuplicateEntryError
 
 
 dotenv_path = Path('.env')
@@ -40,7 +41,10 @@ class Initializer:
 
         super_admin_data['password'] = hashed_password
         super_admin = SuperAdmin(super_admin_data)
-        super_admin.save_user_to_database()
+        try:
+            super_admin.save_user_to_database()
+        except sqlite3.IntegrityError as e:
+            raise DuplicateEntryError('Super Admin Already exists!') from e
 
         logger.debug('Created Super Admin')
         print('Super Admin created!')
@@ -58,7 +62,7 @@ class Initializer:
 
         try:
             Initializer.create_super_admin()
-        except sqlite3.IntegrityError:
+        except DuplicateEntryError:
             logger.debug('Super Admin Present')
 
         logger.debug('Initialization Complete')

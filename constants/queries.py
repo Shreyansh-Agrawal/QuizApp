@@ -38,7 +38,7 @@ class InitializationQueries:
             admin_id TEXT,
             admin_username TEXT,
             category_name TEXT UNIQUE,
-            FOREIGN KEY (admin_id) REFERENCES users (user_id)
+            FOREIGN KEY (admin_id) REFERENCES users (user_id) ON DELETE NO ACTION ON UPDATE NO ACTION
         )'''
 
     CREATE_QUESTIONS_TABLE = '''
@@ -49,7 +49,7 @@ class InitializationQueries:
             admin_username TEXT,
             question_text TEXT,
             question_type TEXT,
-            FOREIGN KEY (admin_id) REFERENCES users (user_id),
+            FOREIGN KEY (admin_id) REFERENCES users (user_id) ON DELETE NO ACTION ON UPDATE NO ACTION,
             FOREIGN KEY (category_id) REFERENCES categories (category_id) ON DELETE CASCADE ON UPDATE CASCADE
         )'''
 
