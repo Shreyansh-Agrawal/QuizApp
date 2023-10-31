@@ -1,9 +1,9 @@
-'''Handlers for Quiz Operations'''
+'''Controllers for Operations related to Quiz'''
 
-import logging
-from typing import List, Tuple
 from datetime import datetime, timezone
+import logging
 import sqlite3
+from typing import List, Tuple, Dict
 
 import shortuuid
 
@@ -12,8 +12,8 @@ from constants import prompts
 from constants.queries import Queries
 from models.quiz import Category, Question, Option
 from utils import validations
-from utils import display
 from utils.custom_error import DuplicateEntryError
+
 
 logger = logging.getLogger(__name__)
 
@@ -51,9 +51,6 @@ def create_category(username: str):
     admin_data = DAO.read_from_database(Queries.GET_USER_ID_BY_USERNAME, (username, ))
     admin_id = admin_data[0][0]
 
-    data = get_all_categories()
-    display.show_categories(data=data, header=['Category', 'Created By'])
-
     logger.debug('Creating Category')
     print('\n-----Create a new Quiz Category-----\n')
 
@@ -76,15 +73,14 @@ def create_category(username: str):
 def create_question(username: str):
     '''Add Questions in a Category'''
 
-    data = get_all_categories()
-    display.show_categories(data=data, header=['Category', 'Created By'])
+    categories = get_all_categories()
 
     logger.debug('Creating Question')
     print('\n-----Create a new Quiz Question-----\n')
 
     category_name = validations.validate_name(prompt='\nEnter Category Name: ')
 
-    for data in data:
+    for data in categories:
         if data[0] == category_name:
             break
     else:
@@ -100,6 +96,20 @@ def create_question(username: str):
     question_data['admin_id'] = admin_id
     question_data['admin_username'] = username
     question_data['question_text'] = validations.validate_question_text(prompt='Enter Question Text: ')
+
+    question = create_option(question_data)
+
+    try:
+        question.save_to_database()
+    except sqlite3.IntegrityError as e:
+        raise DuplicateEntryError('Question already exists!') from e
+
+    logger.debug('Question Created')
+    print('\nQuestion Created!\n')
+
+
+def create_option(question_data: Dict):
+    '''Create options, returns a question object'''
 
     while True:
         question_type_input = input(prompts.QUESTION_TYPE_PROMPTS)
@@ -145,13 +155,8 @@ def create_question(username: str):
         case _:
             print('Invalid Type!')
             return
-    try:
-        question.save_to_database()
-    except sqlite3.IntegrityError as e:
-        raise DuplicateEntryError('Question already exists!') from e
 
-    logger.debug('Question Created')
-    print('\nQuestion Created!\n')
+    return question
 
 
 def start_quiz(category: str, username: str):

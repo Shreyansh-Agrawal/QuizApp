@@ -1,4 +1,4 @@
-'''Handlers for Operations related to Users: SuperAdmin, Admin, User'''
+'''Controllers for Operations related to Users: SuperAdmin, Admin, User'''
 
 import logging
 import sqlite3

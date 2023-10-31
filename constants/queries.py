@@ -106,7 +106,7 @@ class Queries:
         WHERE username = ?
     '''
 
-    GET_ALL_CATEGORIES = 'SELECT category_name, admin_username FROM categories'
+    GET_ALL_CATEGORIES = 'SELECT category_name, admin_username FROM categories ORDER BY category_name'
 
     GET_CATEGORY_ID_BY_NAME = 'SELECT category_id FROM categories WHERE category_name = ?'
 

@@ -1,4 +1,4 @@
-'''Handlers for user authentication'''
+'''Controllers for Operations related to Authentication'''
 
 import hashlib
 import logging
