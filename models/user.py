@@ -4,10 +4,9 @@ from abc import ABC, abstractmethod
 from datetime import datetime, timezone
 from typing import Dict
 
-import shortuuid
-
-from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
+from database.database_access import DatabaseAccess as DAO
+from utils import validations
 
 
 class Person(ABC):
@@ -40,7 +39,7 @@ class SuperAdmin(Person):
             super_admin_data.get('password')
         )
 
-        self.user_id = 'S' + shortuuid.ShortUUID().random(length=5)
+        self.user_id = validations.validate_id(entity='super_admin')
         self.role = 'super admin'
         self.is_password_changed = 1
 
@@ -81,7 +80,7 @@ class Admin(Person):
             admin_data.get('password')
             )
 
-        self.user_id = 'A' + shortuuid.ShortUUID().random(length=5)
+        self.user_id = validations.validate_id(entity='admin')
         self.role = 'admin'
         self.is_password_changed = 0
 
@@ -122,7 +121,7 @@ class User(Person):
             user_data.get('password')
         )
 
-        self.user_id = 'U' + shortuuid.ShortUUID().random(length=5)
+        self.user_id = validations.validate_id(entity='user')
         self.role = 'user'
         self.is_password_changed = 1
 

@@ -10,7 +10,7 @@ from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
 from models.user import Admin
 from utils import validations
-from utils.custom_error import LoginError
+from utils.custom_error import LoginError, DataNotFoundError
 from utils.pretty_print import pretty_print
 
 
@@ -41,6 +41,7 @@ def create_admin() -> None:
     admin_data['email'] = validations.validate_email('Enter admin email: ')
     admin_data['username'] = validations.validate_username('Create admin username: ')
     pwo = PasswordGenerator()
+    pwo.excludeschars = "!@#$%^&*()./?'"
     password = pwo.non_duplicate_password(7)
     admin_data['password'] = password
 
@@ -60,8 +61,7 @@ def delete_user_by_email(role: str):
 
     data = get_all_users_by_role(role)
     if not data:
-        print(f'\nNo {role.title()} Currently\n')
-        return
+        raise DataNotFoundError(f'No {role} Currently!')
 
     logger.debug('Deleting %s', {role.title()})
     print(f'\n-----Delete a {role.title()}-----\n')

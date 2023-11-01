@@ -22,3 +22,5 @@ if __name__ == '__main__':
 
     logger.debug('Stopping Application')
     print('\n---------END OF APP---------\n')
+
+# todo: fix view all questions and view questions by category

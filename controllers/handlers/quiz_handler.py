@@ -16,7 +16,7 @@ def display_categories(role: str, header: List):
     data = QuizController.get_all_categories()
 
     if not data:
-        raise DataNotFoundError('No Categories Currently, Please add a Category!!')
+        raise DataNotFoundError('No Category Added!')
 
     print('\n-----Quiz Categories-----\n')
 
@@ -26,8 +26,8 @@ def display_categories(role: str, header: List):
     pretty_print(data=data, headers=header)
 
 
-def display_questions():
-    '''Display Questions on Console'''
+def display_all_questions():
+    '''Display All Questions on Console'''
 
     data = QuizController.get_all_questions()
 
@@ -35,11 +35,28 @@ def display_questions():
         raise DataNotFoundError('No Questions Currently, Please add a question!!')
 
     print('\n-----Quiz Questions-----\n')
-    pretty_print(data=data, headers=['Category', 'Question', 'Question Type', 'Answer', 'Created By'])
+    pretty_print(
+        data=data,
+        headers=['Category', 'Question', 'Question Type', 'Answer', 'Created By']
+    )
+
+
+def display_questions_by_category():
+    '''Display Questions by Category on Console'''
+
+    data = QuizController.get_questions_by_category()
+
+    if not data:
+        raise DataNotFoundError('No Questions Currently, Please add a question!!')
+
+    pretty_print(
+        data=data,
+        headers=['Question', 'Question Type', 'Answer', 'Created By']
+    )
 
 
 def display_leaderboard():
-    '''Display Leaderboard'''
+    '''Display Leaderboard on Console'''
 
     data = QuizController.get_leaderboard()
 
@@ -85,3 +102,15 @@ def handle_create_question(created_by: str):
     '''Handler for creating question'''
 
     QuizController.create_question(created_by)
+
+
+def handle_update_category():
+    '''Handler for updating a category'''
+
+    QuizController.update_category_by_name()
+
+
+def handle_delete_category():
+    '''Handler for deleting a category'''
+
+    QuizController.delete_category_by_name()

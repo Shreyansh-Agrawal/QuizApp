@@ -3,12 +3,11 @@
 import hashlib
 import logging
 
-import maskpass
-
 from constants import prompts
 from constants.queries import Queries
 from controllers import auth_controller as Authenticate
 from database.database_access import DatabaseAccess as DAO
+from utils import validations
 from utils.custom_error import LoginError, DataNotFoundError
 
 
@@ -53,11 +52,11 @@ def handle_first_login(username: str, is_password_changed: int):
         logger.debug('Changing Default Admin Password')
         print('\nPlease change your password...\n')
 
-        new_password = maskpass.askpass(prompt='Enter New Password: ', mask='*')
+        new_password = validations.validate_password(prompt='Enter New Password: ')
         confirm_password = ''
 
         while True:
-            confirm_password =  maskpass.askpass(prompt='Confirm Password: ', mask='*')
+            confirm_password =  validations.validate_password(prompt='Confirm Password: ')
             if new_password != confirm_password:
                 print('Password does not match. Please enter your password again!\n')
             else:
@@ -67,7 +66,7 @@ def handle_first_login(username: str, is_password_changed: int):
         is_password_changed = 1
 
         DAO.write_to_database(
-            Queries.UPDATE_ADMIN_PASSWORD,
+            Queries.UPDATE_ADMIN_PASSWORD_BY_USERNAME,
             (hashed_password, is_password_changed, username)
         )
 

@@ -5,8 +5,6 @@ import logging
 from typing import Tuple
 import sqlite3
 
-import maskpass
-
 from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
 from models.user import User
@@ -22,7 +20,7 @@ def login() -> Tuple:
     logger.debug('Login Initiated')
 
     username = validations.validate_username(prompt='Enter your username: ')
-    password = maskpass.askpass(mask='*')
+    password = validations.validate_password(prompt='Enter your password: ')
     hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
     user_data = DAO.read_from_database(Queries.GET_CREDENTIALS_BY_USERNAME, (username, ))
@@ -55,11 +53,11 @@ def signup() -> str:
     user_data['name'] = validations.validate_name(prompt='Enter your name: ')
     user_data['email'] = validations.validate_email(prompt='Enter your email: ')
     user_data['username'] = validations.validate_username(prompt='Create your username: ')
-    password = maskpass.askpass(mask='*', prompt='Create your password: ')
+    password = validations.validate_password(prompt='Create your password: ')
     confirm_password = ''
 
     while True:
-        confirm_password =  maskpass.askpass(prompt='Confirm Password: ', mask='*')
+        confirm_password =  validations.validate_password(prompt='Confirm Password: ')
         if password != confirm_password:
             print('Password does not match. Please re-enter your password!\n')
         else:

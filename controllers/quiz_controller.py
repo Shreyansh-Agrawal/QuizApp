@@ -5,14 +5,12 @@ import logging
 import sqlite3
 from typing import List, Tuple, Dict
 
-import shortuuid
-
 from database.database_access import DatabaseAccess as DAO
 from constants import prompts
 from constants.queries import Queries
 from models.quiz import Category, Question, Option
 from utils import validations
-from utils.custom_error import DuplicateEntryError
+from utils.custom_error import DuplicateEntryError, DataNotFoundError
 
 
 logger = logging.getLogger(__name__)
@@ -28,6 +26,25 @@ def get_all_questions() -> List[Tuple]:
     '''Return all quiz questions'''
 
     data = DAO.read_from_database(Queries.GET_ALL_QUESTIONS_DETAIL)
+    return data
+
+
+def get_questions_by_category() -> List[Tuple]:
+    '''Return quiz questions by category'''
+
+    categories = get_all_categories()
+
+    logger.debug('Get Questions by Category')
+
+    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    if user_choice > len(categories) or user_choice-1 < 0:
+        raise DataNotFoundError('No such Category! Please choose from above!!')
+
+    category_name = categories[user_choice-1][0]
+
+    print(f'\n-----Questions in {category_name}-----\n')
+
+    data = DAO.read_from_database(Queries.GET_QUESTIONS_BY_CATEGORY, (category_name, ))
     return data
 
 
@@ -80,17 +97,9 @@ def create_question(username: str):
 
     user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
     if user_choice > len(categories) or user_choice-1 < 0:
-        print('No such Category! Please choose from above!!')
-        return
+        raise DataNotFoundError('No such Category! Please choose from above!!')
 
     category_name = categories[user_choice-1][0]
-
-    for data in categories:
-        if data[0] == category_name:
-            break
-    else:
-        print('No such Category! Please choose from above!!')
-        return
 
     category_id = DAO.read_from_database(Queries.GET_CATEGORY_ID_BY_NAME, (category_name, ))
     admin_data = DAO.read_from_database(Queries.GET_USER_ID_BY_USERNAME, (username, ))
@@ -100,7 +109,9 @@ def create_question(username: str):
     question_data['category_id'] = category_id[0][0]
     question_data['admin_id'] = admin_id
     question_data['admin_username'] = username
-    question_data['question_text'] = validations.validate_question_text(prompt='Enter Question Text: ')
+    question_data['question_text'] = validations.validate_question_text(
+                                                    prompt='Enter Question Text: '
+                                                )
 
     question = create_option(question_data)
 
@@ -145,7 +156,9 @@ def create_option(question_data: Dict):
 
             for _ in range(3):
                 option_data['question_id'] = question.question_id
-                option_data['option_text'] = validations.validate_option_text('Enter Other Option: ')
+                option_data['option_text'] = validations.validate_option_text(
+                                                            'Enter Other Option: '
+                                                        )
                 option_data['is_correct'] = 0
                 option = Option(option_data)
                 question.add_option(option)
@@ -164,6 +177,54 @@ def create_option(question_data: Dict):
     return question
 
 
+def update_category_by_name():
+    '''Update a category by category name'''
+
+    categories = get_all_categories()
+
+    logger.debug('Updating a Category')
+    print('\n-----Update a Category-----\n')
+
+    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    if user_choice > len(categories) or user_choice-1 < 0:
+        raise DataNotFoundError('No such Category! Please choose from above!!')
+
+    category_name = categories[user_choice-1][0]
+    new_category_name = validations.validate_name('Enter updated category name: ')
+    DAO.write_to_database(Queries.UPDATE_CATEGORY_BY_NAME, (new_category_name, category_name))
+
+    logger.debug('Category %s updated to %s', category_name, new_category_name)
+    print(f'\nCategory: {category_name} updated to {new_category_name}!\n')
+
+
+def delete_category_by_name():
+    '''Delete a category by category name'''
+
+    categories = get_all_categories()
+
+    logger.debug('Deleting a Category')
+    print('\n-----Delete a Category-----\n')
+
+    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    if user_choice > len(categories) or user_choice-1 < 0:
+        raise DataNotFoundError('No such Category! Please choose from above!!')
+
+    category_name = categories[user_choice-1][0]
+
+    while True:
+        print(f'\nWARNING: All the questions in {category_name} will be deleted as well')
+        confirmation = input('Type "YES" if you wish to continue\nPress any other key to go back: ')
+
+        if confirmation.lower() == 'yes':
+            break
+        return
+
+    DAO.write_to_database(Queries.DELETE_CATEGORY_BY_NAME, (category_name, ))
+
+    logger.debug('Category %s deleted', category_name)
+    print(f'\nCategory: {category_name} deleted!\n')
+
+
 def start_quiz(category: str, username: str):
     '''Start a New Quiz'''
 
@@ -173,6 +234,7 @@ def start_quiz(category: str, username: str):
 
     score = 0
 
+    # Display question, take user's response and calculate score one by one
     for question_data in data:
         question_id, question_text, question_type, correct_answer = question_data
         options_data = DAO.read_from_database(Queries.GET_OPTIONS_FOR_MCQ, (question_id, ))
@@ -207,7 +269,7 @@ def display_question(question: str, question_type: str, options_data: List[Tuple
 
 
 def get_user_response(question_type: str) -> str:
-    '''Gets user response'''
+    '''Gets user response according to question type'''
 
     if question_type.lower() == 'mcq':
         while True:
@@ -237,7 +299,7 @@ def save_quiz_score(username: str, score: int):
 
     user_data = DAO.read_from_database(Queries.GET_USER_ID_BY_USERNAME, (username, ))
     user_id = user_data[0][0]
-    score_id = 'S' + shortuuid.ShortUUID().random(length=5)
+    score_id = validations.validate_id(entity='score')
 
     time = datetime.now(timezone.utc) # current utc time
     timestamp = time.strftime('%Y-%m-%d %H:%M:%S') # yyyy-mm-dd

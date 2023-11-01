@@ -3,10 +3,9 @@
 from abc import ABC, abstractmethod
 from typing import Dict
 
-import shortuuid
-
 from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
+from utils import validations
 from utils.custom_error import DataNotFoundError
 
 
@@ -26,7 +25,7 @@ class Category(QuizEntity):
 
     def __init__(self, category_data: Dict) -> None:
         super().__init__(category_data.get('category_name'))
-        self.category_id = 'C' + shortuuid.ShortUUID().random(length=5)
+        self.category_id = validations.validate_id(entity='category')
         self.admin_id = category_data.get('admin_id')
         self.admin_username = category_data.get('admin_username')
 
@@ -48,7 +47,7 @@ class Option(QuizEntity):
 
     def __init__(self, option_data: Dict) -> None:
         super().__init__(option_data.get('option_text'))
-        self.option_id = 'O' + shortuuid.ShortUUID().random(length=5)
+        self.option_id = validations.validate_id(entity='option')
         self.question_id = option_data.get('question_id')
         self.is_correct = option_data.get('is_correct')
 
@@ -70,7 +69,7 @@ class Question(QuizEntity):
 
     def __init__(self, question_data: Dict) -> None:
         super().__init__(question_data.get('question_text'))
-        self.question_id = 'Q' + shortuuid.ShortUUID().random(length=5)
+        self.question_id = validations.validate_id(entity='question')
         self.category_id = question_data.get('category_id')
         self.admin_id = question_data.get('admin_id')
         self.admin_username = question_data.get('admin_username')

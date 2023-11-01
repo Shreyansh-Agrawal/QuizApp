@@ -16,8 +16,7 @@ def display_users_by_role(role: str):
     data = UserController.get_all_users_by_role(role)
 
     if not data:
-        print(f'\nNo {role} Currently, Please Create One!\n')
-        raise DataNotFoundError(f'No {role} Currently, Please Create One!')
+        raise DataNotFoundError(f'No {role} Currently!')
 
     print(f'\n-----List of {role.title()}s-----\n')
     pretty_print(

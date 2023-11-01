@@ -30,6 +30,9 @@ def exception_handler(func):
         except sqlite3.Error as e:
             print(e)
             logger.error(e)
+        except ValueError as e:
+            print(e)
+            logger.error(e)
         except Exception as e:
             print(e)
             logger.error(e)

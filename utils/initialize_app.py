@@ -30,11 +30,11 @@ class Initializer:
         logger.debug('Creating Super Admin')
 
         super_admin_data = {}
-        super_admin_data['name'] = os.getenv('NAME')
-        super_admin_data['email'] = os.getenv('EMAIL')
-        super_admin_data['username'] = os.getenv('USERNAME')
+        super_admin_data['name'] = os.getenv('SUPER_ADMIN_NAME')
+        super_admin_data['email'] = os.getenv('SUPER_ADMIN_EMAIL')
+        super_admin_data['username'] = os.getenv('SUPER_ADMIN_USERNAME')
 
-        password = os.getenv('PASSWORD')
+        password = os.getenv('SUPER_ADMIN_PASSWORD')
         hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
         super_admin_data['password'] = hashed_password

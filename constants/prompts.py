@@ -39,11 +39,30 @@ Enter your choice: '''
 
 ADMIN_MANAGE_QUIZZES_PROMPTS = '''
 Enter -
+        1> Manage Categories
+        2> Manage Questions
+        
+        Press q to Go Back
+
+Enter your choice: '''
+
+ADMIN_MANAGE_CATEGORIES_PROMPTS = '''
+Enter -
         1> View All Categories
-        2> View Questions
-        3> Add a New Category
-        4> Add a Question
-        5> Load Questions from JSON File
+        2> Add a New Category
+        3> Update a Category
+        4> Delete a Category
+        
+        Press q to Go Back
+
+Enter your choice: '''
+
+ADMIN_MANAGE_QUESTIONS_PROMPTS = '''
+Enter -
+        1> View All Questions
+        2> View Questions By Category
+        3> Add a Question
+        4> Load Questions from JSON File
         
         Press q to Go Back
 
