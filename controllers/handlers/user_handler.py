@@ -1,10 +1,11 @@
 '''Handlers related to generic users: Super Admin, Admin, User'''
 
 import logging
+import sqlite3
 
 from controllers import user_controller as UserController
-from utils.display import pretty_print
-from utils.custom_error import DataNotFoundError
+from utils.custom_error import DataNotFoundError, LoginError
+from utils.pretty_print import pretty_print
 
 
 logger = logging.getLogger(__name__)
@@ -38,3 +39,19 @@ def display_user_score(username: str):
 
     scores = [scores[1] for scores in data]
     print(f'\nHighest Score: {max(scores)}\n')
+
+
+def handle_create_admin():
+    '''Handle admin profile creation'''
+    try:
+        UserController.create_admin()
+    except LoginError as e:
+        raise e
+
+
+def handle_delete_user_by_email(role: str):
+    '''Handle user deletion by role'''
+    try:
+        UserController.delete_user_by_email(role)
+    except sqlite3.IntegrityError:
+        print('Could Not Delete Admin...')

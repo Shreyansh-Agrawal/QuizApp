@@ -12,7 +12,7 @@ from constants import prompts
 from constants.queries import Queries
 from models.quiz import Category, Question, Option
 from utils import validations
-from utils.custom_error import DuplicateEntryError
+from utils.custom_error import DuplicateEntryError, DataNotFoundError
 
 
 logger = logging.getLogger(__name__)
@@ -78,7 +78,12 @@ def create_question(username: str):
     logger.debug('Creating Question')
     print('\n-----Create a new Quiz Question-----\n')
 
-    category_name = validations.validate_name(prompt='\nEnter Category Name: ')
+    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    if user_choice > len(categories) or user_choice-1 < 0:
+        print('No such Category! Please choose from above!!')
+        return
+
+    category_name = categories[user_choice-1][0]
 
     for data in categories:
         if data[0] == category_name:
@@ -163,13 +168,21 @@ def start_quiz(category: str, username: str):
     '''Start a New Quiz'''
 
     data = get_random_questions_by_category(category)
+    # if len(data) < 10:
+    #     raise DataNotFoundError('Not enough questions! Please try some other category...')
+
     score = 0
 
     for question_data in data:
         question_id, question_text, question_type, correct_answer = question_data
-        display_question(question_id, question_text, question_type)
+        options_data = DAO.read_from_database(Queries.GET_OPTIONS_FOR_MCQ, (question_id, ))
 
-        user_answer = validations.validate_option_text('Enter your answer: ')
+        display_question(question_text, question_type, options_data)
+
+        user_answer = get_user_response(question_type)
+
+        if question_type.lower() == 'mcq':
+            user_answer = options_data[user_answer-1][0]
 
         if user_answer.lower() == correct_answer.lower():
             score += 10
@@ -178,17 +191,45 @@ def start_quiz(category: str, username: str):
     save_quiz_score(username, score)
 
 
-def display_question(question_id: str, question: str, question_type: str):
+def display_question(question: str, question_type: str, options_data: List[Tuple]):
     '''Display question and its options to user'''
 
     print(f'\n{question}')
 
     if question_type.lower() == 'mcq':
-        options_data = DAO.read_from_database(Queries.GET_OPTIONS_FOR_MCQ, (question_id, ))
         options = [option[0] for option in options_data]
 
         for count, option in enumerate(options, 1):
             print(f'{count}. {option}')
+
+    elif question_type.lower() == 't/f':
+        print('1. True\n2. False')
+
+
+def get_user_response(question_type: str) -> str:
+    '''Gets user response'''
+
+    if question_type.lower() == 'mcq':
+        while True:
+            user_choice = validations.validate_numeric_input(prompt='Choose an option: ')
+            if user_choice not in range(1, 5):
+                print('Please enter a number from 1 to 4: ')
+                continue
+            return user_choice
+
+    elif question_type.lower() == 't/f':
+        while True:
+            user_choice = validations.validate_numeric_input(prompt='Choose an option: ')
+            match user_choice:
+                case 1:
+                    return 'true'
+                case 2:
+                    return 'false'
+                case _:
+                    print('Please enter either 1 or 2...')
+    else:
+        user_answer = validations.validate_option_text('Enter your answer: ')
+        return user_answer
 
 
 def save_quiz_score(username: str, score: int):

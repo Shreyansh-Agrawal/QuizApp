@@ -1,6 +1,6 @@
-# Online Quiz System
+# QuizApp
 
-This is a Python-based console application for an Online Quiz System. The application is designed to manage users, categories, questions, and quizzes. It provides functionality for Super Admins, Admins, and Users. You can use `pipenv` to manage your project dependencies.
+This is a Python-based console application for a Quiz. The application is designed to manage users, categories, questions, and quizzes. It provides functionality for Super Admins, Admins, and Users. You can use `pipenv` to manage your project dependencies.
 
 ## Getting Started
 
@@ -97,9 +97,9 @@ QuizApp/
 
 - **auth_controller.py**: Manages user authentication, including signup and login functionalities.
 
-- **quiz_controller.py**: Handles quiz-related operations, including managing categories, questions, and options.
+- **quiz_controller.py**: Manages quiz-related operations, including managing categories, questions, and options.
 
-- **user_controller.py**: Handles user-related operations, catering to superadmins, admins, and regular users.
+- **user_controller.py**: Manages user-related operations, catering to superadmins, admins, and regular users.
 
 ## Database
 
@@ -132,4 +132,3 @@ The application employs an SQLite database with the following tables:
 - **View Your Scores**: Users can view their own past quiz scores.
 
 Feel free to explore the project, and don't forget to set up your environment and database before running the application.
-

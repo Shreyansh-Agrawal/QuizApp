@@ -105,3 +105,21 @@ def validate_option_text(prompt: str):
         result = validator(pattern=regex_pattern, data=option_text, error_msg='Invalid option!')
 
     return option_text
+
+
+def validate_numeric_input(prompt: str):
+    '''Checks numeric input from user'''
+
+    result = False
+    option_text = ''
+    regex_pattern = '[0-9]*'
+
+    while not result:
+        option_text = input(prompt)
+        result = validator(
+            pattern=regex_pattern,
+            data=option_text,
+            error_msg='Select a number from above options!'
+        )
+
+    return int(option_text)

@@ -4,8 +4,8 @@ import logging
 from typing import List
 from controllers import quiz_controller as QuizController
 from utils import validations
-from utils.display import pretty_print
 from utils.custom_error import DataNotFoundError
+from utils.pretty_print import pretty_print
 
 
 logger = logging.getLogger(__name__)
@@ -59,12 +59,29 @@ def handle_start_quiz(username: str):
     categories = [(tup[0], ) for tup in data]
     display_categories(role='user', header=['Categories'])
 
-    category = validations.validate_name(prompt='Select Quiz Category: ')
+    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    if user_choice > len(categories) or user_choice-1 < 0:
+        print('No such Category! Please choose from above!!')
+        return
 
-    for data in data:
+    category = categories[user_choice-1][0]
+
+    for data in categories:
         if data[0] == category:
             break
     else:
         raise DataNotFoundError('No such Category! Please choose from above!!')
 
     QuizController.start_quiz(category, username)
+
+
+def handle_create_category(created_by: str):
+    '''Handler for creating category'''
+
+    QuizController.create_category(created_by)
+
+
+def handle_create_question(created_by: str):
+    '''Handler for creating question'''
+
+    QuizController.create_question(created_by)

@@ -126,7 +126,7 @@ class Queries:
         ORDER BY RANDOM() LIMIT 10
     '''
 
-    GET_OPTIONS_FOR_MCQ = 'SELECT option_text FROM options WHERE question_id = ?'
+    GET_OPTIONS_FOR_MCQ = 'SELECT option_text FROM options WHERE question_id = ? ORDER BY RANDOM()'
 
     GET_LEADERBOARD = '''
         SELECT username, MAX(score), timestamp 

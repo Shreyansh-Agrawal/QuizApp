@@ -11,7 +11,7 @@ from constants.queries import Queries
 from models.user import Admin
 from utils import validations
 from utils.custom_error import LoginError
-from utils import display
+from utils.pretty_print import pretty_print
 
 
 logger = logging.getLogger(__name__)
@@ -66,7 +66,7 @@ def delete_user_by_email(role: str):
     logger.debug('Deleting %s', {role.title()})
     print(f'\n-----Delete a {role.title()}-----\n')
 
-    display.pretty_print(data=data, headers=['Username', 'Name', 'Email', 'Registration Date'])
+    pretty_print(data=data, headers=['Username', 'Name', 'Email', 'Registration Date'])
 
     email = validations.validate_email(prompt=f'\nEnter {role.title()} Email: ')
 
