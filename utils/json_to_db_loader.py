@@ -5,8 +5,11 @@ from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
 
 
-def load_questions_from_json():
+def load_questions_from_json(created_by: str):
     '''Function to load data to db from json'''
+
+    admin_data = DAO.read_from_database(Queries.GET_USER_ID_BY_USERNAME, (created_by, ))
+    created_by_admin_id = admin_data[0][0]
 
     with open('utils\\data.json', 'r', encoding="utf-8") as file:
         data = json.load(file)
@@ -17,7 +20,7 @@ def load_questions_from_json():
         question_type = question['question_type'].upper()
         category_id = question['category_id']
         category = question['category']
-        admin_id = question['admin_id']
+        admin_id = created_by_admin_id
         admin_username = question['admin_username']
         answer_id = question['options']['answer']['option_id']
         answer = question['options']['answer']['text']

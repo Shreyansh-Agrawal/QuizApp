@@ -12,7 +12,7 @@ from constants import prompts
 from constants.queries import Queries
 from models.quiz import Category, Question, Option
 from utils import validations
-from utils.custom_error import DuplicateEntryError, DataNotFoundError
+from utils.custom_error import DuplicateEntryError
 
 
 logger = logging.getLogger(__name__)
@@ -64,7 +64,7 @@ def create_category(username: str):
     try:
         category.save_to_database()
     except sqlite3.IntegrityError as e:
-        raise DuplicateEntryError('\nCategory already exists!') from e 
+        raise DuplicateEntryError('\nCategory already exists!') from e
 
     logger.debug('Category Created')
     print('\nCategory Created!\n')

@@ -26,7 +26,7 @@ def handle_login():
         print(f'Remaining attempts: {attempts_remaining}\n')
 
         if attempts_remaining == 0:
-            raise DataNotFoundError('Account Not Found! Please Sign up!\n')
+            raise DataNotFoundError('Account Not Found! Please Sign up!')
 
         data = Authenticate.login()
 

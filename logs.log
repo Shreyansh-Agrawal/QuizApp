@@ -434,3 +434,116 @@
 01-11-2023 10:49:42 DEBUG    [menu.py:166] Assigning menu according to the role
 01-11-2023 10:49:42 DEBUG    [menu.py:135] Running User Menu
 01-11-2023 10:51:20 DEBUG    [app.py:24] Stopping Application
+01-11-2023 13:48:51 DEBUG    [app.py:19] app.py running
+01-11-2023 13:48:51 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 13:48:51 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 13:48:51 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 13:48:51 DEBUG    [menu.py:183] Running start()
+01-11-2023 13:48:54 DEBUG    [app.py:25] Stopping Application
+01-11-2023 14:54:50 DEBUG    [app.py:18] app.py running
+01-11-2023 14:54:50 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 14:54:50 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 14:54:50 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 14:54:50 DEBUG    [menu.py:186] Running start()
+01-11-2023 14:54:51 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 14:54:55 DEBUG    [auth_controller.py:43] Login Successful
+01-11-2023 14:54:55 DEBUG    [menu.py:169] Assigning menu according to the role
+01-11-2023 14:54:55 DEBUG    [menu.py:18] Running Super Admin Menu
+01-11-2023 14:54:56 DEBUG    [user_controller.py:36] Creating Admin
+01-11-2023 14:55:05 DEBUG    [user_controller.py:54] Admin created
+01-11-2023 14:58:27 DEBUG    [auth_controller.py:52] Signup Initiated
+01-11-2023 14:58:50 DEBUG    [app.py:23] Stopping Application
+01-11-2023 14:59:19 DEBUG    [app.py:18] app.py running
+01-11-2023 14:59:19 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 14:59:19 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 14:59:19 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 14:59:19 DEBUG    [menu.py:186] Running start()
+01-11-2023 14:59:21 DEBUG    [auth_controller.py:52] Signup Initiated
+01-11-2023 14:59:28 DEBUG    [app.py:18] app.py running
+01-11-2023 14:59:28 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 14:59:28 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 14:59:28 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 14:59:28 DEBUG    [menu.py:186] Running start()
+01-11-2023 14:59:29 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 14:59:40 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 15:00:08 DEBUG    [auth_controller.py:43] Login Successful
+01-11-2023 15:00:08 DEBUG    [menu.py:169] Assigning menu according to the role
+01-11-2023 15:00:08 DEBUG    [menu.py:113] Running Admin Menu
+01-11-2023 15:00:08 DEBUG    [auth_handler.py:53] Changing Default Admin Password
+01-11-2023 15:00:13 DEBUG    [auth_handler.py:74] Default Admin Password Changed
+01-11-2023 15:00:15 DEBUG    [menu.py:49] Running Admin: Manage Users Menu
+01-11-2023 15:00:24 DEBUG    [menu.py:71] Running Admin: Manage Quizzes Menu
+01-11-2023 15:01:19 DEBUG    [app.py:23] Stopping Application
+01-11-2023 15:03:59 DEBUG    [app.py:18] app.py running
+01-11-2023 15:03:59 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 15:03:59 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 15:03:59 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 15:03:59 DEBUG    [menu.py:187] Running start()
+01-11-2023 15:04:01 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 15:04:07 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 15:04:15 DEBUG    [auth_controller.py:43] Login Successful
+01-11-2023 15:04:15 DEBUG    [menu.py:170] Assigning menu according to the role
+01-11-2023 15:04:15 DEBUG    [menu.py:114] Running Admin Menu
+01-11-2023 15:04:21 DEBUG    [app.py:18] app.py running
+01-11-2023 15:04:21 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 15:04:21 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 15:04:21 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 15:04:21 DEBUG    [menu.py:187] Running start()
+01-11-2023 15:04:22 DEBUG    [auth_controller.py:52] Signup Initiated
+01-11-2023 15:08:42 DEBUG    [app.py:23] Stopping Application
+01-11-2023 15:08:45 DEBUG    [app.py:18] app.py running
+01-11-2023 15:08:45 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 15:08:45 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 15:08:45 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 15:08:45 DEBUG    [menu.py:187] Running start()
+01-11-2023 15:09:24 DEBUG    [auth_controller.py:52] Signup Initiated
+01-11-2023 15:12:36 DEBUG    [auth_controller.py:78] Signup Successful
+01-11-2023 15:12:36 DEBUG    [menu.py:139] Running User Menu
+01-11-2023 15:23:48 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 15:24:00 DEBUG    [auth_controller.py:43] Login Successful
+01-11-2023 15:24:00 DEBUG    [menu.py:170] Assigning menu according to the role
+01-11-2023 15:24:00 DEBUG    [menu.py:18] Running Super Admin Menu
+01-11-2023 15:26:09 DEBUG    [user_controller.py:36] Creating Admin
+01-11-2023 15:41:38 DEBUG    [user_controller.py:36] Creating Admin
+01-11-2023 15:43:53 DEBUG    [user_controller.py:36] Creating Admin
+01-11-2023 15:47:15 DEBUG    [user_controller.py:54] Admin created
+01-11-2023 16:05:23 DEBUG    [app.py:18] app.py running
+01-11-2023 16:05:23 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 16:05:23 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 16:05:23 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 16:05:23 DEBUG    [menu.py:195] Running start()
+01-11-2023 16:05:25 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 16:05:28 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 16:05:36 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 16:05:37 ERROR    [exception_handler.py:26] Account Not Found! Please Sign up!
+
+01-11-2023 16:05:37 DEBUG    [app.py:23] Stopping Application
+01-11-2023 16:09:50 DEBUG    [app.py:18] app.py running
+01-11-2023 16:09:50 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 16:09:50 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 16:09:50 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 16:09:50 DEBUG    [menu.py:195] Running start()
+01-11-2023 16:09:51 DEBUG    [auth_controller.py:52] Signup Initiated
+01-11-2023 16:09:58 ERROR    [exception_handler.py:35] 
+01-11-2023 16:09:58 DEBUG    [app.py:23] Stopping Application
+01-11-2023 16:10:00 DEBUG    [app.py:18] app.py running
+01-11-2023 16:10:00 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 16:10:00 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 16:10:00 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 16:10:00 DEBUG    [menu.py:195] Running start()
+01-11-2023 16:10:01 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 16:10:02 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 16:10:03 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 16:32:58 DEBUG    [app.py:18] app.py running
+01-11-2023 16:32:58 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 16:32:58 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 16:32:58 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 16:32:58 DEBUG    [menu.py:195] Running start()
+01-11-2023 16:32:59 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 16:33:00 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 16:33:01 DEBUG    [auth_controller.py:22] Login Initiated
+01-11-2023 16:33:58 DEBUG    [app.py:18] app.py running
+01-11-2023 16:33:58 DEBUG    [initialize_app.py:30] Creating Super Admin
+01-11-2023 16:33:58 DEBUG    [initialize_app.py:64] Super Admin Present
+01-11-2023 16:33:58 DEBUG    [initialize_app.py:66] Initialization Complete
+01-11-2023 16:33:58 DEBUG    [menu.py:195] Running start()

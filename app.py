@@ -3,7 +3,6 @@
 import logging
 from utils.menu import start
 from utils.initialize_app import Initializer
-from utils import json_to_db_loader
 
 
 logging.basicConfig(
@@ -15,11 +14,11 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-logger.debug('app.py running')
+if __name__ == '__main__':
+    logger.debug('app.py running')
 
-Initializer.initialize_app()
-json_to_db_loader.load_questions_from_json()
-start()
+    Initializer.initialize_app()
+    start()
 
-logger.debug('Stopping Application')
-print('\n---------END OF APP---------\n')
+    logger.debug('Stopping Application')
+    print('\n---------END OF APP---------\n')
