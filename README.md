@@ -48,43 +48,46 @@ python -m pipenv install
 To run the application, use the following command:
 
 ```bash
-pipenv run python app.py
+pipenv run python src/app.py
 ```
 
 ### Project Structure
 
 ```bash
 QuizApp/
-├── constants/
-│   │  ├── prompts.py
-│   │  ├── queries.py
-├── controllers/
-│   ├── handlers/
-│   │  ├── auth_handler.py
-│   │  ├── quiz_handler.py
-│   │  ├── user_handler.py
-│   ├── auth_controller.py
-│   ├── quiz_controller.py
-│   ├── user_controller.py
-├── database/
-│   │  ├── data.db
-│   │  ├── database_access.py
-│   │  ├── database_connection.py
-├── models/
-│   ├── quiz.py
-│   ├── user.py
-├── utils/
-│   ├── custom_error.py
-│   ├── data.json
-│   ├── exception_handler.py
-│   ├── initialize_app.py
-│   ├── json_to_db_loader.py
-│   ├── menu.py
-│   ├── pretty_print.py
-│   ├── validations.py
+├── src/
+│   ├── config/
+│   │   ├── prompts.py
+│   │   ├── queries.py
+│   │   ├── questions.json
+│   ├── controllers/
+│   │   ├── handlers/
+│   │   │   ├── auth_handler.py
+│   │   │   ├── menu_handler.py
+│   │   │   ├── quiz_handler.py
+│   │   │   ├── user_handler.py
+│   │   ├── auth_controller.py
+│   │   ├── quiz_controller.py
+│   │   ├── user_controller.py
+│   ├── database/
+│   │   ├── data.db
+│   │   ├── database_access.py
+│   │   ├── database_connection.py
+│   ├── models/
+│   │   ├── quiz.py
+│   │   ├── user.py
+│   ├── utils/
+│   │   ├── custom_error.py
+│   │   ├── exception_handler.py
+│   │   ├── initialize_app.py
+│   │   ├── json_to_db_loader.py
+│   │   ├── menu.py
+│   │   ├── pretty_print.py
+│   │   ├── validations.py
+│   ├── app.py
 ├── .env
 ├── .gitignore
-├── app.py
+├── Documentation.pdf
 ├── logs.log
 ├── Pipfile
 ├── Pipfile.lock
