@@ -4,7 +4,7 @@ import logging
 from typing import List
 from controllers import quiz_controller as QuizController
 from utils import validations
-from utils.custom_error import DataNotFoundError
+from utils.custom_error import DataNotFoundError, DuplicateEntryError
 from utils.pretty_print import pretty_print
 
 
@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 def display_categories(role: str, header: List):
     '''Display Categories on Console'''
 
+    logger.debug('Display All Categories')
     data = QuizController.get_all_categories()
 
     if not data:
@@ -29,10 +30,13 @@ def display_categories(role: str, header: List):
 def display_all_questions():
     '''Display All Questions on Console'''
 
+    logger.debug('Display All Questions')
     data = QuizController.get_all_questions()
 
     if not data:
-        raise DataNotFoundError('No Questions Currently, Please add a question!!')
+        logger.debug('No Questions added')
+        print('No Questions Currently, Please add a question!!')
+        return
 
     print('\n-----Quiz Questions-----\n')
     pretty_print(
@@ -44,10 +48,19 @@ def display_all_questions():
 def display_questions_by_category():
     '''Display Questions by Category on Console'''
 
-    data = QuizController.get_questions_by_category()
+    logger.debug('Display Questions By Category')
+
+    try:
+        display_categories(role='admin', header=['Category', 'Created By'])
+        data = QuizController.get_questions_by_category()
+    except DataNotFoundError as e:
+        logger.debug(e)
+        print(e)
+        return
 
     if not data:
-        raise DataNotFoundError('No Questions Currently, Please add a question!!')
+        print('No Questions in this category, Please add a question!!')
+        return
 
     pretty_print(
         data=data,
@@ -61,7 +74,9 @@ def display_leaderboard():
     data = QuizController.get_leaderboard()
 
     if not data:
-        raise DataNotFoundError('No data! Take a Quiz...')
+        logger.debug('No Data in Leaderboard')
+        print('No data! Take a Quiz...')
+        return
 
     print('\n-----Leaderboard-----\n')
     pretty_print(data=data, headers=['Username', 'Score', 'Time'])
@@ -70,11 +85,18 @@ def display_leaderboard():
 def handle_start_quiz(username: str):
     '''Handler for starting Quiz'''
 
-    print('\n-----Quiz Starting-----\n')
+    logger.debug('Starting Quiz for %s: ', username)
 
     data = QuizController.get_all_categories()
     categories = [(tup[0], ) for tup in data]
-    display_categories(role='user', header=['Categories'])
+    try:
+        display_categories(role='user', header=['Categories'])
+    except DataNotFoundError as e:
+        logger.debug(e)
+        print(e)
+        return
+
+    print('\n-----Quiz Starting-----\n')
 
     user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
     if user_choice > len(categories) or user_choice-1 < 0:
@@ -87,7 +109,8 @@ def handle_start_quiz(username: str):
         if data[0] == category:
             break
     else:
-        raise DataNotFoundError('No such Category! Please choose from above!!')
+        print('No such Category! Please choose from above!!')
+        return
 
     QuizController.start_quiz(category, username)
 
@@ -95,22 +118,54 @@ def handle_start_quiz(username: str):
 def handle_create_category(created_by: str):
     '''Handler for creating category'''
 
-    QuizController.create_category(created_by)
+    try:
+        display_categories(role='admin', header=['Category', 'Created By'])
+    except DataNotFoundError as e:
+        logger.debug(e)
+        print(e)
+
+    try:
+        QuizController.create_category(created_by)
+    except DuplicateEntryError as e:
+        logger.debug(e)
+        print(e)
 
 
 def handle_create_question(created_by: str):
     '''Handler for creating question'''
 
-    QuizController.create_question(created_by)
+    try:
+        display_categories(role='admin', header=['Category', 'Created By'])
+        QuizController.create_question(created_by)
+    except DataNotFoundError as e:
+        logger.debug(e)
+        print(e)
+        return
+    except DuplicateEntryError as e:
+        logger.debug(e)
+        print(e)
+        return
 
 
 def handle_update_category():
     '''Handler for updating a category'''
 
-    QuizController.update_category_by_name()
+    try:
+        display_categories(role='admin', header=['Category', 'Created By'])
+        QuizController.update_category_by_name()
+    except DataNotFoundError as e:
+        logger.debug(e)
+        print(e)
+        return
 
 
 def handle_delete_category():
     '''Handler for deleting a category'''
 
-    QuizController.delete_category_by_name()
+    try:
+        display_categories(role='admin', header=['Category', 'Created By'])
+        QuizController.delete_category_by_name()
+    except DataNotFoundError as e:
+        logger.debug(e)
+        print(e)
+        return

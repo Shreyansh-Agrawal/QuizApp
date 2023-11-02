@@ -19,6 +19,7 @@ def login() -> Tuple:
 
     logger.debug('Login Initiated')
 
+    # validating credentials even during login to prevent any Injections
     username = validations.validate_username(prompt='Enter your username: ')
     password = validations.validate_password(prompt='Enter your password: ')
     hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
@@ -71,7 +72,9 @@ def signup() -> str:
     try:
         user.save_user_to_database()
     except sqlite3.IntegrityError as e:
-        raise LoginError('User already exists! Login or Sign Up with different credentials...') from e
+        raise LoginError(
+            'User already exists! Login or Sign Up with different credentials...'
+        ) from e
 
     logger.debug('Signup Successful')
     print('\nAccount created successfully!\n')

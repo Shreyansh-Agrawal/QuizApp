@@ -5,6 +5,7 @@ import sqlite3
 from database.database_access import DatabaseAccess as DAO
 from constants.queries import Queries
 from utils import validations
+from utils.custom_error import DuplicateEntryError
 
 
 def load_questions_from_json(created_by_admin_username: str):
@@ -20,7 +21,7 @@ def load_questions_from_json(created_by_admin_username: str):
         data = json.load(file)
 
     for question in data['questions']:
-        question_id = validations.validate_id(entity='question')
+        question_id = question['question_id']
         question_text = question['question_text']
         question_type = question['question_type'].upper()
         category_id = question['category_id']
@@ -34,22 +35,27 @@ def load_questions_from_json(created_by_admin_username: str):
             DAO.write_to_database(
                 Queries.INSERT_CATEGORY,
                 (category_id, admin_id, admin_username, category))
+
         except sqlite3.IntegrityError:
             pass
 
-        DAO.write_to_database(
-            Queries.INSERT_QUESTION,
-            (question_id, category_id, admin_id, admin_username, question_text, question_type))
+        try:
+            DAO.write_to_database(
+                Queries.INSERT_QUESTION,
+                (question_id, category_id, admin_id, admin_username, question_text, question_type))
 
-        DAO.write_to_database(
-            Queries.INSERT_OPTION,
-            (answer_id, question_id, answer, 1))
+            DAO.write_to_database(
+                Queries.INSERT_OPTION,
+                (answer_id, question_id, answer, 1))
 
-        if question_type.lower() == 'mcq':
-            for i in range(3):
-                other_option_id = validations.validate_id(entity='option')
-                other_option = question['options']['other_options'][i]['text']
+            if question_type.lower() == 'mcq':
+                for i in range(3):
+                    other_option_id = validations.validate_id(entity='option')
+                    other_option = question['options']['other_options'][i]['text']
 
-                DAO.write_to_database(
-                    Queries.INSERT_OPTION,
-                    (other_option_id, question_id, other_option, 0))
+                    DAO.write_to_database(
+                        Queries.INSERT_OPTION,
+                        (other_option_id, question_id, other_option, 0))
+
+        except sqlite3.IntegrityError:
+            pass

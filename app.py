@@ -15,12 +15,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
-    logger.debug('app.py running')
+    logger.info('app.py running')
 
     Initializer.initialize_app()
     start()
 
-    logger.debug('Stopping Application')
+    logger.info('Stopping Application')
     print('\n---------END OF APP---------\n')
-
-# todo: fix view all questions and view questions by category

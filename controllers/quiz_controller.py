@@ -172,7 +172,7 @@ def create_option(question_data: Dict):
             question.add_option(option)
         case _:
             print('Invalid Type!')
-            return
+            return None
 
     return question
 
@@ -214,11 +214,11 @@ def delete_category_by_name():
     while True:
         print(f'\nWARNING: All the questions in {category_name} will be deleted as well')
         confirmation = input('Type "YES" if you wish to continue\nPress any other key to go back: ')
-
         if confirmation.lower() == 'yes':
             break
         return
 
+    logger.warning('Deleting the Category: %s', category_name)
     DAO.write_to_database(Queries.DELETE_CATEGORY_BY_NAME, (category_name, ))
 
     logger.debug('Category %s deleted', category_name)
@@ -228,9 +228,10 @@ def delete_category_by_name():
 def start_quiz(category: str, username: str):
     '''Start a New Quiz'''
 
+    logger.debug('Stating Quiz for %s: ', username)
     data = get_random_questions_by_category(category)
-    # if len(data) < 10:
-    #     raise DataNotFoundError('Not enough questions! Please try some other category...')
+    if len(data) < 10:
+        raise DataNotFoundError('Not enough questions! Please try some other category...')
 
     score = 0
 
@@ -251,6 +252,7 @@ def start_quiz(category: str, username: str):
 
     print(f'\nYou Scored: {score}')
     save_quiz_score(username, score)
+    logger.debug('Quiz Completed for %s: ', username)
 
 
 def display_question(question: str, question_type: str, options_data: List[Tuple]):
@@ -297,6 +299,7 @@ def get_user_response(question_type: str) -> str:
 def save_quiz_score(username: str, score: int):
     '''Saving User's Quiz Score'''
 
+    logger.debug('Saving score for %s: ', username)
     user_data = DAO.read_from_database(Queries.GET_USER_ID_BY_USERNAME, (username, ))
     user_id = user_data[0][0]
     score_id = validations.validate_id(entity='score')
@@ -305,3 +308,4 @@ def save_quiz_score(username: str, score: int):
     timestamp = time.strftime('%Y-%m-%d %H:%M:%S') # yyyy-mm-dd
 
     DAO.write_to_database(Queries.INSERT_USER_QUIZ_SCORE, (score_id, user_id, score, timestamp))
+    logger.debug('Score saved for %s: ', username)

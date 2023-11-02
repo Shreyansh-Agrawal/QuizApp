@@ -132,7 +132,7 @@ def validate_numeric_input(prompt: str):
 
     result = False
     option = ''
-    regex_pattern = '[0-9]*'
+    regex_pattern = '^[0-9]+'
 
     while not result:
         option = input(prompt)

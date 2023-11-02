@@ -1,267 +1,229 @@
-01-11-2023 21:14:54 DEBUG    [app.py:18] app.py running
-01-11-2023 21:14:54 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 21:14:54 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 21:14:54 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 21:14:54 DEBUG    [menu.py:214] Running start()
-01-11-2023 21:14:56 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 21:15:00 DEBUG    [auth_controller.py:43] Login Successful
-01-11-2023 21:15:00 DEBUG    [menu.py:196] Assigning menu according to the role
-01-11-2023 21:15:00 DEBUG    [menu.py:134] Running Admin Menu
-01-11-2023 21:15:01 DEBUG    [menu.py:56] Running Admin: Manage Users Menu
-01-11-2023 21:15:06 DEBUG    [menu.py:83] Running Admin: Manage Quizzes Menu
-01-11-2023 21:15:12 DEBUG    [quiz_controller.py:76] Creating Question
-01-11-2023 21:15:35 ERROR    [exception_handler.py:32] FOREIGN KEY constraint failed
-01-11-2023 21:16:21 DEBUG    [menu.py:83] Running Admin: Manage Quizzes Menu
-01-11-2023 22:42:44 DEBUG    [app.py:18] app.py running
-01-11-2023 22:42:44 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 22:42:44 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 22:42:44 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 22:42:44 DEBUG    [menu.py:234] Running start()
-01-11-2023 22:42:48 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 22:42:53 DEBUG    [auth_controller.py:43] Login Successful
-01-11-2023 22:42:53 DEBUG    [menu.py:216] Assigning menu according to the role
-01-11-2023 22:42:53 DEBUG    [menu.py:154] Running Admin Menu
-01-11-2023 22:42:55 DEBUG    [menu.py:56] Running Admin: Manage Users Menu
-01-11-2023 22:42:59 DEBUG    [menu.py:83] Running Admin: Manage Quizzes Menu
-01-11-2023 22:46:28 DEBUG    [quiz_controller.py:72] Creating Category
-01-11-2023 22:46:30 DEBUG    [quiz_controller.py:87] Category Created
-01-11-2023 22:46:39 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 22:46:47 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 22:46:50 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 22:46:57 ERROR    [exception_handler.py:32] Incorrect number of bindings supplied. The current statement uses 2, and there are 1 supplied.
-01-11-2023 22:47:22 DEBUG    [menu.py:83] Running Admin: Manage Quizzes Menu
-01-11-2023 22:47:27 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 22:47:31 ERROR    [exception_handler.py:32] Incorrect number of bindings supplied. The current statement uses 2, and there are 1 supplied.
-01-11-2023 22:47:34 DEBUG    [menu.py:83] Running Admin: Manage Quizzes Menu
-01-11-2023 22:47:44 DEBUG    [quiz_controller.py:205] Deleting a Category
-01-11-2023 22:48:08 DEBUG    [quiz_controller.py:205] Deleting a Category
-01-11-2023 22:48:14 DEBUG    [quiz_controller.py:205] Deleting a Category
-01-11-2023 22:48:21 DEBUG    [quiz_controller.py:205] Deleting a Category
-01-11-2023 22:48:39 DEBUG    [quiz_controller.py:205] Deleting a Category
-01-11-2023 22:48:45 DEBUG    [quiz_controller.py:205] Deleting a Category
-01-11-2023 23:11:33 DEBUG    [app.py:23] Stopping Application
-01-11-2023 23:11:35 DEBUG    [app.py:18] app.py running
-01-11-2023 23:11:35 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:11:35 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:11:35 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:11:35 DEBUG    [menu.py:270] Running start()
-01-11-2023 23:11:36 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:11:42 DEBUG    [auth_controller.py:43] Login Successful
-01-11-2023 23:11:42 DEBUG    [menu.py:252] Assigning menu according to the role
-01-11-2023 23:11:42 DEBUG    [menu.py:190] Running Admin Menu
-01-11-2023 23:11:44 DEBUG    [menu.py:56] Running Admin: Manage Users Menu
-01-11-2023 23:11:49 DEBUG    [menu.py:169] Running Admin: Manage Quizzes Menu
-01-11-2023 23:11:54 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:12:02 DEBUG    [quiz_controller.py:72] Creating Category
-01-11-2023 23:12:05 DEBUG    [quiz_controller.py:87] Category Created
-01-11-2023 23:12:08 DEBUG    [quiz_controller.py:72] Creating Category
-01-11-2023 23:12:10 DEBUG    [quiz_controller.py:87] Category Created
-01-11-2023 23:12:11 DEBUG    [quiz_controller.py:72] Creating Category
-01-11-2023 23:12:15 DEBUG    [quiz_controller.py:87] Category Created
-01-11-2023 23:12:16 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 23:12:21 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 23:12:25 DEBUG    [quiz_controller.py:208] Deleting a Category
-01-11-2023 23:12:57 DEBUG    [quiz_controller.py:228] Category Dc deleted
-01-11-2023 23:13:34 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 23:13:42 DEBUG    [quiz_controller.py:199] Category Hisd updated to History
-01-11-2023 23:13:50 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:13:54 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:15:36 DEBUG    [app.py:18] app.py running
-01-11-2023 23:15:36 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:15:36 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:15:36 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:15:36 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:15:37 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:15:41 DEBUG    [auth_controller.py:43] Login Successful
-01-11-2023 23:15:41 DEBUG    [menu.py:257] Assigning menu according to the role
-01-11-2023 23:15:41 DEBUG    [menu.py:195] Running Admin Menu
-01-11-2023 23:15:44 DEBUG    [menu.py:174] Running Admin: Manage Quizzes Menu
-01-11-2023 23:15:45 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:16:00 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 23:16:05 DEBUG    [quiz_controller.py:199] Category Hisd updated to History
-01-11-2023 23:16:58 DEBUG    [app.py:18] app.py running
-01-11-2023 23:16:58 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:16:58 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:16:58 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:16:58 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:17:04 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:17:07 DEBUG    [auth_controller.py:43] Login Successful
-01-11-2023 23:17:07 DEBUG    [menu.py:257] Assigning menu according to the role
-01-11-2023 23:17:07 DEBUG    [menu.py:195] Running Admin Menu
-01-11-2023 23:17:10 DEBUG    [menu.py:174] Running Admin: Manage Quizzes Menu
-01-11-2023 23:17:14 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:17:19 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 23:17:29 DEBUG    [quiz_controller.py:199] Category History updated to Hisd
-01-11-2023 23:17:51 DEBUG    [quiz_controller.py:72] Creating Category
-01-11-2023 23:17:58 DEBUG    [quiz_controller.py:87] Category Created
-01-11-2023 23:18:00 DEBUG    [quiz_controller.py:187] Updating a Category
-01-11-2023 23:18:07 DEBUG    [quiz_controller.py:199] Category Mathematics updated to Maths
-01-11-2023 23:18:19 DEBUG    [quiz_controller.py:208] Deleting a Category
-01-11-2023 23:18:34 DEBUG    [quiz_controller.py:208] Deleting a Category
-01-11-2023 23:18:47 DEBUG    [quiz_controller.py:228] Category Maths deleted
-01-11-2023 23:18:58 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:19:00 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:29:13 DEBUG    [app.py:18] app.py running
-01-11-2023 23:29:13 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:29:34 DEBUG    [app.py:18] app.py running
-01-11-2023 23:29:34 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:29:34 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:29:34 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:29:34 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:29:36 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:29:40 DEBUG    [auth_controller.py:43] Login Successful
-01-11-2023 23:29:40 DEBUG    [menu.py:257] Assigning menu according to the role
-01-11-2023 23:29:40 DEBUG    [menu.py:195] Running Admin Menu
-01-11-2023 23:29:41 DEBUG    [menu.py:174] Running Admin: Manage Quizzes Menu
-01-11-2023 23:29:43 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:29:46 DEBUG    [quiz_controller.py:185] Updating a Category
-01-11-2023 23:29:51 DEBUG    [quiz_controller.py:196] Category Hisd updated to History
-01-11-2023 23:29:58 DEBUG    [quiz_controller.py:185] Updating a Category
-01-11-2023 23:30:00 ERROR    [exception_handler.py:26] No such Category! Please choose from above!!
-01-11-2023 23:30:05 DEBUG    [menu.py:174] Running Admin: Manage Quizzes Menu
-01-11-2023 23:30:15 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:30:20 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:30:22 DEBUG    [quiz_controller.py:205] Deleting a Category
-01-11-2023 23:30:24 ERROR    [exception_handler.py:26] No such Category! Please choose from above!!
-01-11-2023 23:30:27 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:30:28 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:30:31 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:30:40 ERROR    [exception_handler.py:32] FOREIGN KEY constraint failed
-01-11-2023 23:30:45 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:30:47 DEBUG    [quiz_controller.py:205] Deleting a Category
-01-11-2023 23:30:52 DEBUG    [quiz_controller.py:224] Category Science deleted
-01-11-2023 23:30:56 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:31:08 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:31:11 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:31:12 ERROR    [exception_handler.py:35] could not convert string to float: 'True'
-01-11-2023 23:31:20 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:31:26 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:31:31 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:32:30 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:33:03 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:33:06 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:33:08 ERROR    [exception_handler.py:35] could not convert string to float: 'True'
-01-11-2023 23:35:03 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:35:05 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:35:07 ERROR    [exception_handler.py:35] could not convert string to float: 'True'
-01-11-2023 23:35:27 DEBUG    [app.py:18] app.py running
-01-11-2023 23:35:27 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:35:27 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:35:27 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:35:27 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:35:29 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:35:32 DEBUG    [auth_controller.py:43] Login Successful
-01-11-2023 23:35:32 DEBUG    [menu.py:257] Assigning menu according to the role
-01-11-2023 23:35:32 DEBUG    [menu.py:195] Running Admin Menu
-01-11-2023 23:35:39 DEBUG    [menu.py:174] Running Admin: Manage Quizzes Menu
-01-11-2023 23:35:41 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:35:43 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:37:18 DEBUG    [app.py:18] app.py running
-01-11-2023 23:37:18 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:37:18 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:37:18 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:37:18 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:37:19 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:37:23 DEBUG    [auth_controller.py:43] Login Successful
-01-11-2023 23:37:23 DEBUG    [menu.py:257] Assigning menu according to the role
-01-11-2023 23:37:23 DEBUG    [menu.py:195] Running Admin Menu
-01-11-2023 23:37:27 DEBUG    [menu.py:174] Running Admin: Manage Quizzes Menu
-01-11-2023 23:37:28 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:37:37 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:37:58 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:38:04 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:38:15 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:40:19 DEBUG    [app.py:18] app.py running
-01-11-2023 23:40:19 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:40:19 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:40:19 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:40:19 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:40:20 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:40:35 DEBUG    [app.py:18] app.py running
-01-11-2023 23:40:35 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:40:35 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:40:35 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:40:35 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:40:41 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:41:04 DEBUG    [auth_controller.py:43] Login Successful
-01-11-2023 23:41:04 DEBUG    [menu.py:257] Assigning menu according to the role
-01-11-2023 23:41:04 DEBUG    [menu.py:195] Running Admin Menu
-01-11-2023 23:43:35 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:43:38 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:43:44 DEBUG    [auth_controller.py:22] Login Initiated
-01-11-2023 23:43:48 DEBUG    [auth_controller.py:52] Signup Initiated
-01-11-2023 23:52:47 DEBUG    [app.py:18] app.py running
-01-11-2023 23:52:47 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:52:47 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:52:47 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:52:47 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:52:52 DEBUG    [auth_controller.py:20] Login Initiated
-01-11-2023 23:52:56 DEBUG    [auth_controller.py:41] Login Successful
-01-11-2023 23:52:56 DEBUG    [menu.py:257] Assigning menu according to the role
-01-11-2023 23:52:56 DEBUG    [menu.py:195] Running Admin Menu
-01-11-2023 23:53:02 DEBUG    [menu.py:174] Running Admin: Manage Quizzes Menu
-01-11-2023 23:53:03 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:53:05 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:53:12 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:53:22 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:53:56 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-01-11-2023 23:53:59 DEBUG    [quiz_controller.py:185] Updating a Category
-01-11-2023 23:54:08 DEBUG    [quiz_controller.py:196] Category Mathematics updated to Maths
-01-11-2023 23:54:15 DEBUG    [quiz_controller.py:205] Deleting a Category
-01-11-2023 23:54:19 DEBUG    [quiz_controller.py:224] Category Science deleted
-01-11-2023 23:54:25 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:56:07 DEBUG    [app.py:18] app.py running
-01-11-2023 23:56:07 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:56:07 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:56:07 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:56:07 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:56:42 DEBUG    [auth_controller.py:20] Login Initiated
-01-11-2023 23:56:46 DEBUG    [auth_controller.py:41] Login Successful
-01-11-2023 23:56:46 DEBUG    [menu.py:257] Assigning menu according to the role
-01-11-2023 23:56:46 DEBUG    [menu.py:195] Running Admin Menu
-01-11-2023 23:56:48 DEBUG    [menu.py:174] Running Admin: Manage Quizzes Menu
-01-11-2023 23:56:53 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:56:54 ERROR    [exception_handler.py:35] could not convert string to float: 'True'
-01-11-2023 23:57:03 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:57:12 ERROR    [exception_handler.py:35] could not convert string to float: 'True'
-01-11-2023 23:57:14 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:57:23 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:57:28 ERROR    [exception_handler.py:35] could not convert string to float: 'True'
-01-11-2023 23:57:31 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:57:34 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:58:37 DEBUG    [app.py:18] app.py running
-01-11-2023 23:58:37 DEBUG    [initialize_app.py:30] Creating Super Admin
-01-11-2023 23:58:37 DEBUG    [initialize_app.py:64] Super Admin Present
-01-11-2023 23:58:37 DEBUG    [initialize_app.py:66] Initialization Complete
-01-11-2023 23:58:37 DEBUG    [menu.py:275] Running start()
-01-11-2023 23:58:38 DEBUG    [auth_controller.py:20] Login Initiated
-01-11-2023 23:58:42 DEBUG    [auth_controller.py:41] Login Successful
-01-11-2023 23:58:42 DEBUG    [menu.py:257] Assigning menu according to the role
-01-11-2023 23:58:42 DEBUG    [menu.py:195] Running Admin Menu
-01-11-2023 23:58:46 DEBUG    [menu.py:174] Running Admin: Manage Quizzes Menu
-01-11-2023 23:58:48 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:58:59 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:59:06 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:59:14 ERROR    [exception_handler.py:35] invalid literal for int() with base 10: ''
-01-11-2023 23:59:28 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:59:32 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:59:33 ERROR    [exception_handler.py:35] invalid literal for int() with base 10: ''
-01-11-2023 23:59:48 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-01-11-2023 23:59:52 DEBUG    [quiz_controller.py:37] Get Questions by Category
-01-11-2023 23:59:54 ERROR    [exception_handler.py:35] could not convert string to float: 'True'
-02-11-2023 00:00:03 DEBUG    [menu.py:83] Running Admin: Manage Categories Menu
-02-11-2023 00:00:05 DEBUG    [quiz_controller.py:205] Deleting a Category
-02-11-2023 00:00:08 DEBUG    [quiz_controller.py:224] Category History deleted
-02-11-2023 00:00:11 DEBUG    [quiz_controller.py:205] Deleting a Category
-02-11-2023 00:00:14 DEBUG    [quiz_controller.py:224] Category Maths deleted
-02-11-2023 00:00:21 DEBUG    [quiz_controller.py:205] Deleting a Category
-02-11-2023 00:00:23 DEBUG    [quiz_controller.py:224] Category Science deleted
-02-11-2023 00:00:33 DEBUG    [quiz_controller.py:71] Creating Category
-02-11-2023 00:00:38 DEBUG    [quiz_controller.py:86] Category Created
-02-11-2023 00:00:41 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-02-11-2023 00:00:45 DEBUG    [quiz_controller.py:37] Get Questions by Category
-02-11-2023 00:00:57 DEBUG    [quiz_controller.py:37] Get Questions by Category
-02-11-2023 00:00:59 DEBUG    [quiz_controller.py:37] Get Questions by Category
-02-11-2023 00:01:01 ERROR    [exception_handler.py:35] could not convert string to float: 'True'
-02-11-2023 00:01:03 DEBUG    [menu.py:128] Running Admin: Manage Questions Menu
-02-11-2023 00:01:08 DEBUG    [quiz_controller.py:37] Get Questions by Category
+02-11-2023 14:15:22 INFO     [app.py:18] app.py running
+02-11-2023 14:15:22 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:15:22 DEBUG    [initialize_app.py:64] Super Admin Present
+02-11-2023 14:15:22 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:15:22 INFO     [menu.py:111] Running start()
+02-11-2023 14:15:34 INFO     [app.py:23] Stopping Application
+02-11-2023 14:15:36 INFO     [app.py:18] app.py running
+02-11-2023 14:15:36 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:15:36 DEBUG    [initialize_app.py:47] Created Super Admin
+02-11-2023 14:15:36 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:15:36 INFO     [menu.py:111] Running start()
+02-11-2023 14:15:38 DEBUG    [auth_handler.py:19] Login started...
+02-11-2023 14:15:38 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:15:47 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:15:55 DEBUG    [auth_controller.py:42] Login Successful
+02-11-2023 14:15:55 DEBUG    [auth_handler.py:36] Login Successful
+02-11-2023 14:15:55 INFO     [menu.py:93] Assigning menu according to the role
+02-11-2023 14:15:55 INFO     [menu.py:19] Running Super Admin Menu
+02-11-2023 14:16:00 DEBUG    [user_handler.py:15] Display all admins
+02-11-2023 14:16:01 DEBUG    [user_handler.py:15] Display all admins
+02-11-2023 14:16:02 DEBUG    [user_handler.py:62] No admin Currently!
+02-11-2023 14:16:03 DEBUG    [user_controller.py:36] Creating Admin
+02-11-2023 14:16:10 INFO     [app.py:18] app.py running
+02-11-2023 14:16:10 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:16:10 DEBUG    [initialize_app.py:64] Super Admin Present
+02-11-2023 14:16:10 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:16:10 INFO     [menu.py:111] Running start()
+02-11-2023 14:16:11 DEBUG    [auth_handler.py:43] SignUp started...
+02-11-2023 14:16:11 DEBUG    [auth_controller.py:51] Signup Initiated
+02-11-2023 14:16:34 DEBUG    [auth_controller.py:79] Signup Successful
+02-11-2023 14:16:34 DEBUG    [auth_handler.py:53] SignUp Successful
+02-11-2023 14:16:34 INFO     [menu.py:69] Running User Menu
+02-11-2023 14:16:36 DEBUG    [quiz_handler.py:77] No Data in Leaderboard
+02-11-2023 14:16:36 DEBUG    [user_handler.py:32] Display score for john_here: 
+02-11-2023 14:16:38 DEBUG    [quiz_handler.py:89] Starting Quiz for john_here: 
+02-11-2023 14:16:38 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:16:38 DEBUG    [quiz_handler.py:96] No Category Added!
+02-11-2023 14:16:47 DEBUG    [quiz_handler.py:89] Starting Quiz for john_here: 
+02-11-2023 14:16:47 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:16:47 DEBUG    [quiz_handler.py:96] No Category Added!
+02-11-2023 14:17:51 INFO     [app.py:18] app.py running
+02-11-2023 14:17:51 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:17:51 DEBUG    [initialize_app.py:64] Super Admin Present
+02-11-2023 14:17:51 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:17:51 INFO     [menu.py:111] Running start()
+02-11-2023 14:17:52 DEBUG    [auth_handler.py:43] SignUp started...
+02-11-2023 14:17:52 DEBUG    [auth_controller.py:51] Signup Initiated
+02-11-2023 14:18:07 DEBUG    [auth_controller.py:79] Signup Successful
+02-11-2023 14:18:07 DEBUG    [auth_handler.py:53] SignUp Successful
+02-11-2023 14:18:07 INFO     [menu.py:69] Running User Menu
+02-11-2023 14:18:09 DEBUG    [quiz_handler.py:77] No Data in Leaderboard
+02-11-2023 14:18:10 DEBUG    [user_handler.py:32] Display score for peter.pan: 
+02-11-2023 14:18:10 DEBUG    [quiz_handler.py:88] Starting Quiz for peter.pan: 
+02-11-2023 14:18:10 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:18:10 DEBUG    [quiz_handler.py:95] No Category Added!
+02-11-2023 14:18:20 DEBUG    [auth_handler.py:19] Login started...
+02-11-2023 14:18:20 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:18:24 DEBUG    [auth_controller.py:42] Login Successful
+02-11-2023 14:18:24 DEBUG    [auth_handler.py:36] Login Successful
+02-11-2023 14:18:24 INFO     [menu.py:93] Assigning menu according to the role
+02-11-2023 14:18:24 INFO     [menu.py:19] Running Super Admin Menu
+02-11-2023 14:18:30 DEBUG    [user_controller.py:36] Creating Admin
+02-11-2023 14:18:44 DEBUG    [user_controller.py:55] Admin created
+02-11-2023 14:18:45 DEBUG    [user_handler.py:15] Display all admins
+02-11-2023 14:18:48 DEBUG    [user_controller.py:66] Deleting {'Admin'}
+02-11-2023 14:19:08 DEBUG    [user_controller.py:66] Deleting {'Admin'}
+02-11-2023 14:19:16 DEBUG    [user_controller.py:82] User deleted
+02-11-2023 14:19:18 DEBUG    [user_handler.py:15] Display all admins
+02-11-2023 14:19:19 DEBUG    [user_handler.py:62] No admin Currently!
+02-11-2023 14:19:20 DEBUG    [user_controller.py:36] Creating Admin
+02-11-2023 14:19:37 DEBUG    [user_controller.py:55] Admin created
+02-11-2023 14:19:40 DEBUG    [user_controller.py:36] Creating Admin
+02-11-2023 14:19:48 INFO     [app.py:18] app.py running
+02-11-2023 14:19:48 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:19:48 DEBUG    [initialize_app.py:64] Super Admin Present
+02-11-2023 14:19:48 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:19:48 INFO     [menu.py:111] Running start()
+02-11-2023 14:19:53 DEBUG    [auth_handler.py:43] SignUp started...
+02-11-2023 14:19:53 DEBUG    [auth_controller.py:51] Signup Initiated
+02-11-2023 14:19:58 INFO     [app.py:18] app.py running
+02-11-2023 14:19:58 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:19:58 DEBUG    [initialize_app.py:64] Super Admin Present
+02-11-2023 14:19:58 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:19:58 INFO     [menu.py:111] Running start()
+02-11-2023 14:19:59 DEBUG    [auth_handler.py:19] Login started...
+02-11-2023 14:19:59 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:22:12 DEBUG    [auth_controller.py:42] Login Successful
+02-11-2023 14:22:12 DEBUG    [auth_handler.py:36] Login Successful
+02-11-2023 14:22:12 INFO     [menu.py:93] Assigning menu according to the role
+02-11-2023 14:22:12 INFO     [menu.py:43] Running Admin Menu
+02-11-2023 14:22:12 DEBUG    [auth_handler.py:63] Changing Default Admin Password
+02-11-2023 14:22:44 DEBUG    [auth_handler.py:83] Default Admin Password Changed
+02-11-2023 14:22:45 INFO     [menu_handler.py:19] Running Admin: Manage Users Menu
+02-11-2023 14:22:46 DEBUG    [user_handler.py:15] Display all users
+02-11-2023 14:22:54 DEBUG    [user_controller.py:66] Deleting {'User'}
+02-11-2023 14:23:09 INFO     [menu_handler.py:90] Running Admin: Manage Quizzes Menu
+02-11-2023 14:23:11 INFO     [menu_handler.py:38] Running Admin: Manage Categories Menu
+02-11-2023 14:23:13 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:23:13 ERROR    [menu_handler.py:47] No Category Added!
+02-11-2023 14:23:14 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:23:14 DEBUG    [quiz_handler.py:124] No Category Added!
+02-11-2023 14:23:14 DEBUG    [quiz_controller.py:71] Creating Category
+02-11-2023 14:23:24 DEBUG    [quiz_controller.py:86] Category Created
+02-11-2023 14:23:26 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:23:26 DEBUG    [quiz_controller.py:185] Updating a Category
+02-11-2023 14:23:34 DEBUG    [quiz_handler.py:157] No such Category! Please choose from above!!
+02-11-2023 14:23:36 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:23:36 DEBUG    [quiz_controller.py:205] Deleting a Category
+02-11-2023 14:23:37 DEBUG    [quiz_handler.py:169] No such Category! Please choose from above!!
+02-11-2023 14:23:40 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:23:40 DEBUG    [quiz_controller.py:205] Deleting a Category
+02-11-2023 14:23:42 WARNING  [quiz_controller.py:221] Deleting the Category: Maths
+02-11-2023 14:23:42 DEBUG    [quiz_controller.py:224] Category Maths deleted
+02-11-2023 14:23:44 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:23:44 DEBUG    [quiz_handler.py:157] No Category Added!
+02-11-2023 14:23:45 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:23:45 DEBUG    [quiz_handler.py:169] No Category Added!
+02-11-2023 14:23:46 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:23:46 DEBUG    [quiz_handler.py:124] No Category Added!
+02-11-2023 14:23:46 DEBUG    [quiz_controller.py:71] Creating Category
+02-11-2023 14:23:48 DEBUG    [quiz_controller.py:86] Category Created
+02-11-2023 14:23:50 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:23:50 DEBUG    [quiz_controller.py:205] Deleting a Category
+02-11-2023 14:23:53 WARNING  [quiz_controller.py:221] Deleting the Category: Maths
+02-11-2023 14:23:53 DEBUG    [quiz_controller.py:224] Category Maths deleted
+02-11-2023 14:23:56 INFO     [menu_handler.py:66] Running Admin: Manage Questions Menu
+02-11-2023 14:24:00 DEBUG    [quiz_handler.py:33] Display All Questions
+02-11-2023 14:24:00 DEBUG    [quiz_handler.py:37] No Questions added
+02-11-2023 14:24:02 DEBUG    [quiz_handler.py:51] Display Questions By Category
+02-11-2023 14:24:02 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:24:02 DEBUG    [quiz_handler.py:57] No Category Added!
+02-11-2023 14:24:04 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:24:04 DEBUG    [quiz_handler.py:141] No Category Added!
+02-11-2023 14:24:05 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:24:05 DEBUG    [quiz_handler.py:141] No Category Added!
+02-11-2023 14:24:10 DEBUG    [quiz_handler.py:33] Display All Questions
+02-11-2023 14:24:12 DEBUG    [quiz_handler.py:51] Display Questions By Category
+02-11-2023 14:24:12 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:24:12 DEBUG    [quiz_controller.py:37] Get Questions by Category
+02-11-2023 14:24:13 ERROR    [exception_handler.py:35] could not convert string to float: 'True'
+02-11-2023 14:24:15 INFO     [menu_handler.py:66] Running Admin: Manage Questions Menu
+02-11-2023 14:24:16 DEBUG    [quiz_handler.py:51] Display Questions By Category
+02-11-2023 14:24:16 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:24:16 DEBUG    [quiz_controller.py:37] Get Questions by Category
+02-11-2023 14:24:22 DEBUG    [quiz_handler.py:33] Display All Questions
+02-11-2023 14:24:34 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:24:34 DEBUG    [quiz_controller.py:95] Creating Question
+02-11-2023 14:25:41 DEBUG    [quiz_controller.py:123] Question Created
+02-11-2023 14:25:44 DEBUG    [quiz_handler.py:33] Display All Questions
+02-11-2023 14:26:00 INFO     [menu_handler.py:90] Running Admin: Manage Quizzes Menu
+02-11-2023 14:26:02 INFO     [menu_handler.py:38] Running Admin: Manage Categories Menu
+02-11-2023 14:26:03 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:26:11 DEBUG    [auth_handler.py:43] SignUp started...
+02-11-2023 14:26:11 DEBUG    [auth_controller.py:51] Signup Initiated
+02-11-2023 14:26:14 INFO     [app.py:18] app.py running
+02-11-2023 14:26:14 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:26:14 DEBUG    [initialize_app.py:64] Super Admin Present
+02-11-2023 14:26:14 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:26:14 INFO     [menu.py:111] Running start()
+02-11-2023 14:26:15 DEBUG    [auth_handler.py:19] Login started...
+02-11-2023 14:26:15 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:26:27 DEBUG    [auth_controller.py:42] Login Successful
+02-11-2023 14:26:27 DEBUG    [auth_handler.py:36] Login Successful
+02-11-2023 14:26:27 INFO     [menu.py:93] Assigning menu according to the role
+02-11-2023 14:26:27 INFO     [menu.py:69] Running User Menu
+02-11-2023 14:26:30 DEBUG    [quiz_handler.py:77] No Data in Leaderboard
+02-11-2023 14:26:31 DEBUG    [user_handler.py:32] Display score for peter.pan: 
+02-11-2023 14:26:32 DEBUG    [quiz_handler.py:88] Starting Quiz for peter.pan: 
+02-11-2023 14:26:32 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:26:33 DEBUG    [quiz_controller.py:231] Stating Quiz for peter.pan: 
+02-11-2023 14:26:49 ERROR    [exception_handler.py:35] invalid literal for int() with base 10: ''
+02-11-2023 14:29:04 INFO     [app.py:18] app.py running
+02-11-2023 14:29:04 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:29:04 DEBUG    [initialize_app.py:64] Super Admin Present
+02-11-2023 14:29:04 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:29:04 INFO     [menu.py:111] Running start()
+02-11-2023 14:29:05 DEBUG    [auth_handler.py:19] Login started...
+02-11-2023 14:29:05 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:29:10 DEBUG    [auth_controller.py:42] Login Successful
+02-11-2023 14:29:10 DEBUG    [auth_handler.py:36] Login Successful
+02-11-2023 14:29:10 INFO     [menu.py:93] Assigning menu according to the role
+02-11-2023 14:29:10 INFO     [menu.py:69] Running User Menu
+02-11-2023 14:29:12 DEBUG    [quiz_handler.py:77] No Data in Leaderboard
+02-11-2023 14:29:13 DEBUG    [user_handler.py:32] Display score for peter.pan: 
+02-11-2023 14:29:14 DEBUG    [quiz_handler.py:88] Starting Quiz for peter.pan: 
+02-11-2023 14:29:14 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:29:16 DEBUG    [quiz_controller.py:231] Stating Quiz for peter.pan: 
+02-11-2023 14:29:28 ERROR    [exception_handler.py:35] invalid literal for int() with base 10: ''
+02-11-2023 14:29:37 DEBUG    [auth_handler.py:19] Login started...
+02-11-2023 14:29:37 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:29:50 DEBUG    [auth_controller.py:42] Login Successful
+02-11-2023 14:29:50 DEBUG    [auth_handler.py:36] Login Successful
+02-11-2023 14:29:50 INFO     [menu.py:93] Assigning menu according to the role
+02-11-2023 14:29:50 INFO     [menu.py:69] Running User Menu
+02-11-2023 14:29:51 DEBUG    [quiz_handler.py:88] Starting Quiz for peter.pan: 
+02-11-2023 14:29:51 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:29:53 ERROR    [exception_handler.py:35] invalid literal for int() with base 10: ''
+02-11-2023 14:32:49 DEBUG    [auth_handler.py:19] Login started...
+02-11-2023 14:32:49 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:32:54 DEBUG    [auth_controller.py:42] Login Successful
+02-11-2023 14:32:54 DEBUG    [auth_handler.py:36] Login Successful
+02-11-2023 14:32:54 INFO     [menu.py:93] Assigning menu according to the role
+02-11-2023 14:32:54 INFO     [menu.py:69] Running User Menu
+02-11-2023 14:32:56 DEBUG    [quiz_handler.py:88] Starting Quiz for peter.pan: 
+02-11-2023 14:32:56 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:32:57 DEBUG    [quiz_controller.py:231] Stating Quiz for peter.pan: 
+02-11-2023 14:33:17 ERROR    [exception_handler.py:35] invalid literal for int() with base 10: ''
+02-11-2023 14:42:31 INFO     [app.py:18] app.py running
+02-11-2023 14:42:31 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:42:31 DEBUG    [initialize_app.py:64] Super Admin Present
+02-11-2023 14:42:31 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:42:31 INFO     [menu.py:111] Running start()
+02-11-2023 14:42:33 DEBUG    [auth_handler.py:19] Login started...
+02-11-2023 14:42:33 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:42:46 INFO     [app.py:18] app.py running
+02-11-2023 14:42:46 DEBUG    [initialize_app.py:30] Creating Super Admin
+02-11-2023 14:42:46 DEBUG    [initialize_app.py:64] Super Admin Present
+02-11-2023 14:42:46 DEBUG    [initialize_app.py:66] Initialization Complete
+02-11-2023 14:42:46 INFO     [menu.py:111] Running start()
+02-11-2023 14:42:49 DEBUG    [auth_handler.py:19] Login started...
+02-11-2023 14:42:49 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:42:59 DEBUG    [auth_controller.py:20] Login Initiated
+02-11-2023 14:43:10 DEBUG    [auth_controller.py:42] Login Successful
+02-11-2023 14:43:10 DEBUG    [auth_handler.py:36] Login Successful
+02-11-2023 14:43:10 INFO     [menu.py:93] Assigning menu according to the role
+02-11-2023 14:43:10 INFO     [menu.py:69] Running User Menu
+02-11-2023 14:43:12 DEBUG    [quiz_handler.py:88] Starting Quiz for peter.pan: 
+02-11-2023 14:43:12 DEBUG    [quiz_handler.py:16] Display All Categories
+02-11-2023 14:43:17 DEBUG    [quiz_controller.py:231] Stating Quiz for peter.pan: 

@@ -8,7 +8,7 @@ from constants.queries import Queries
 from controllers import auth_controller as Authenticate
 from database.database_access import DatabaseAccess as DAO
 from utils import validations
-from utils.custom_error import LoginError, DataNotFoundError
+from utils.custom_error import LoginError
 
 
 logger = logging.getLogger(__name__)
@@ -16,7 +16,9 @@ logger = logging.getLogger(__name__)
 def handle_login():
     '''Handles Login'''
 
+    logger.debug('Login started...')
     print('\n----Login----\n')
+
     attempts_remaining = prompts.ATTEMPT_LIMIT
 
     data = Authenticate.login()
@@ -25,22 +27,30 @@ def handle_login():
         print(f'Remaining attempts: {attempts_remaining}\n')
 
         if attempts_remaining == 0:
-            raise DataNotFoundError('Account Not Found! Please Sign up!')
+            print('Account Not Found! Please Sign up!')
+            logger.debug('Login attempts exhausted')
+            return None
 
         data = Authenticate.login()
 
+    logger.debug('Login Successful')
     return data
 
 
 def handle_signup():
     '''Handles Signup'''
 
+    logger.debug('SignUp started...')
     print('\n----SignUp----\n')
+
     try:
         username = Authenticate.signup()
     except LoginError as e:
-        raise e
+        print(e)
+        logger.debug(e)
+        return None
 
+    logger.debug('SignUp Successful')
     print('Redirecting...')
     return username
 
@@ -49,8 +59,8 @@ def handle_first_login(username: str, is_password_changed: int):
     '''Checks Admin's First Login'''
 
     if not is_password_changed:
-        logger.debug('Changing Default Admin Password')
         print('\nPlease change your password...\n')
+        logger.debug('Changing Default Admin Password')
 
         new_password = validations.validate_password(prompt='Enter New Password: ')
         confirm_password = ''

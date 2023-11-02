@@ -7,10 +7,10 @@ This is a Python-based console application for a Quiz. The application is design
 Before running the application, make sure you have created a `.env` file in the project root directory with the following credentials for the Super Admin:
 
 ```bash
-NAME=YourSuperAdminName
-EMAIL=YourSuperAdminEmail
-USERNAME=YourSuperAdminUsername
-PASSWORD=YourSuperAdminPassword
+SUPER_ADMIN_NAME=YourSuperAdminName
+SUPER_ADMIN_EMAIL=YourSuperAdminEmail
+SUPER_ADMIN_USERNAME=YourSuperAdminUsername
+SUPER_ADMIN_PASSWORD=YourSuperAdminPassword
 ```
 
 ### Prerequisites
@@ -55,6 +55,9 @@ pipenv run python app.py
 
 ```bash
 QuizApp/
+├── constants/
+│   │  ├── prompts.py
+│   │  ├── queries.py
 ├── controllers/
 │   ├── handlers/
 │   │  ├── auth_handler.py
@@ -73,10 +76,11 @@ QuizApp/
 ├── utils/
 │   ├── custom_error.py
 │   ├── data.json
-│   ├── display.py
+│   ├── exception_handler.py
 │   ├── initialize_app.py
 │   ├── json_to_db_loader.py
 │   ├── menu.py
+│   ├── pretty_print.py
 │   ├── validations.py
 ├── .env
 ├── .gitignore
