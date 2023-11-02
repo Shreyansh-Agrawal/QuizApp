@@ -48,7 +48,7 @@ python -m pipenv install
 To run the application, use the following command:
 
 ```bash
-pipenv run python src/app.py
+pipenv run python .\src\app.py 
 ```
 
 ### Project Structure
@@ -78,7 +78,6 @@ QuizApp/
 │   │   ├── user.py
 │   ├── utils/
 │   │   ├── custom_error.py
-│   │   ├── exception_handler.py
 │   │   ├── initialize_app.py
 │   │   ├── json_to_db_loader.py
 │   │   ├── menu.py

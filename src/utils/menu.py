@@ -7,12 +7,10 @@ from controllers.handlers import auth_handler as AuthHandler
 from controllers.handlers import menu_handler as MenuHandler
 from controllers.handlers import quiz_handler as QuizHandler
 from controllers.handlers import user_handler as UserHandler
-from utils.exception_handler import exception_handler
 
 
 logger = logging.getLogger(__name__)
 
-@exception_handler
 def super_admin_menu(username: str):
     '''Menu for Super Admin'''
 
@@ -36,7 +34,6 @@ def super_admin_menu(username: str):
                 print('Wrong input! Please choose from the above given options...')
 
 
-@exception_handler
 def admin_menu(username: str, is_password_changed: int):
     '''Menu for Admin'''
 
@@ -62,7 +59,6 @@ def admin_menu(username: str, is_password_changed: int):
                 print('Wrong input! Please choose from the above given options...')
 
 
-@exception_handler
 def user_menu(username: str):
     '''Menu for User'''
 
@@ -86,7 +82,6 @@ def user_menu(username: str):
                 print('Wrong input! Please choose from the above given options...')
 
 
-@exception_handler
 def assign_menu(data):
     '''Assign menu according to the role'''
 
@@ -104,7 +99,6 @@ def assign_menu(data):
             print('Invalid Role!: ', role)
 
 
-@exception_handler
 def start():
     '''Menu for Login / Sign Up'''
 

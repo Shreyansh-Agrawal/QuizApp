@@ -7,12 +7,10 @@ from controllers.handlers import quiz_handler as QuizHandler
 from controllers.handlers import user_handler as UserHandler
 from utils import json_to_db_loader
 from utils.custom_error import DataNotFoundError
-from utils.exception_handler import exception_handler
 
 
 logger = logging.getLogger(__name__)
 
-@exception_handler
 def manage_users_menu():
     '''Admin: manage users menu'''
 
@@ -31,7 +29,6 @@ def manage_users_menu():
                 print('Wrong input! Please choose from the above given options...')
 
 
-@exception_handler
 def manage_categories_menu(username: str):
     '''Admin: manage categories menu'''
 
@@ -59,7 +56,6 @@ def manage_categories_menu(username: str):
                 print('Wrong input! Please choose from the above given options...')
 
 
-@exception_handler
 def manage_questions_menu(username: str):
     '''Admin: manage questions menu'''
 
@@ -83,7 +79,6 @@ def manage_questions_menu(username: str):
                 print('Wrong input! Please choose from the above given options...')
 
 
-@exception_handler
 def manage_quizzes_menu(username: str):
     '''Admin: manage quizzes menu'''
 

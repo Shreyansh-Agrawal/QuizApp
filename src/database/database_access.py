@@ -9,15 +9,7 @@ class DatabaseAccess:
 
     @staticmethod
     def read_from_database(query: str, data: Tuple = None) -> List:
-        '''Reads data from database
-
-        Args:
-            query (str): _description_
-            data (tuple, optional): _description_. Defaults to None.
-
-        Returns:
-            List: _description_
-        '''
+        '''Reads data from database'''
 
         with DatabaseConnection('src\\database\\data.db') as connection:
             cursor = connection.cursor()
@@ -30,12 +22,7 @@ class DatabaseAccess:
 
     @staticmethod
     def write_to_database(query: str, data: Tuple = None) -> None:
-        ''' CREATE TABLE / Add / Update / Delete data from database
-
-        Args:
-            query (str): _description_
-            data (tuple): _description_
-        '''
+        ''' CREATE TABLE / Add / Update / Delete data from database'''
 
         with DatabaseConnection('src\\database\\data.db') as connection:
             cursor = connection.cursor()

@@ -22,8 +22,12 @@ logger = logging.getLogger(__name__)
 if __name__ == '__main__':
     logger.info('app.py running')
 
-    Initializer.initialize_app()
-    start()
+    try:
+        Initializer.initialize_app()
+        start()
+    except Exception as e:
+        logger.error(e)
+        print(e)
 
     logger.info('Stopping Application')
     print('\n---------END OF APP---------\n')

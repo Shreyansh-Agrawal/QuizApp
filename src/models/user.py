@@ -25,11 +25,7 @@ class Person(ABC):
 
 
 class SuperAdmin(Person):
-    '''Super Admin class
-
-    Args:
-        Person (_type_): _description_
-    '''
+    '''Super Admin class'''
 
     def __init__(self, super_admin_data: Dict) -> None:
         super().__init__(
@@ -66,11 +62,7 @@ class SuperAdmin(Person):
 
 
 class Admin(Person):
-    '''Admin class
-
-    Args:
-        Person (_type_): _description_
-    '''
+    '''Admin class'''
 
     def __init__(self, admin_data: Dict) -> None:
         super().__init__(
@@ -107,11 +99,7 @@ class Admin(Person):
 
 
 class User(Person):
-    '''User class
-
-    Args:
-        Person (_type_): _description_
-    '''
+    '''User class'''
 
     def __init__(self, user_data: Dict) -> None:
         super().__init__(
