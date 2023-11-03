@@ -3,11 +3,11 @@
 import logging
 
 from controllers import user_controller as UserController
-from utils.custom_error import LoginError, DataNotFoundError
+from utils.custom_error import DataNotFoundError, LoginError
 from utils.pretty_print import pretty_print
 
-
 logger = logging.getLogger(__name__)
+
 
 def display_users_by_role(role: str):
     '''Display users on console by role'''

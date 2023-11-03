@@ -2,13 +2,14 @@
 
 import logging
 from typing import List
+
 from controllers import quiz_controller as QuizController
 from utils import validations
 from utils.custom_error import DataNotFoundError, DuplicateEntryError
 from utils.pretty_print import pretty_print
 
-
 logger = logging.getLogger(__name__)
+
 
 def display_categories(role: str, header: List):
     '''Display Categories on Console'''

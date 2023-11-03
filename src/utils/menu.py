@@ -8,8 +8,8 @@ from controllers.handlers import menu_handler as MenuHandler
 from controllers.handlers import quiz_handler as QuizHandler
 from controllers.handlers import user_handler as UserHandler
 
-
 logger = logging.getLogger(__name__)
+
 
 def super_admin_menu(username: str):
     '''Menu for Super Admin'''

@@ -3,16 +3,15 @@
 import hashlib
 import logging
 import os
-from pathlib import Path
 import sqlite3
+from pathlib import Path
 
 from dotenv import load_dotenv
 
-from database.database_access import DatabaseAccess as DAO
 from config.queries import InitializationQueries
+from database.database_access import DatabaseAccess as DAO
 from models.user import SuperAdmin
 from utils.custom_error import DuplicateEntryError
-
 
 dotenv_path = Path('.env')
 load_dotenv(dotenv_path=dotenv_path)

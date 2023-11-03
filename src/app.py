@@ -6,9 +6,9 @@
 '''
 
 import logging
-from utils.menu import start
-from utils.initialize_app import Initializer
 
+from utils.initialize_app import Initializer
+from utils.menu import start
 
 logging.basicConfig(
     format='%(asctime)s %(levelname)-8s [%(filename)s:%(lineno)-d] %(message)s',
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         Initializer.initialize_app()
         start()
     except Exception as e:
-        logger.error(e)
+        logger.exception(e)
         print(e)
 
     logger.info('Stopping Application')

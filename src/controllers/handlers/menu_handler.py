@@ -8,8 +8,8 @@ from controllers.handlers import user_handler as UserHandler
 from utils import json_to_db_loader
 from utils.custom_error import DataNotFoundError
 
-
 logger = logging.getLogger(__name__)
+
 
 def manage_users_menu():
     '''Admin: manage users menu'''
@@ -41,7 +41,7 @@ def manage_categories_menu(username: str):
                 try:
                     QuizHandler.display_categories(role='admin', header=['Category', 'Created By'])
                 except DataNotFoundError as e:
-                    logger.error(e)
+                    logger.exception(e)
                     print(e)
                     continue
             case '2':

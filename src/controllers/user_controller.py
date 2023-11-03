@@ -10,11 +10,11 @@ from config.queries import Queries
 from database.database_access import DatabaseAccess as DAO
 from models.user import Admin
 from utils import validations
-from utils.custom_error import LoginError, DataNotFoundError
+from utils.custom_error import DataNotFoundError, LoginError
 from utils.pretty_print import pretty_print
 
-
 logger = logging.getLogger(__name__)
+
 
 def get_user_scores_by_username(username: str):
     '''Return user's scores'''

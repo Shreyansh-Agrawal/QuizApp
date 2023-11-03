@@ -2,17 +2,17 @@
 
 import hashlib
 import logging
-from typing import Tuple
 import sqlite3
+from typing import Tuple
 
-from database.database_access import DatabaseAccess as DAO
 from config.queries import Queries
+from database.database_access import DatabaseAccess as DAO
 from models.user import User
 from utils import validations
 from utils.custom_error import LoginError
 
-
 logger = logging.getLogger(__name__)
+
 
 def login() -> Tuple:
     '''Method for user login'''

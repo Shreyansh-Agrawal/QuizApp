@@ -1,19 +1,19 @@
 '''Controllers for Operations related to Quiz'''
 
-from datetime import datetime, timezone
 import logging
 import sqlite3
-from typing import List, Tuple, Dict
+from datetime import datetime, timezone
+from typing import Dict, List, Tuple
 
-from database.database_access import DatabaseAccess as DAO
 from config import prompts
 from config.queries import Queries
-from models.quiz import Category, Question, Option
+from database.database_access import DatabaseAccess as DAO
+from models.quiz import Category, Option, Question
 from utils import validations
-from utils.custom_error import DuplicateEntryError, DataNotFoundError
-
+from utils.custom_error import DataNotFoundError, DuplicateEntryError
 
 logger = logging.getLogger(__name__)
+
 
 def get_all_categories() -> List[Tuple]:
     '''Return all Quiz Categories'''
@@ -234,13 +234,11 @@ def start_quiz(category: str, username: str):
         raise DataNotFoundError('Not enough questions! Please try some other category...')
 
     score = 0
-
     # Display question, take user's response and calculate score one by one
-    for question_data in data:
+    for question_no, question_data in enumerate(data, 1):
         question_id, question_text, question_type, correct_answer = question_data
         options_data = DAO.read_from_database(Queries.GET_OPTIONS_FOR_MCQ, (question_id, ))
-
-        display_question(question_text, question_type, options_data)
+        display_question(question_no, question_text, question_type, options_data)
 
         user_answer = get_user_response(question_type)
 
@@ -255,10 +253,10 @@ def start_quiz(category: str, username: str):
     logger.debug('Quiz Completed for %s: ', username)
 
 
-def display_question(question: str, question_type: str, options_data: List[Tuple]):
+def display_question(question_no: int, question: str, question_type: str, options_data: List[Tuple]):
     '''Display question and its options to user'''
 
-    print(f'\n{question}')
+    print(f'\n{question_no}. {question}')
 
     if question_type.lower() == 'mcq':
         options = [option[0] for option in options_data]
@@ -292,7 +290,7 @@ def get_user_response(question_type: str) -> str:
                 case _:
                     print('Please enter either 1 or 2...')
     else:
-        user_answer = validations.validate_option_text('Enter your answer: ')
+        user_answer = validations.validate_option_text('-> Enter your answer: ')
         return user_answer
 
 

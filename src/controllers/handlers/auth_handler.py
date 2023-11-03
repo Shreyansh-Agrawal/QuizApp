@@ -10,8 +10,8 @@ from database.database_access import DatabaseAccess as DAO
 from utils import validations
 from utils.custom_error import LoginError
 
-
 logger = logging.getLogger(__name__)
+
 
 def handle_login():
     '''Handles Login'''
