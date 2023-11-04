@@ -8,6 +8,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from config.display_prompts import DisplayPrompts
 from config.queries import InitializationQueries
 from database.database_access import DatabaseAccess as DAO
 from models.user import SuperAdmin
@@ -44,7 +45,7 @@ class Initializer:
             raise DuplicateEntryError('Super Admin Already exists!') from e
 
         logger.debug('Created Super Admin')
-        print('Super Admin created!')
+        print(DisplayPrompts.CREATE_SUPER_ADMIN_SUCCESS_MSG)
 
     @staticmethod
     def initialize_app():
@@ -58,7 +59,7 @@ class Initializer:
             logger.debug('Super Admin Present')
 
         logger.debug('Initialization Complete')
-        print('\nInitialization Complete!\n')
+        print(DisplayPrompts.INITIALIZATION_SUCCESS_MSG)
 
 
 class InitializeDatabase:

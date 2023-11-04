@@ -4,6 +4,7 @@ import hashlib
 import logging
 
 from config import prompts
+from config.display_prompts import DisplayPrompts
 from config.queries import Queries
 from controllers import auth_controller as Authenticate
 from database.database_access import DatabaseAccess as DAO
@@ -17,17 +18,17 @@ def handle_login():
     '''Handles Login'''
 
     logger.debug('Login started...')
-    print('\n----Login----\n')
+    print(DisplayPrompts.LOGIN_MSG)
 
     attempts_remaining = prompts.ATTEMPT_LIMIT
 
     data = Authenticate.login()
     while not data:
         attempts_remaining -= 1
-        print(f'Remaining attempts: {attempts_remaining}\n')
+        print(DisplayPrompts.REMAINING_ATTEMPTS_MSG.format(count=attempts_remaining))
 
         if attempts_remaining == 0:
-            print('Account Not Found! Please Sign up!')
+            print(DisplayPrompts.LOGIN_ATTEMPTS_EXHAUST_MSG)
             logger.debug('Login attempts exhausted')
             return None
 
@@ -41,7 +42,7 @@ def handle_signup():
     '''Handles Signup'''
 
     logger.debug('SignUp started...')
-    print('\n----SignUp----\n')
+    print(DisplayPrompts.SIGNUP_MSG)
 
     try:
         username = Authenticate.signup()
@@ -51,7 +52,7 @@ def handle_signup():
         return None
 
     logger.debug('SignUp Successful')
-    print('Redirecting...')
+    print(DisplayPrompts.REDIRECT_MSG)
     return username
 
 
@@ -59,7 +60,7 @@ def handle_first_login(username: str, is_password_changed: int):
     '''Checks Admin's First Login'''
 
     if not is_password_changed:
-        print('\nPlease change your password...\n')
+        print(DisplayPrompts.CHANGE_PSWD_MSG)
         logger.debug('Changing Default Admin Password')
 
         new_password = validations.validate_password(prompt='Enter New Password: ')
@@ -68,7 +69,7 @@ def handle_first_login(username: str, is_password_changed: int):
         while True:
             confirm_password =  validations.validate_password(prompt='Confirm Password: ')
             if new_password != confirm_password:
-                print('Password does not match. Please enter your password again!\n')
+                print(DisplayPrompts.CONFIRM_PSWD_FAIL_MSG)
             else:
                 break
 
@@ -81,4 +82,4 @@ def handle_first_login(username: str, is_password_changed: int):
         )
 
         logger.debug('Default Admin Password Changed')
-        print('\nPassword changed successfully!\n')
+        print(DisplayPrompts.CHANGE_PSWD_SUCCESS_MSG)

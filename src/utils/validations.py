@@ -1,9 +1,12 @@
 '''Input Validations'''
 
-import re
 import functools
+import re
+
 import maskpass
 import shortuuid
+
+from config.display_prompts import DisplayPrompts
 from utils.custom_error import InvalidInputError
 
 
@@ -15,7 +18,7 @@ def error_handling(func):
         try:
             res = func(*args, **kwargs)
         except InvalidInputError as e:
-            print(f'\n{e} Please try again...\n')
+            print(DisplayPrompts.TRY_AGAIN_MSG.format(error=e))
             return False
 
         return res

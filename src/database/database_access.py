@@ -4,6 +4,7 @@ from typing import List, Tuple
 from database.database_connection import DatabaseConnection
 from config.queries import InitializationQueries
 
+
 class DatabaseAccess:
     ''' A class for database methods'''
 

@@ -3,8 +3,8 @@
 from abc import ABC, abstractmethod
 from typing import Dict
 
-from database.database_access import DatabaseAccess as DAO
 from config.queries import Queries
+from database.database_access import DatabaseAccess as DAO
 from utils import validations
 from utils.custom_error import DataNotFoundError
 

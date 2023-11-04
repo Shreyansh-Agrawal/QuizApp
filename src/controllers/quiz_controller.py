@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from typing import Dict, List, Tuple
 
 from config import prompts
+from config.display_prompts import DisplayPrompts
 from config.queries import Queries
 from database.database_access import DatabaseAccess as DAO
 from models.quiz import Category, Option, Question
@@ -42,7 +43,7 @@ def get_questions_by_category() -> List[Tuple]:
 
     category_name = categories[user_choice-1][0]
 
-    print(f'\n-----Questions in {category_name}-----\n')
+    print(DisplayPrompts.DISPLAY_QUES_IN_A_CATEGORY_MSG.format(name=category_name))
 
     data = DAO.read_from_database(Queries.GET_QUESTIONS_BY_CATEGORY, (category_name, ))
     return data
@@ -69,7 +70,7 @@ def create_category(username: str):
     admin_id = admin_data[0][0]
 
     logger.debug('Creating Category')
-    print('\n-----Create a new Quiz Category-----\n')
+    print(DisplayPrompts.CREATE_CATEGORY_MSG)
 
     category_data = {}
     category_data['admin_id'] = admin_id
@@ -84,7 +85,7 @@ def create_category(username: str):
         raise DuplicateEntryError('\nCategory already exists!') from e
 
     logger.debug('Category Created')
-    print('\nCategory Created!\n')
+    print(DisplayPrompts.CREATE_CATEGORY_SUCCESS_MSG)
 
 
 def create_question(username: str):
@@ -93,7 +94,7 @@ def create_question(username: str):
     categories = get_all_categories()
 
     logger.debug('Creating Question')
-    print('\n-----Create a new Quiz Question-----\n')
+    print(DisplayPrompts.CREATE_QUES_MSG)
 
     user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
     if user_choice > len(categories) or user_choice-1 < 0:
@@ -121,7 +122,7 @@ def create_question(username: str):
         raise DuplicateEntryError('Question already exists!') from e
 
     logger.debug('Question Created')
-    print('\nQuestion Created!\n')
+    print(DisplayPrompts.CREATE_QUES_SUCCESS_MSG)
 
 
 def create_option(question_data: Dict):
@@ -140,7 +141,7 @@ def create_option(question_data: Dict):
                 question_data['question_type'] = 'ONE WORD'
                 break
             case _:
-                print('Invalid Question Type! Please choose from above!!')
+                print(DisplayPrompts.INVALID_QUES_TYPE_MSG)
                 continue
 
     question = Question(question_data)
@@ -171,7 +172,7 @@ def create_option(question_data: Dict):
             option = Option(option_data)
             question.add_option(option)
         case _:
-            print('Invalid Type!')
+            logger.exception('Invalid Ques Type!')
             return None
 
     return question
@@ -183,7 +184,7 @@ def update_category_by_name():
     categories = get_all_categories()
 
     logger.debug('Updating a Category')
-    print('\n-----Update a Category-----\n')
+    print(DisplayPrompts.UPDATE_CATEGORY_MSG)
 
     user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
     if user_choice > len(categories) or user_choice-1 < 0:
@@ -194,7 +195,7 @@ def update_category_by_name():
     DAO.write_to_database(Queries.UPDATE_CATEGORY_BY_NAME, (new_category_name, category_name))
 
     logger.debug('Category %s updated to %s', category_name, new_category_name)
-    print(f'\nCategory: {category_name} updated to {new_category_name}!\n')
+    print(DisplayPrompts.UPDATE_CATEGORY_SUCCESS_MSG.format(name=category_name, new_name=new_category_name))
 
 
 def delete_category_by_name():
@@ -203,7 +204,7 @@ def delete_category_by_name():
     categories = get_all_categories()
 
     logger.debug('Deleting a Category')
-    print('\n-----Delete a Category-----\n')
+    print(DisplayPrompts.DELETE_CATEGORY_MSG)
 
     user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
     if user_choice > len(categories) or user_choice-1 < 0:
@@ -212,7 +213,7 @@ def delete_category_by_name():
     category_name = categories[user_choice-1][0]
 
     while True:
-        print(f'\nWARNING: All the questions in {category_name} will be deleted as well')
+        print(DisplayPrompts.DELETE_CATEGORY_WARNING_MSG.format(name=category_name))
         confirmation = input('Type "YES" if you wish to continue\nPress any other key to go back: ')
         if confirmation.lower() == 'yes':
             break
@@ -222,7 +223,7 @@ def delete_category_by_name():
     DAO.write_to_database(Queries.DELETE_CATEGORY_BY_NAME, (category_name, ))
 
     logger.debug('Category %s deleted', category_name)
-    print(f'\nCategory: {category_name} deleted!\n')
+    print(DisplayPrompts.DELETE_CATEGORY_SUCCESS_MSG.format(name=category_name))
 
 
 def start_quiz(category: str, username: str):
@@ -248,7 +249,7 @@ def start_quiz(category: str, username: str):
         if user_answer.lower() == correct_answer.lower():
             score += 10
 
-    print(f'\nYou Scored: {score}')
+    print(DisplayPrompts.DISPLAY_SCORE_MSG.format(score=score))
     save_quiz_score(username, score)
     logger.debug('Quiz Completed for %s: ', username)
 
@@ -265,7 +266,7 @@ def display_question(question_no: int, question: str, question_type: str, option
             print(f'{count}. {option}')
 
     elif question_type.lower() == 't/f':
-        print('1. True\n2. False')
+        print(DisplayPrompts.TF_OPTION_MSG)
 
 
 def get_user_response(question_type: str) -> str:
@@ -275,7 +276,7 @@ def get_user_response(question_type: str) -> str:
         while True:
             user_choice = validations.validate_numeric_input(prompt='Choose an option: ')
             if user_choice not in range(1, 5):
-                print('Please enter a number from 1 to 4: ')
+                print(DisplayPrompts.MCQ_WRONG_OPTION_MSG)
                 continue
             return user_choice
 
@@ -288,7 +289,7 @@ def get_user_response(question_type: str) -> str:
                 case 2:
                     return 'false'
                 case _:
-                    print('Please enter either 1 or 2...')
+                    print(DisplayPrompts.TF_WRONG_OPTION_MSG)
     else:
         user_answer = validations.validate_option_text('-> Enter your answer: ')
         return user_answer

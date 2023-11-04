@@ -5,6 +5,7 @@ import logging
 import sqlite3
 from typing import Tuple
 
+from config.display_prompts import DisplayPrompts
 from config.queries import Queries
 from database.database_access import DatabaseAccess as DAO
 from models.user import User
@@ -26,21 +27,21 @@ def login() -> Tuple:
 
     user_data = DAO.read_from_database(Queries.GET_CREDENTIALS_BY_USERNAME, (username, ))
     if not user_data:
-        print('\nInvalid Credentials! Please Try Again or Sign Up...')
+        print(DisplayPrompts.AUTH_INVALIDATE_MSG)
         return ()
 
     user_password, role, is_password_changed = user_data[0]
 
     if not is_password_changed and user_password != password:
-        print('\nInvalid Credentials! Please Try Again or Sign Up...')
+        print(DisplayPrompts.AUTH_INVALIDATE_MSG)
         return ()
 
     if is_password_changed and user_password != hashed_password:
-        print('\nInvalid Credentials! Please Try Again or Sign Up...')
+        print(DisplayPrompts.AUTH_INVALIDATE_MSG)
         return ()
 
     logger.debug('Login Successful')
-    print('\nSuccessfully Logged In!\n')
+    print(DisplayPrompts.LOGIN_SUCCESS_MSG)
 
     return (username, role, is_password_changed)
 
@@ -60,7 +61,7 @@ def signup() -> str:
     while True:
         confirm_password =  validations.validate_password(prompt='Confirm Password: ')
         if password != confirm_password:
-            print('Password does not match. Please re-enter your password!\n')
+            print(DisplayPrompts.CONFIRM_PSWD_FAIL_MSG)
         else:
             break
 
@@ -77,6 +78,6 @@ def signup() -> str:
         ) from e
 
     logger.debug('Signup Successful')
-    print('\nAccount created successfully!\n')
+    print(DisplayPrompts.SIGNUP_SUCCESS_MSG)
 
     return user_data['username']

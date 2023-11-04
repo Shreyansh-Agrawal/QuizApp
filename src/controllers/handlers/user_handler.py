@@ -2,6 +2,7 @@
 
 import logging
 
+from config.display_prompts import DisplayPrompts
 from controllers import user_controller as UserController
 from utils.custom_error import DataNotFoundError, LoginError
 from utils.pretty_print import pretty_print
@@ -16,10 +17,10 @@ def display_users_by_role(role: str):
     data = UserController.get_all_users_by_role(role)
 
     if not data:
-        print(f'No {role} Currently!')
+        print(DisplayPrompts.USER_NOT_FOUND_MSG.format(user=role))
         return
 
-    print(f'\n-----List of {role.title()}s-----\n')
+    print(DisplayPrompts.DISPLAY_USERS_MSG.format(user=role.title()))
     pretty_print(
         data=data,
         headers=['Username', 'Name', 'Email', 'Registration Date']
@@ -33,14 +34,14 @@ def display_user_score(username: str):
     data = UserController.get_user_scores_by_username(username)
 
     if not data:
-        print('No data! Take a Quiz...')
+        print(DisplayPrompts.QUIZ_DATA_NOT_FOUND_MSG)
         return
 
-    print('\n-----Score History-----\n')
+    print(DisplayPrompts.SCORE_DATA_MSG)
     pretty_print(data, ['Time', 'Score'])
 
     scores = [scores[1] for scores in data]
-    print(f'\nHighest Score: {max(scores)}\n')
+    print(DisplayPrompts.HIGHEST_SCORE_MSG.format(score=max(scores)))
 
 
 def handle_create_admin():

@@ -3,6 +3,7 @@
 import logging
 
 from config import prompts
+from config.display_prompts import DisplayPrompts
 from controllers.handlers import quiz_handler as QuizHandler
 from controllers.handlers import user_handler as UserHandler
 from utils import json_to_db_loader
@@ -26,7 +27,7 @@ def manage_users_menu():
             case 'q':
                 break
             case _:
-                print('Wrong input! Please choose from the above given options...')
+                print(DisplayPrompts.WRONG_INPUT_MSG)
 
 
 def manage_categories_menu(username: str):
@@ -53,7 +54,7 @@ def manage_categories_menu(username: str):
             case 'q':
                 break
             case _:
-                print('Wrong input! Please choose from the above given options...')
+                print(DisplayPrompts.WRONG_INPUT_MSG)
 
 
 def manage_questions_menu(username: str):
@@ -72,11 +73,11 @@ def manage_questions_menu(username: str):
                 QuizHandler.handle_create_question(created_by=username)
             case '4':
                 json_to_db_loader.load_questions_from_json(created_by_admin_username=username)
-                print('Questions Added!')
+                print(DisplayPrompts.LOAD_QUES_MSG)
             case 'q':
                 break
             case _:
-                print('Wrong input! Please choose from the above given options...')
+                print(DisplayPrompts.WRONG_INPUT_MSG)
 
 
 def manage_quizzes_menu(username: str):
@@ -88,12 +89,12 @@ def manage_quizzes_menu(username: str):
 
         match user_sub_choice:
             case '1':
-                print('\n----Manage Categories----\n')
+                print(DisplayPrompts.MANAGE_CATEGORIES_MSG)
                 manage_categories_menu(username)
             case '2':
-                print('\n----Manage Questions----\n')
+                print(DisplayPrompts.MANAGE_QUES_MSG)
                 manage_questions_menu(username)
             case 'q':
                 break
             case _:
-                print('Wrong input! Please choose from the above given options...')
+                print(DisplayPrompts.WRONG_INPUT_MSG)
