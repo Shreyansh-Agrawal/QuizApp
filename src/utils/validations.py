@@ -6,7 +6,7 @@ import re
 import maskpass
 import shortuuid
 
-from config.display_prompts import DisplayPrompts
+from config.display_menu import DisplayMessage
 from utils.custom_error import InvalidInputError
 
 
@@ -18,7 +18,7 @@ def error_handling(func):
         try:
             res = func(*args, **kwargs)
         except InvalidInputError as e:
-            print(DisplayPrompts.TRY_AGAIN_MSG.format(error=e))
+            print(DisplayMessage.TRY_AGAIN_MSG.format(error=e))
             return False
 
         return res

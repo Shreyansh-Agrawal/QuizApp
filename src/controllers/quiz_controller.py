@@ -5,9 +5,10 @@ import sqlite3
 from datetime import datetime, timezone
 from typing import Dict, List, Tuple
 
-from config import prompts
-from config.display_prompts import DisplayPrompts
+from config.display_menu import Prompts
+from config.display_menu import DisplayMessage
 from config.queries import Queries
+from controllers.helpers import quiz_helper as QuizHelper
 from database.database_access import DatabaseAccess as DAO
 from models.quiz import Category, Option, Question
 from utils import validations
@@ -43,7 +44,7 @@ def get_questions_by_category() -> List[Tuple]:
 
     category_name = categories[user_choice-1][0]
 
-    print(DisplayPrompts.DISPLAY_QUES_IN_A_CATEGORY_MSG.format(name=category_name))
+    print(DisplayMessage.DISPLAY_QUES_IN_A_CATEGORY_MSG.format(name=category_name))
 
     data = DAO.read_from_database(Queries.GET_QUESTIONS_BY_CATEGORY, (category_name, ))
     return data
@@ -70,7 +71,7 @@ def create_category(username: str):
     admin_id = admin_data[0][0]
 
     logger.debug('Creating Category')
-    print(DisplayPrompts.CREATE_CATEGORY_MSG)
+    print(DisplayMessage.CREATE_CATEGORY_MSG)
 
     category_data = {}
     category_data['admin_id'] = admin_id
@@ -85,7 +86,7 @@ def create_category(username: str):
         raise DuplicateEntryError('\nCategory already exists!') from e
 
     logger.debug('Category Created')
-    print(DisplayPrompts.CREATE_CATEGORY_SUCCESS_MSG)
+    print(DisplayMessage.CREATE_CATEGORY_SUCCESS_MSG)
 
 
 def create_question(username: str):
@@ -94,7 +95,7 @@ def create_question(username: str):
     categories = get_all_categories()
 
     logger.debug('Creating Question')
-    print(DisplayPrompts.CREATE_QUES_MSG)
+    print(DisplayMessage.CREATE_QUES_MSG)
 
     user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
     if user_choice > len(categories) or user_choice-1 < 0:
@@ -114,7 +115,7 @@ def create_question(username: str):
                                                     prompt='Enter Question Text: '
                                                 )
 
-    question = create_option(question_data)
+    question = QuizHelper.create_option(question_data)
 
     try:
         question.save_to_database()
@@ -122,60 +123,7 @@ def create_question(username: str):
         raise DuplicateEntryError('Question already exists!') from e
 
     logger.debug('Question Created')
-    print(DisplayPrompts.CREATE_QUES_SUCCESS_MSG)
-
-
-def create_option(question_data: Dict):
-    '''Create options, returns a question object'''
-
-    while True:
-        question_type_input = input(prompts.QUESTION_TYPE_PROMPTS)
-        match question_type_input:
-            case '1':
-                question_data['question_type'] = 'MCQ'
-                break
-            case '2':
-                question_data['question_type'] = 'T/F'
-                break
-            case '3':
-                question_data['question_type'] = 'ONE WORD'
-                break
-            case _:
-                print(DisplayPrompts.INVALID_QUES_TYPE_MSG)
-                continue
-
-    question = Question(question_data)
-
-    match question_data['question_type']:
-        case 'MCQ':
-            option_data = {}
-            option_data['question_id'] = question.question_id
-            option_data['option_text'] = validations.validate_option_text('Enter Answer: ')
-            option_data['is_correct'] = 1
-            option = Option(option_data)
-            question.add_option(option)
-
-            for _ in range(3):
-                option_data['question_id'] = question.question_id
-                option_data['option_text'] = validations.validate_option_text(
-                                                            'Enter Other Option: '
-                                                        )
-                option_data['is_correct'] = 0
-                option = Option(option_data)
-                question.add_option(option)
-        case 'T/F' | 'ONE WORD':
-            option_data = {}
-            option_data['question_id'] = question.question_id
-            option_data['option_text'] = validations.validate_option_text('Enter Answer: ')
-            option_data['is_correct'] = 1
-
-            option = Option(option_data)
-            question.add_option(option)
-        case _:
-            logger.exception('Invalid Ques Type!')
-            return None
-
-    return question
+    print(DisplayMessage.CREATE_QUES_SUCCESS_MSG)
 
 
 def update_category_by_name():
@@ -184,7 +132,7 @@ def update_category_by_name():
     categories = get_all_categories()
 
     logger.debug('Updating a Category')
-    print(DisplayPrompts.UPDATE_CATEGORY_MSG)
+    print(DisplayMessage.UPDATE_CATEGORY_MSG)
 
     user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
     if user_choice > len(categories) or user_choice-1 < 0:
@@ -195,7 +143,7 @@ def update_category_by_name():
     DAO.write_to_database(Queries.UPDATE_CATEGORY_BY_NAME, (new_category_name, category_name))
 
     logger.debug('Category %s updated to %s', category_name, new_category_name)
-    print(DisplayPrompts.UPDATE_CATEGORY_SUCCESS_MSG.format(name=category_name, new_name=new_category_name))
+    print(DisplayMessage.UPDATE_CATEGORY_SUCCESS_MSG.format(name=category_name, new_name=new_category_name))
 
 
 def delete_category_by_name():
@@ -204,7 +152,7 @@ def delete_category_by_name():
     categories = get_all_categories()
 
     logger.debug('Deleting a Category')
-    print(DisplayPrompts.DELETE_CATEGORY_MSG)
+    print(DisplayMessage.DELETE_CATEGORY_MSG)
 
     user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
     if user_choice > len(categories) or user_choice-1 < 0:
@@ -213,7 +161,7 @@ def delete_category_by_name():
     category_name = categories[user_choice-1][0]
 
     while True:
-        print(DisplayPrompts.DELETE_CATEGORY_WARNING_MSG.format(name=category_name))
+        print(DisplayMessage.DELETE_CATEGORY_WARNING_MSG.format(name=category_name))
         confirmation = input('Type "YES" if you wish to continue\nPress any other key to go back: ')
         if confirmation.lower() == 'yes':
             break
@@ -223,7 +171,7 @@ def delete_category_by_name():
     DAO.write_to_database(Queries.DELETE_CATEGORY_BY_NAME, (category_name, ))
 
     logger.debug('Category %s deleted', category_name)
-    print(DisplayPrompts.DELETE_CATEGORY_SUCCESS_MSG.format(name=category_name))
+    print(DisplayMessage.DELETE_CATEGORY_SUCCESS_MSG.format(name=category_name))
 
 
 def start_quiz(category: str, username: str):
@@ -239,9 +187,9 @@ def start_quiz(category: str, username: str):
     for question_no, question_data in enumerate(data, 1):
         question_id, question_text, question_type, correct_answer = question_data
         options_data = DAO.read_from_database(Queries.GET_OPTIONS_FOR_MCQ, (question_id, ))
-        display_question(question_no, question_text, question_type, options_data)
+        QuizHelper.display_question(question_no, question_text, question_type, options_data)
 
-        user_answer = get_user_response(question_type)
+        user_answer = QuizHelper.get_user_response(question_type)
 
         if question_type.lower() == 'mcq':
             user_answer = options_data[user_answer-1][0]
@@ -249,62 +197,6 @@ def start_quiz(category: str, username: str):
         if user_answer.lower() == correct_answer.lower():
             score += 10
 
-    print(DisplayPrompts.DISPLAY_SCORE_MSG.format(score=score))
-    save_quiz_score(username, score)
+    print(DisplayMessage.DISPLAY_SCORE_MSG.format(score=score))
+    QuizHelper.save_quiz_score(username, score)
     logger.debug('Quiz Completed for %s: ', username)
-
-
-def display_question(question_no: int, question: str, question_type: str, options_data: List[Tuple]):
-    '''Display question and its options to user'''
-
-    print(f'\n{question_no}. {question}')
-
-    if question_type.lower() == 'mcq':
-        options = [option[0] for option in options_data]
-
-        for count, option in enumerate(options, 1):
-            print(f'{count}. {option}')
-
-    elif question_type.lower() == 't/f':
-        print(DisplayPrompts.TF_OPTION_MSG)
-
-
-def get_user_response(question_type: str) -> str:
-    '''Gets user response according to question type'''
-
-    if question_type.lower() == 'mcq':
-        while True:
-            user_choice = validations.validate_numeric_input(prompt='Choose an option: ')
-            if user_choice not in range(1, 5):
-                print(DisplayPrompts.MCQ_WRONG_OPTION_MSG)
-                continue
-            return user_choice
-
-    elif question_type.lower() == 't/f':
-        while True:
-            user_choice = validations.validate_numeric_input(prompt='Choose an option: ')
-            match user_choice:
-                case 1:
-                    return 'true'
-                case 2:
-                    return 'false'
-                case _:
-                    print(DisplayPrompts.TF_WRONG_OPTION_MSG)
-    else:
-        user_answer = validations.validate_option_text('-> Enter your answer: ')
-        return user_answer
-
-
-def save_quiz_score(username: str, score: int):
-    '''Saving User's Quiz Score'''
-
-    logger.debug('Saving score for %s: ', username)
-    user_data = DAO.read_from_database(Queries.GET_USER_ID_BY_USERNAME, (username, ))
-    user_id = user_data[0][0]
-    score_id = validations.validate_id(entity='score')
-
-    time = datetime.now(timezone.utc) # current utc time
-    timestamp = time.strftime('%Y-%m-%d %H:%M:%S') # yyyy-mm-dd
-
-    DAO.write_to_database(Queries.INSERT_USER_QUIZ_SCORE, (score_id, user_id, score, timestamp))
-    logger.debug('Score saved for %s: ', username)

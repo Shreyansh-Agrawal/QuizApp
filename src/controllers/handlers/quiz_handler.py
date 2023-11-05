@@ -3,7 +3,7 @@
 import logging
 from typing import List
 
-from config.display_prompts import DisplayPrompts
+from config.display_menu import DisplayMessage
 from controllers import quiz_controller as QuizController
 from utils import validations
 from utils.custom_error import DataNotFoundError, DuplicateEntryError
@@ -21,7 +21,7 @@ def display_categories(role: str, header: List):
     if not data:
         raise DataNotFoundError('No Category Added!')
 
-    print(DisplayPrompts.CATEGORIES_MSG)
+    print(DisplayMessage.CATEGORIES_MSG)
 
     if role == 'user':
         data = [(tup[0], ) for tup in data]
@@ -37,10 +37,10 @@ def display_all_questions():
 
     if not data:
         logger.debug('No Questions added')
-        print(DisplayPrompts.QUES_NOT_FOUND_MSG)
+        print(DisplayMessage.QUES_NOT_FOUND_MSG)
         return
 
-    print(DisplayPrompts.QUES_MSG)
+    print(DisplayMessage.QUES_MSG)
     pretty_print(
         data=data,
         headers=['Category', 'Question', 'Question Type', 'Answer', 'Created By']
@@ -61,7 +61,7 @@ def display_questions_by_category():
         return
 
     if not data:
-        print(DisplayPrompts.QUES_NOT_FOUND_MSG)
+        print(DisplayMessage.QUES_NOT_FOUND_MSG)
         return
 
     pretty_print(
@@ -77,10 +77,10 @@ def display_leaderboard():
 
     if not data:
         logger.debug('No Data in Leaderboard')
-        print(DisplayPrompts.QUIZ_DATA_NOT_FOUND_MSG)
+        print(DisplayMessage.QUIZ_DATA_NOT_FOUND_MSG)
         return
 
-    print(DisplayPrompts.LEADERBOARD_MSG)
+    print(DisplayMessage.LEADERBOARD_MSG)
     pretty_print(data=data, headers=['Username', 'Score', 'Time'])
 
 
@@ -98,11 +98,11 @@ def handle_start_quiz(username: str):
         print(e)
         return
 
-    print(DisplayPrompts.QUIZ_START_MSG)
+    print(DisplayMessage.QUIZ_START_MSG)
 
     user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
     if user_choice > len(categories) or user_choice-1 < 0:
-        print(DisplayPrompts.CATEGORY_NOT_FOUND_MSG)
+        print(DisplayMessage.CATEGORY_NOT_FOUND_MSG)
         return
 
     category = categories[user_choice-1][0]
@@ -111,7 +111,7 @@ def handle_start_quiz(username: str):
         if data[0] == category:
             break
     else:
-        print(DisplayPrompts.CATEGORY_NOT_FOUND_MSG)
+        print(DisplayMessage.CATEGORY_NOT_FOUND_MSG)
         return
 
     QuizController.start_quiz(category, username)

@@ -7,7 +7,7 @@
 
 import logging
 
-from config.display_prompts import DisplayPrompts
+from config.display_menu import DisplayMessage
 from utils.initialize_app import Initializer
 from utils.menu import start
 
@@ -32,4 +32,4 @@ if __name__ == '__main__':
         print(e)
 
     logger.info('Stopping Application')
-    print(DisplayPrompts.EXIT_MSG)
+    print(DisplayMessage.EXIT_MSG)

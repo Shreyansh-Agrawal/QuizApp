@@ -6,7 +6,7 @@ from typing import List, Tuple
 
 from tabulate import tabulate
 
-from config.display_prompts import DisplayPrompts
+from config.display_menu import DisplayMessage
 
 logger = logging.getLogger(__name__)
 
@@ -21,5 +21,5 @@ def pretty_print(data: List[Tuple], headers: List):
         print(tabulate(data, headers=headers, tablefmt='rounded_grid', showindex=row_id))
     except ValueError as e:
         logger.exception('tabulate error: %s', e)
-        print(DisplayPrompts.TABULATE_ERROR_MSG)
+        print(DisplayMessage.TABULATE_ERROR_MSG)
         pprint(data)

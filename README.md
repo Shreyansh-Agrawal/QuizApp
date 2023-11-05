@@ -55,9 +55,11 @@ pipenv run python .\src\app.py
 
 ```bash
 QuizApp/
+├── documents/
+│   ├── documentation.pdf
 ├── src/
 │   ├── config/
-│   │   ├── prompts.py
+│   │   ├── display_menu.py
 │   │   ├── queries.py
 │   │   ├── questions.json
 │   ├── controllers/
@@ -66,6 +68,8 @@ QuizApp/
 │   │   │   ├── menu_handler.py
 │   │   │   ├── quiz_handler.py
 │   │   │   ├── user_handler.py
+│   │   ├── helpers/
+│   │   │   ├── quiz_helper.py
 │   │   ├── auth_controller.py
 │   │   ├── quiz_controller.py
 │   │   ├── user_controller.py
@@ -86,7 +90,6 @@ QuizApp/
 │   ├── app.py
 ├── .env
 ├── .gitignore
-├── Documentation.pdf
 ├── logs.log
 ├── Pipfile
 ├── Pipfile.lock

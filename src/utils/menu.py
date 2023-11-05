@@ -2,8 +2,8 @@
 
 import logging
 
-from config import prompts
-from config.display_prompts import DisplayPrompts
+from config.display_menu import Prompts
+from config.display_menu import DisplayMessage
 from controllers.handlers import auth_handler as AuthHandler
 from controllers.handlers import menu_handler as MenuHandler
 from controllers.handlers import quiz_handler as QuizHandler
@@ -16,11 +16,11 @@ def super_admin_menu(username: str):
     '''Menu for Super Admin'''
 
     logger.info('Running Super Admin Menu')
-    print(DisplayPrompts.SUPER_ADMIN_MSG)
-    print(DisplayPrompts.USER_WELCOME_MSG.format(user=username.upper()))
+    print(DisplayMessage.SUPER_ADMIN_MSG)
+    print(DisplayMessage.USER_WELCOME_MSG.format(user=username.upper()))
 
     while True:
-        user_choice = input(prompts.SUPER_ADMIN_PROMPTS)
+        user_choice = input(Prompts.SUPER_ADMIN_PROMPTS)
 
         match user_choice:
             case '1':
@@ -32,43 +32,43 @@ def super_admin_menu(username: str):
             case 'q':
                 break
             case _:
-                print(DisplayPrompts.WRONG_INPUT_MSG)
+                print(DisplayMessage.WRONG_INPUT_MSG)
 
 
 def admin_menu(username: str, is_password_changed: int):
     '''Menu for Admin'''
 
     logger.info('Running Admin Menu')
-    print(DisplayPrompts.ADMIN_MSG)
-    print(DisplayPrompts.USER_WELCOME_MSG.format(user=username.upper()))
+    print(DisplayMessage.ADMIN_MSG)
+    print(DisplayMessage.USER_WELCOME_MSG.format(user=username.upper()))
 
     AuthHandler.handle_first_login(username, is_password_changed)
 
     while True:
-        user_choice = input(prompts.ADMIN_PROMPTS)
+        user_choice = input(Prompts.ADMIN_PROMPTS)
 
         match user_choice:
             case '1':
-                print(DisplayPrompts.MANAGE_USERS_MSG)
+                print(DisplayMessage.MANAGE_USERS_MSG)
                 MenuHandler.manage_users_menu()
             case '2':
-                print(DisplayPrompts.MANAGE_QUIZ_MSG)
+                print(DisplayMessage.MANAGE_QUIZ_MSG)
                 MenuHandler.manage_quizzes_menu(username)
             case 'q':
                 break
             case _:
-                print(DisplayPrompts.WRONG_INPUT_MSG)
+                print(DisplayMessage.WRONG_INPUT_MSG)
 
 
 def user_menu(username: str):
     '''Menu for User'''
 
     logger.info('Running User Menu')
-    print(DisplayPrompts.USER_MSG)
-    print(DisplayPrompts.USER_WELCOME_MSG.format(user=username.upper()))
+    print(DisplayMessage.USER_MSG)
+    print(DisplayMessage.USER_WELCOME_MSG.format(user=username.upper()))
 
     while True:
-        user_choice = input(prompts.USER_PROMPTS)
+        user_choice = input(Prompts.USER_PROMPTS)
 
         match user_choice:
             case '1':
@@ -80,7 +80,7 @@ def user_menu(username: str):
             case 'q':
                 break
             case _:
-                print(DisplayPrompts.WRONG_INPUT_MSG)
+                print(DisplayMessage.WRONG_INPUT_MSG)
 
 
 def assign_menu(data):
@@ -97,17 +97,17 @@ def assign_menu(data):
         case 'user':
             user_menu(username)
         case _:
-            print(DisplayPrompts.INVALID_ROLE_MSG, role)
+            print(DisplayMessage.INVALID_ROLE_MSG, role)
 
 
 def start():
     '''Menu for Login / Sign Up'''
 
     logger.info('Running start()')
-    print(DisplayPrompts.APP_WELCOME_MSG)
+    print(DisplayMessage.APP_WELCOME_MSG)
 
     while True:
-        user_choice = input(prompts.AUTH_PROMPTS)
+        user_choice = input(Prompts.AUTH_PROMPTS)
 
         match user_choice:
             case '1':
@@ -123,4 +123,4 @@ def start():
             case 'q':
                 break
             case _:
-                print(DisplayPrompts.WRONG_INPUT_MSG)
+                print(DisplayMessage.WRONG_INPUT_MSG)

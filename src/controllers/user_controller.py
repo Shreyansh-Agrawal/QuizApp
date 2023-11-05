@@ -6,7 +6,7 @@ from typing import List, Tuple
 
 from password_generator import PasswordGenerator
 
-from config.display_prompts import DisplayPrompts
+from config.display_menu import DisplayMessage
 from config.queries import Queries
 from database.database_access import DatabaseAccess as DAO
 from models.user import Admin
@@ -35,7 +35,7 @@ def create_admin() -> None:
     '''Create a new Admin Account'''
 
     logger.debug('Creating Admin')
-    print(DisplayPrompts.CREATE_ADMIN_MSG)
+    print(DisplayMessage.CREATE_ADMIN_MSG)
 
     admin_data = {}
     admin_data['name'] = validations.validate_name('Enter admin name: ')
@@ -54,7 +54,7 @@ def create_admin() -> None:
         raise LoginError('\nUser already exists! Try with different credentials...') from e
 
     logger.debug('Admin created')
-    print(DisplayPrompts.CREATE_ADMIN_SUCCESS_MSG)
+    print(DisplayMessage.CREATE_ADMIN_SUCCESS_MSG)
 
 
 def delete_user_by_email(role: str):
@@ -65,7 +65,7 @@ def delete_user_by_email(role: str):
         raise DataNotFoundError(f'No {role} Currently!')
 
     logger.debug('Deleting %s', {role.title()})
-    print(DisplayPrompts.DELETE_USER_MSG.format(user=role.title()))
+    print(DisplayMessage.DELETE_USER_MSG.format(user=role.title()))
 
     pretty_print(data=data, headers=['Username', 'Name', 'Email', 'Registration Date'])
 
@@ -75,10 +75,10 @@ def delete_user_by_email(role: str):
         if data[2] == email:
             break
     else:
-        print(DisplayPrompts.DELETE_USER_FAIL_MSG.format(user=role.title()))
+        print(DisplayMessage.DELETE_USER_FAIL_MSG.format(user=role.title()))
         return
 
     DAO.write_to_database(Queries.DELETE_USER_BY_EMAIL, (email, ))
 
     logger.debug('User deleted')
-    print(DisplayPrompts.DELETE_USER_SUCCESS_MSG.format(user=role.title(), email=email))
+    print(DisplayMessage.DELETE_USER_SUCCESS_MSG.format(user=role.title(), email=email))

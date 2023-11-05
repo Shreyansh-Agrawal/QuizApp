@@ -2,8 +2,8 @@
 
 import logging
 
-from config import prompts
-from config.display_prompts import DisplayPrompts
+from config.display_menu import Prompts
+from config.display_menu import DisplayMessage
 from controllers.handlers import quiz_handler as QuizHandler
 from controllers.handlers import user_handler as UserHandler
 from utils import json_to_db_loader
@@ -17,7 +17,7 @@ def manage_users_menu():
 
     logger.info('Running Admin: Manage Users Menu')
     while True:
-        user_sub_choice = input(prompts.ADMIN_MANAGE_USER_PROMPTS)
+        user_sub_choice = input(Prompts.ADMIN_MANAGE_USER_PROMPTS)
 
         match user_sub_choice:
             case '1':
@@ -27,7 +27,7 @@ def manage_users_menu():
             case 'q':
                 break
             case _:
-                print(DisplayPrompts.WRONG_INPUT_MSG)
+                print(DisplayMessage.WRONG_INPUT_MSG)
 
 
 def manage_categories_menu(username: str):
@@ -35,7 +35,7 @@ def manage_categories_menu(username: str):
 
     logger.info('Running Admin: Manage Categories Menu')
     while True:
-        user_sub_choice = input(prompts.ADMIN_MANAGE_CATEGORIES_PROMPTS)
+        user_sub_choice = input(Prompts.ADMIN_MANAGE_CATEGORIES_PROMPTS)
 
         match user_sub_choice:
             case '1':
@@ -54,7 +54,7 @@ def manage_categories_menu(username: str):
             case 'q':
                 break
             case _:
-                print(DisplayPrompts.WRONG_INPUT_MSG)
+                print(DisplayMessage.WRONG_INPUT_MSG)
 
 
 def manage_questions_menu(username: str):
@@ -62,7 +62,7 @@ def manage_questions_menu(username: str):
 
     logger.info('Running Admin: Manage Questions Menu')
     while True:
-        user_sub_choice = input(prompts.ADMIN_MANAGE_QUESTIONS_PROMPTS)
+        user_sub_choice = input(Prompts.ADMIN_MANAGE_QUESTIONS_PROMPTS)
 
         match user_sub_choice:
             case '1':
@@ -73,11 +73,11 @@ def manage_questions_menu(username: str):
                 QuizHandler.handle_create_question(created_by=username)
             case '4':
                 json_to_db_loader.load_questions_from_json(created_by_admin_username=username)
-                print(DisplayPrompts.LOAD_QUES_MSG)
+                print(DisplayMessage.LOAD_QUES_MSG)
             case 'q':
                 break
             case _:
-                print(DisplayPrompts.WRONG_INPUT_MSG)
+                print(DisplayMessage.WRONG_INPUT_MSG)
 
 
 def manage_quizzes_menu(username: str):
@@ -85,16 +85,16 @@ def manage_quizzes_menu(username: str):
 
     logger.info('Running Admin: Manage Quizzes Menu')
     while True:
-        user_sub_choice = input(prompts.ADMIN_MANAGE_QUIZZES_PROMPTS)
+        user_sub_choice = input(Prompts.ADMIN_MANAGE_QUIZZES_PROMPTS)
 
         match user_sub_choice:
             case '1':
-                print(DisplayPrompts.MANAGE_CATEGORIES_MSG)
+                print(DisplayMessage.MANAGE_CATEGORIES_MSG)
                 manage_categories_menu(username)
             case '2':
-                print(DisplayPrompts.MANAGE_QUES_MSG)
+                print(DisplayMessage.MANAGE_QUES_MSG)
                 manage_questions_menu(username)
             case 'q':
                 break
             case _:
-                print(DisplayPrompts.WRONG_INPUT_MSG)
+                print(DisplayMessage.WRONG_INPUT_MSG)
