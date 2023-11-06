@@ -4,6 +4,7 @@ import logging
 from typing import List
 
 from config.display_menu import DisplayMessage
+from config.regex_patterns import RegexPattern
 from controllers import quiz_controller as QuizController
 from utils import validations
 from utils.custom_error import DataNotFoundError, DuplicateEntryError
@@ -100,7 +101,11 @@ def handle_start_quiz(username: str):
 
     print(DisplayMessage.QUIZ_START_MSG)
 
-    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    user_choice = validations.regex_validator(
+        prompt='Choose a Category: ',
+        regex_pattern=RegexPattern.NUMERIC_PATTERN,
+        error_msg='Select a number from above options!'
+    )
     if user_choice > len(categories) or user_choice-1 < 0:
         print(DisplayMessage.CATEGORY_NOT_FOUND_MSG)
         return

@@ -716,6 +716,445 @@
         },
         "other_options": []
       }
+    },
+    {
+      "question_id": "Q101",
+      "question_text": "Which continent is known as the 'Land Down Under'?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A201",
+          "text": "Australia"
+        },
+        "other_options": [
+          {
+            "option_id": "A202",
+            "text": "Africa"
+          },
+          {
+            "option_id": "A203",
+            "text": "North America"
+          },
+          {
+            "option_id": "A204",
+            "text": "Asia"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q102",
+      "question_text": "Which river is the longest in the world?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A205",
+          "text": "Nile"
+        },
+        "other_options": [
+          {
+            "option_id": "A206",
+            "text": "Amazon"
+          },
+          {
+            "option_id": "A207",
+            "text": "Mississippi"
+          },
+          {
+            "option_id": "A208",
+            "text": "Yangtze"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q103",
+      "question_text": "Which ocean is the largest on Earth?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A209",
+          "text": "Pacific Ocean"
+        },
+        "other_options": [
+          {
+            "option_id": "A210",
+            "text": "Atlantic Ocean"
+          },
+          {
+            "option_id": "A211",
+            "text": "Indian Ocean"
+          },
+          {
+            "option_id": "A212",
+            "text": "Arctic Ocean"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q104",
+      "question_text": "Which mountain range is considered the 'Roof of the World'?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A213",
+          "text": "Himalayas"
+        },
+        "other_options": [
+          {
+            "option_id": "A214",
+            "text": "Andes"
+          },
+          {
+            "option_id": "A215",
+            "text": "Rocky Mountains"
+          },
+          {
+            "option_id": "A216",
+            "text": "Alps"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q105",
+      "question_text": "Which desert is the largest hot desert in the world?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A217",
+          "text": "Sahara Desert"
+        },
+        "other_options": [
+          {
+            "option_id": "A218",
+            "text": "Gobi Desert"
+          },
+          {
+            "option_id": "A219",
+            "text": "Kalahari Desert"
+          },
+          {
+            "option_id": "A220",
+            "text": "Atacama Desert"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q106",
+      "question_text": "Which country is known as the 'Land of the Rising Sun'?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A221",
+          "text": "Japan"
+        },
+        "other_options": [
+          {
+            "option_id": "A222",
+            "text": "China"
+          },
+          {
+            "option_id": "A223",
+            "text": "South Korea"
+          },
+          {
+            "option_id": "A224",
+            "text": "Vietnam"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q107",
+      "question_text": "Which country is known as the 'Land of a Thousand Lakes'?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A225",
+          "text": "Finland"
+        },
+        "other_options": [
+          {
+            "option_id": "A226",
+            "text": "Canada"
+          },
+          {
+            "option_id": "A227",
+            "text": "Sweden"
+          },
+          {
+            "option_id": "A228",
+            "text": "Norway"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q108",
+      "question_text": "Which strait separates Europe from Asia?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A229",
+          "text": "Bosporus Strait"
+        },
+        "other_options": [
+          {
+            "option_id": "A230",
+            "text": "Strait of Gibraltar"
+          },
+          {
+            "option_id": "A231",
+            "text": "Hormuz Strait"
+          },
+          {
+            "option_id": "A232",
+            "text": "Malacca Strait"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q109",
+      "question_text": "Which country is the largest by land area?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A233",
+          "text": "Russia"
+        },
+        "other_options": [
+          {
+            "option_id": "A234",
+            "text": "Canada"
+          },
+          {
+            "option_id": "A235",
+            "text": "China"
+          },
+          {
+            "option_id": "A236",
+            "text": "United States"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q110",
+      "question_text": "Which river is often called the 'Cradle of Civilization'?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A237",
+          "text": "Tigris and Euphrates"
+        },
+        "other_options": [
+          {
+            "option_id": "A238",
+            "text": "Amazon"
+          },
+          {
+            "option_id": "A239",
+            "text": "Nile"
+          },
+          {
+            "option_id": "A240",
+            "text": "Yangtze"
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "Q111",
+      "question_text": "Which continent is home to the Amazon Rainforest, known for its biodiversity?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A241",
+          "text": "South America"
+        },
+        "other_options": [
+          {
+            "option_id": "A242",
+            "text": "Africa"
+          },
+          {
+            "option_id": "A243",
+            "text": "Asia"
+          },
+          {
+            "option_id": "A244",
+            "text": "Australia"
+          }
+        ]
+      }
+    },
+
+    {
+      "question_id": "Q112",
+      "question_text": "Which ocean is located between Europe and Africa to the east and the Americas to the west?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A245",
+          "text": "Atlantic Ocean"
+        },
+        "other_options": [
+          {
+            "option_id": "A246",
+            "text": "Indian Ocean"
+          },
+          {
+            "option_id": "A247",
+            "text": "Pacific Ocean"
+          },
+          {
+            "option_id": "A248",
+            "text": "Arctic Ocean"
+          }
+        ]
+      }
+    },
+
+    {
+      "question_id": "Q113",
+      "question_text": "Which African country is known as the 'Pearl of Africa'?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A249",
+          "text": "Uganda"
+        },
+        "other_options": [
+          {
+            "option_id": "A250",
+            "text": "Kenya"
+          },
+          {
+            "option_id": "A251",
+            "text": "Tanzania"
+          },
+          {
+            "option_id": "A252",
+            "text": "Rwanda"
+          }
+        ]
+      }
+    },
+
+    {
+      "question_id": "Q114",
+      "question_text": "Which strait separates Russia from Alaska and connects the Arctic Ocean and the Bering Sea?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A253",
+          "text": "Bering Strait"
+        },
+        "other_options": [
+          {
+            "option_id": "A254",
+            "text": "Hormuz Strait"
+          },
+          {
+            "option_id": "A255",
+            "text": "Gibraltar Strait"
+          },
+          {
+            "option_id": "A256",
+            "text": "Malacca Strait"
+          }
+        ]
+      }
+    },
+
+    {
+      "question_id": "Q115",
+      "question_text": "Which African country is located at the southernmost tip of the continent?",
+      "question_type": "mcq",
+      "category_id": "C101",
+      "category": "Geography",
+      "admin_id": "A001",
+      "admin_username": "geonerd",
+      "options": {
+        "answer": {
+          "option_id": "A257",
+          "text": "South Africa"
+        },
+        "other_options": [
+          {
+            "option_id": "A258",
+            "text": "Egypt"
+          },
+          {
+            "option_id": "A259",
+            "text": "Nigeria"
+          },
+          {
+            "option_id": "A260",
+            "text": "Morocco"
+          }
+        ]
+      }
     }
   ]
 }

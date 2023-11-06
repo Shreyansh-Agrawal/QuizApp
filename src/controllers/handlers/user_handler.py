@@ -30,7 +30,7 @@ def display_users_by_role(role: str):
 def display_user_score(username: str):
     '''Display past scores of user'''
 
-    logger.debug('Display score for %s: ', username)
+    logger.debug('Display score for: %s', username)
     data = UserController.get_user_scores_by_username(username)
 
     if not data:

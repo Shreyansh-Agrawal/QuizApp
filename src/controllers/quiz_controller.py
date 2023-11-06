@@ -2,15 +2,14 @@
 
 import logging
 import sqlite3
-from datetime import datetime, timezone
-from typing import Dict, List, Tuple
+from typing import List, Tuple
 
-from config.display_menu import Prompts
 from config.display_menu import DisplayMessage
 from config.queries import Queries
+from config.regex_patterns import RegexPattern
 from controllers.helpers import quiz_helper as QuizHelper
 from database.database_access import DatabaseAccess as DAO
-from models.quiz import Category, Option, Question
+from models.quiz import Category
 from utils import validations
 from utils.custom_error import DataNotFoundError, DuplicateEntryError
 
@@ -38,7 +37,11 @@ def get_questions_by_category() -> List[Tuple]:
 
     logger.debug('Get Questions by Category')
 
-    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    user_choice = validations.regex_validator(
+        prompt='Choose a Category: ',
+        regex_pattern=RegexPattern.NUMERIC_PATTERN,
+        error_msg='Select a number from above options!'
+    )
     if user_choice > len(categories) or user_choice-1 < 0:
         raise DataNotFoundError('No such Category! Please choose from above!!')
 
@@ -76,7 +79,11 @@ def create_category(username: str):
     category_data = {}
     category_data['admin_id'] = admin_id
     category_data['admin_username'] = username
-    category_data['category_name'] = validations.validate_name(prompt='Enter New Category Name: ')
+    category_data['category_name'] = validations.regex_validator(
+        prompt='Enter New Category Name: ',
+        regex_pattern=RegexPattern.NAME_PATTERN,
+        error_msg='Invalid name!'
+    )
 
     category = Category(category_data)
 
@@ -97,7 +104,11 @@ def create_question(username: str):
     logger.debug('Creating Question')
     print(DisplayMessage.CREATE_QUES_MSG)
 
-    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    user_choice = validations.regex_validator(
+        prompt='Choose a Category: ',
+        regex_pattern=RegexPattern.NUMERIC_PATTERN,
+        error_msg='Select a number from above options!'
+    )
     if user_choice > len(categories) or user_choice-1 < 0:
         raise DataNotFoundError('No such Category! Please choose from above!!')
 
@@ -111,9 +122,11 @@ def create_question(username: str):
     question_data['category_id'] = category_id[0][0]
     question_data['admin_id'] = admin_id
     question_data['admin_username'] = username
-    question_data['question_text'] = validations.validate_question_text(
-                                                    prompt='Enter Question Text: '
-                                                )
+    question_data['question_text'] = validations.regex_validator(
+        prompt='Enter Question Text: ',
+        regex_pattern=RegexPattern.QUES_TEXT_PATTERN,
+        error_msg='Invalid question!'
+    )
 
     question = QuizHelper.create_option(question_data)
 
@@ -134,12 +147,22 @@ def update_category_by_name():
     logger.debug('Updating a Category')
     print(DisplayMessage.UPDATE_CATEGORY_MSG)
 
-    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    user_choice = validations.regex_validator(
+        prompt='Choose a Category: ',
+        regex_pattern=RegexPattern.NUMERIC_PATTERN,
+        error_msg='Select a number from above options!'
+    )
+
     if user_choice > len(categories) or user_choice-1 < 0:
         raise DataNotFoundError('No such Category! Please choose from above!!')
 
     category_name = categories[user_choice-1][0]
-    new_category_name = validations.validate_name('Enter updated category name: ')
+    new_category_name = validations.regex_validator(
+        prompt='Enter updated category name: ',
+        regex_pattern=RegexPattern.NAME_PATTERN,
+        error_msg='Invalid name!'
+    )
+
     DAO.write_to_database(Queries.UPDATE_CATEGORY_BY_NAME, (new_category_name, category_name))
 
     logger.debug('Category %s updated to %s', category_name, new_category_name)
@@ -154,7 +177,12 @@ def delete_category_by_name():
     logger.debug('Deleting a Category')
     print(DisplayMessage.DELETE_CATEGORY_MSG)
 
-    user_choice = validations.validate_numeric_input(prompt='Choose a Category: ')
+    user_choice = validations.regex_validator(
+        prompt='Choose a Category: ',
+        regex_pattern=RegexPattern.NUMERIC_PATTERN,
+        error_msg='Select a number from above options!'
+    )
+
     if user_choice > len(categories) or user_choice-1 < 0:
         raise DataNotFoundError('No such Category! Please choose from above!!')
 
@@ -177,7 +205,7 @@ def delete_category_by_name():
 def start_quiz(category: str, username: str):
     '''Start a New Quiz'''
 
-    logger.debug('Stating Quiz for %s: ', username)
+    logger.debug('Stating Quiz for: %s', username)
     data = get_random_questions_by_category(category)
     if len(data) < 10:
         raise DataNotFoundError('Not enough questions! Please try some other category...')
@@ -199,4 +227,4 @@ def start_quiz(category: str, username: str):
 
     print(DisplayMessage.DISPLAY_SCORE_MSG.format(score=score))
     QuizHelper.save_quiz_score(username, score)
-    logger.debug('Quiz Completed for %s: ', username)
+    logger.debug('Quiz Completed for: %s', username)

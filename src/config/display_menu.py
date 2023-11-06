@@ -3,11 +3,11 @@
 
 class DisplayMessage:
     '''Contains all the print messages as class variables'''
-    
+
     APP_WELCOME_MSG = '\n---------WELCOME TO QUIZ APP---------\n'
     EXIT_MSG = '\n---------END OF APP---------\n'
     AUTH_INVALIDATE_MSG = '\nInvalid Credentials! Please Try Again or Sign Up...'
-    CONFIRM_PSWD_FAIL_MSG = 'Password does not match. Please re-enter your password!\n'
+    CONFIRM_PSWD_FAIL_MSG = '\nPassword does not match. Please re-enter your password!\n'
     LOGIN_SUCCESS_MSG = '\nSuccessfully Logged In!\n'
     SIGNUP_SUCCESS_MSG = '\nAccount created successfully!\n'
     DISPLAY_QUES_IN_A_CATEGORY_MSG = '\n-----Questions in {name}-----\n'
@@ -22,7 +22,7 @@ class DisplayMessage:
     DELETE_CATEGORY_WARNING_MSG = '\nWARNING: All the questions in {name} will be deleted as well'
     DELETE_CATEGORY_SUCCESS_MSG = '\nCategory: {name} deleted!\n'
     DISPLAY_SCORE_MSG = '\nYou Scored: {score}'
-    TF_OPTION_MSG = '1. True\n2. False'
+    TF_OPTION_MSG = '   1. True\n   2. False'
     MCQ_WRONG_OPTION_MSG = 'Please enter a number from 1 to 4: '
     TF_WRONG_OPTION_MSG = 'Please enter either 1 or 2...'
     CREATE_ADMIN_MSG = '\n-----Create a new Admin-----\n'

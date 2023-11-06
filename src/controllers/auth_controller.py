@@ -7,6 +7,7 @@ from typing import Tuple
 
 from config.display_menu import DisplayMessage
 from config.queries import Queries
+from config.regex_patterns import RegexPattern
 from database.database_access import DatabaseAccess as DAO
 from models.user import User
 from utils import validations
@@ -21,7 +22,11 @@ def login() -> Tuple:
     logger.debug('Login Initiated')
 
     # validating credentials even during login to prevent any Injections
-    username = validations.validate_username(prompt='Enter your username: ')
+    username = validations.regex_validator(
+        prompt='Enter your username: ',
+        regex_pattern=RegexPattern.USERNAME_PATTERN,
+        error_msg='Invalid username!'
+    )
     password = validations.validate_password(prompt='Enter your password: ')
     hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
@@ -52,9 +57,21 @@ def signup() -> str:
     logger.debug('Signup Initiated')
 
     user_data = {}
-    user_data['name'] = validations.validate_name(prompt='Enter your name: ')
-    user_data['email'] = validations.validate_email(prompt='Enter your email: ')
-    user_data['username'] = validations.validate_username(prompt='Create your username: ')
+    user_data['name'] = validations.regex_validator(
+        prompt='Enter your name: ',
+        regex_pattern=RegexPattern.NAME_PATTERN,
+        error_msg='Invalid name!'
+    )
+    user_data['email'] = validations.regex_validator(
+        prompt='Enter your email: ',
+        regex_pattern=RegexPattern.EMAIL_PATTERN,
+        error_msg='Invalid email!'
+    )
+    user_data['username'] = validations.regex_validator(
+        prompt='Create your username: ',
+        regex_pattern=RegexPattern.USERNAME_PATTERN,
+        error_msg='Invalid username!'
+    )
     password = validations.validate_password(prompt='Create your password: ')
     confirm_password = ''
 

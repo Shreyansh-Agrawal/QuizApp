@@ -8,6 +8,7 @@ from password_generator import PasswordGenerator
 
 from config.display_menu import DisplayMessage
 from config.queries import Queries
+from config.regex_patterns import RegexPattern
 from database.database_access import DatabaseAccess as DAO
 from models.user import Admin
 from utils import validations
@@ -38,9 +39,21 @@ def create_admin() -> None:
     print(DisplayMessage.CREATE_ADMIN_MSG)
 
     admin_data = {}
-    admin_data['name'] = validations.validate_name('Enter admin name: ')
-    admin_data['email'] = validations.validate_email('Enter admin email: ')
-    admin_data['username'] = validations.validate_username('Create admin username: ')
+    admin_data['name'] = validations.regex_validator(
+        prompt='Enter admin name: ',
+        regex_pattern=RegexPattern.NAME_PATTERN,
+        error_msg='Invalid name!'
+    )
+    admin_data['email'] = validations.regex_validator(
+        prompt='Enter admin email: ',
+        regex_pattern=RegexPattern.EMAIL_PATTERN,
+        error_msg='Invalid email!'
+    )
+    admin_data['username'] = validations.regex_validator(
+        prompt='Create admin username: ',
+        regex_pattern=RegexPattern.USERNAME_PATTERN,
+        error_msg='Invalid username!'
+    )
     pwo = PasswordGenerator()
     pwo.excludeschars = "!@#$%^&*()./?'"
     password = pwo.non_duplicate_password(7)
@@ -69,7 +82,11 @@ def delete_user_by_email(role: str):
 
     pretty_print(data=data, headers=['Username', 'Name', 'Email', 'Registration Date'])
 
-    email = validations.validate_email(prompt=f'\nEnter {role.title()} Email: ')
+    email = validations.regex_validator(
+        prompt=f'\nEnter {role.title()} Email: ',
+        regex_pattern=RegexPattern.EMAIL_PATTERN,
+        error_msg='Invalid email!'
+    )
 
     for data in data:
         if data[2] == email:
