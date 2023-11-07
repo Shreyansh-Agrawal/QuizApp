@@ -6,7 +6,7 @@ from typing import List, Tuple
 
 from password_generator import PasswordGenerator
 
-from config.display_menu import DisplayMessage
+from config.display_menu import DisplayMessage, Headers
 from config.queries import Queries
 from config.regex_patterns import RegexPattern
 from database.database_access import DatabaseAccess as DAO
@@ -18,7 +18,7 @@ from utils.pretty_print import pretty_print
 logger = logging.getLogger(__name__)
 
 
-def get_user_scores_by_username(username: str):
+def get_user_scores_by_username(username: str) -> List[Tuple]:
     '''Return user's scores'''
 
     data = DAO.read_from_database(Queries.GET_USER_SCORES_BY_USERNAME, (username, ))
@@ -42,17 +42,17 @@ def create_admin() -> None:
     admin_data['name'] = validations.regex_validator(
         prompt='Enter admin name: ',
         regex_pattern=RegexPattern.NAME_PATTERN,
-        error_msg='Invalid name!'
+        error_msg=DisplayMessage.INVALID_TEXT.format(Headers.NAME)
     )
     admin_data['email'] = validations.regex_validator(
         prompt='Enter admin email: ',
         regex_pattern=RegexPattern.EMAIL_PATTERN,
-        error_msg='Invalid email!'
+        error_msg=DisplayMessage.INVALID_TEXT.format(Headers.EMAIL)
     )
     admin_data['username'] = validations.regex_validator(
         prompt='Create admin username: ',
         regex_pattern=RegexPattern.USERNAME_PATTERN,
-        error_msg='Invalid username!'
+        error_msg=DisplayMessage.INVALID_TEXT.format(Headers.USERNAME)
     )
     pwo = PasswordGenerator()
     pwo.excludeschars = "!@#$%^&*()./?'"
@@ -70,7 +70,7 @@ def create_admin() -> None:
     print(DisplayMessage.CREATE_ADMIN_SUCCESS_MSG)
 
 
-def delete_user_by_email(role: str):
+def delete_user_by_email(role: str) -> None:
     '''Delete a User'''
 
     data = get_all_users_by_role(role)
@@ -80,12 +80,12 @@ def delete_user_by_email(role: str):
     logger.debug('Deleting %s', {role.title()})
     print(DisplayMessage.DELETE_USER_MSG.format(user=role.title()))
 
-    pretty_print(data=data, headers=['Username', 'Name', 'Email', 'Registration Date'])
+    pretty_print(data=data, headers=(Headers.USERNAME, Headers.NAME, Headers.EMAIL, Headers.REG_DATE))
 
     email = validations.regex_validator(
         prompt=f'\nEnter {role.title()} Email: ',
         regex_pattern=RegexPattern.EMAIL_PATTERN,
-        error_msg='Invalid email!'
+        error_msg=DisplayMessage.INVALID_TEXT.format(Headers.EMAIL)
     )
 
     for data in data:

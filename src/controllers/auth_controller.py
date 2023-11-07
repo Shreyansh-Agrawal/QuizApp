@@ -5,7 +5,7 @@ import logging
 import sqlite3
 from typing import Tuple
 
-from config.display_menu import DisplayMessage
+from config.display_menu import DisplayMessage, Headers
 from config.queries import Queries
 from config.regex_patterns import RegexPattern
 from database.database_access import DatabaseAccess as DAO
@@ -25,7 +25,7 @@ def login() -> Tuple:
     username = validations.regex_validator(
         prompt='Enter your username: ',
         regex_pattern=RegexPattern.USERNAME_PATTERN,
-        error_msg='Invalid username!'
+        error_msg=DisplayMessage.INVALID_TEXT.format(Headers.USERNAME)
     )
     password = validations.validate_password(prompt='Enter your password: ')
     hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
@@ -60,17 +60,17 @@ def signup() -> str:
     user_data['name'] = validations.regex_validator(
         prompt='Enter your name: ',
         regex_pattern=RegexPattern.NAME_PATTERN,
-        error_msg='Invalid name!'
+        error_msg=DisplayMessage.INVALID_TEXT.format(Headers.NAME)
     )
     user_data['email'] = validations.regex_validator(
         prompt='Enter your email: ',
         regex_pattern=RegexPattern.EMAIL_PATTERN,
-        error_msg='Invalid email!'
+        error_msg=DisplayMessage.INVALID_TEXT.format(Headers.EMAIL)
     )
     user_data['username'] = validations.regex_validator(
         prompt='Create your username: ',
         regex_pattern=RegexPattern.USERNAME_PATTERN,
-        error_msg='Invalid username!'
+        error_msg=DisplayMessage.INVALID_TEXT.format(Headers.USERNAME)
     )
     password = validations.validate_password(prompt='Create your password: ')
     confirm_password = ''

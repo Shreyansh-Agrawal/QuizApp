@@ -2,9 +2,9 @@
 
 import hashlib
 import logging
+from typing import List, Tuple
 
-from config.display_menu import Prompts
-from config.display_menu import DisplayMessage
+from config.display_menu import DisplayMessage, Prompts
 from config.queries import Queries
 from controllers import auth_controller as Authenticate
 from database.database_access import DatabaseAccess as DAO
@@ -14,7 +14,7 @@ from utils.custom_error import LoginError
 logger = logging.getLogger(__name__)
 
 
-def handle_login():
+def handle_login() -> List[Tuple]:
     '''Handles Login'''
 
     logger.debug('Login started...')
@@ -38,7 +38,7 @@ def handle_login():
     return data
 
 
-def handle_signup():
+def handle_signup() -> str:
     '''Handles Signup'''
 
     logger.debug('SignUp started...')
@@ -56,7 +56,7 @@ def handle_signup():
     return username
 
 
-def handle_first_login(username: str, is_password_changed: int):
+def handle_first_login(username: str, is_password_changed: int) -> None:
     '''Checks Admin's First Login'''
 
     if not is_password_changed:

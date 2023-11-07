@@ -24,7 +24,7 @@ class Initializer:
     '''Class containing methods to create super admin'''
 
     @staticmethod
-    def create_super_admin():
+    def create_super_admin() -> None:
         '''method to create a super admin '''
 
         logger.debug('Creating Super Admin')
@@ -48,7 +48,7 @@ class Initializer:
         print(DisplayMessage.CREATE_SUPER_ADMIN_SUCCESS_MSG)
 
     @staticmethod
-    def initialize_app():
+    def initialize_app() -> None:
         '''method to initialize application'''
 
         InitializeDatabase.initialize_database()
@@ -66,7 +66,7 @@ class InitializeDatabase:
     '''Class to create tables for database'''
 
     @staticmethod
-    def initialize_database():
+    def initialize_database() -> None:
         '''method to create tables in database'''
 
         DAO.write_to_database(InitializationQueries.CREATE_USERS_TABLE)

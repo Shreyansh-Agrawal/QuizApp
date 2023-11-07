@@ -63,6 +63,9 @@ class DisplayMessage:
     INVALID_ROLE_MSG = 'Invalid Role!: '
     TABULATE_ERROR_MSG = 'Could not pretty print...\n'
     TRY_AGAIN_MSG = '\n{error} Please try again...\n'
+    INVALID_TEXT = 'Invalid {}'
+    INVALID_CHOICE = 'Select a number from above options!'
+    INVALID_PASSWORD = 'Invalid password! Length cannot be less than 6!'
 
 
 class Prompts:
@@ -155,3 +158,21 @@ Enter your choice: '''
 Select Question Type: '''
 
     ATTEMPT_LIMIT = 3
+
+
+class Headers:
+    '''Contains all the headings as class variables'''
+    
+    USERNAME='Username'
+    NAME='Name'
+    EMAIL='Email'
+    REG_DATE='Registration Date'
+    CATEGORY='Categories'
+    QUES='Question'
+    QUES_TYPE='Question Type'
+    ANS='Answer'
+    CREATED_BY='Created By'
+    SCORE='Score'
+    TIME='Time'
+    ID='ID'
+    OPTION='Option'

@@ -8,7 +8,7 @@ from database.database_access import DatabaseAccess as DAO
 from utils import validations
 
 
-def load_questions_from_json(created_by_admin_username: str):
+def load_questions_from_json(created_by_admin_username: str) -> None:
     '''Function to load data to db from json'''
 
     admin_data = DAO.read_from_database(
