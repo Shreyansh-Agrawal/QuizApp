@@ -3,7 +3,7 @@
 import logging
 
 from config.display_menu import Prompts
-from config.display_menu import DisplayMessage
+from config.display_menu import DisplayMessage, Headers
 from controllers.handlers import quiz_handler as QuizHandler
 from controllers.handlers import user_handler as UserHandler
 from utils import json_to_db_loader
@@ -12,7 +12,7 @@ from utils.custom_error import DataNotFoundError
 logger = logging.getLogger(__name__)
 
 
-def manage_users_menu():
+def manage_users_menu() -> None:
     '''Admin: manage users menu'''
 
     logger.info('Running Admin: Manage Users Menu')
@@ -30,7 +30,7 @@ def manage_users_menu():
                 print(DisplayMessage.WRONG_INPUT_MSG)
 
 
-def manage_categories_menu(username: str):
+def manage_categories_menu(username: str) -> None:
     '''Admin: manage categories menu'''
 
     logger.info('Running Admin: Manage Categories Menu')
@@ -40,7 +40,7 @@ def manage_categories_menu(username: str):
         match user_sub_choice:
             case '1':
                 try:
-                    QuizHandler.display_categories(role='admin', header=['Category', 'Created By'])
+                    QuizHandler.display_categories(role='admin', header=(Headers.CATEGORY, Headers.CREATED_BY))
                 except DataNotFoundError as e:
                     logger.exception(e)
                     print(e)
@@ -57,7 +57,7 @@ def manage_categories_menu(username: str):
                 print(DisplayMessage.WRONG_INPUT_MSG)
 
 
-def manage_questions_menu(username: str):
+def manage_questions_menu(username: str) -> None:
     '''Admin: manage questions menu'''
 
     logger.info('Running Admin: Manage Questions Menu')
@@ -80,7 +80,7 @@ def manage_questions_menu(username: str):
                 print(DisplayMessage.WRONG_INPUT_MSG)
 
 
-def manage_quizzes_menu(username: str):
+def manage_quizzes_menu(username: str) -> None:
     '''Admin: manage quizzes menu'''
 
     logger.info('Running Admin: Manage Quizzes Menu')

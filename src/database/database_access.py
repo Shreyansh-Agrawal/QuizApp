@@ -13,6 +13,7 @@ class DatabaseAccess:
         '''Reads data from database'''
 
         with DatabaseConnection('src\\database\\data.db') as connection:
+            print(connection)
             cursor = connection.cursor()
             if not data:
                 cursor.execute(query)
@@ -26,6 +27,7 @@ class DatabaseAccess:
         ''' CREATE TABLE / Add / Update / Delete data from database'''
 
         with DatabaseConnection('src\\database\\data.db') as connection:
+            print(connection)
             cursor = connection.cursor()
             cursor.execute(InitializationQueries.ENABLE_FOREIGN_KEYS)
             if not data:

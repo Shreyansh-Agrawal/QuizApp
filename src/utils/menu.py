@@ -12,12 +12,12 @@ from controllers.handlers import user_handler as UserHandler
 logger = logging.getLogger(__name__)
 
 
-def super_admin_menu(username: str):
+def super_admin_menu(username: str) -> None:
     '''Menu for Super Admin'''
 
     logger.info('Running Super Admin Menu')
     print(DisplayMessage.SUPER_ADMIN_MSG)
-    print(DisplayMessage.USER_WELCOME_MSG.format(user=username.upper()))
+    print(DisplayMessage.USER_WELCOME_MSG.format(user=username.lower()))
 
     while True:
         user_choice = input(Prompts.SUPER_ADMIN_PROMPTS)
@@ -35,12 +35,12 @@ def super_admin_menu(username: str):
                 print(DisplayMessage.WRONG_INPUT_MSG)
 
 
-def admin_menu(username: str, is_password_changed: int):
+def admin_menu(username: str, is_password_changed: int) -> None:
     '''Menu for Admin'''
 
     logger.info('Running Admin Menu')
     print(DisplayMessage.ADMIN_MSG)
-    print(DisplayMessage.USER_WELCOME_MSG.format(user=username.upper()))
+    print(DisplayMessage.USER_WELCOME_MSG.format(user=username.lower()))
 
     AuthHandler.handle_first_login(username, is_password_changed)
 
@@ -60,12 +60,12 @@ def admin_menu(username: str, is_password_changed: int):
                 print(DisplayMessage.WRONG_INPUT_MSG)
 
 
-def user_menu(username: str):
+def user_menu(username: str) -> None:
     '''Menu for User'''
 
     logger.info('Running User Menu')
     print(DisplayMessage.USER_MSG)
-    print(DisplayMessage.USER_WELCOME_MSG.format(user=username.upper()))
+    print(DisplayMessage.USER_WELCOME_MSG.format(user=username.lower()))
 
     while True:
         user_choice = input(Prompts.USER_PROMPTS)
@@ -83,7 +83,7 @@ def user_menu(username: str):
                 print(DisplayMessage.WRONG_INPUT_MSG)
 
 
-def assign_menu(data):
+def assign_menu(data) -> None:
     '''Assign menu according to the role'''
 
     logger.info('Assigning menu according to the role')
@@ -100,7 +100,7 @@ def assign_menu(data):
             print(DisplayMessage.INVALID_ROLE_MSG, role)
 
 
-def start():
+def start() -> None:
     '''Menu for Login / Sign Up'''
 
     logger.info('Running start()')

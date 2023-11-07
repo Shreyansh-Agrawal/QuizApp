@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from typing import Dict, List, Tuple
 
 from config.display_menu import Prompts
-from config.display_menu import DisplayMessage
+from config.display_menu import DisplayMessage, Headers
 from config.queries import Queries
 from config.regex_patterns import RegexPattern
 from database.database_access import DatabaseAccess as DAO
@@ -15,7 +15,7 @@ from utils import validations
 logger = logging.getLogger(__name__)
 
 
-def create_option(question_data: Dict):
+def create_option(question_data: Dict) -> Question:
     '''Create options, returns a question object'''
 
     while True:
@@ -43,7 +43,7 @@ def create_option(question_data: Dict):
             option_data['option_text'] = validations.regex_validator(
                 prompt='Enter Answer: ',
                 regex_pattern=RegexPattern.OPTION_TEXT_PATTERN,
-                error_msg='Invalid option!'
+                error_msg=DisplayMessage.INVALID_TEXT.format(Headers.OPTION)
             )
             option_data['is_correct'] = 1
             option = Option(option_data)
@@ -54,7 +54,7 @@ def create_option(question_data: Dict):
                 option_data['option_text'] = validations.regex_validator(
                     prompt='Enter Other Option: ',
                     regex_pattern=RegexPattern.OPTION_TEXT_PATTERN,
-                    error_msg='Invalid option!'
+                    error_msg=DisplayMessage.INVALID_TEXT.format(Headers.OPTION)
                 )
                 option_data['is_correct'] = 0
                 option = Option(option_data)
@@ -65,7 +65,7 @@ def create_option(question_data: Dict):
             option_data['option_text'] = validations.regex_validator(
                 prompt='Enter Answer: ',
                 regex_pattern=RegexPattern.OPTION_TEXT_PATTERN,
-                error_msg='Invalid option!'
+                error_msg=DisplayMessage.INVALID_TEXT.format(Headers.OPTION)
             )
             option_data['is_correct'] = 1
 
@@ -78,7 +78,7 @@ def create_option(question_data: Dict):
     return question
 
 
-def display_question(question_no: int, question: str, question_type: str, options_data: List[Tuple]):
+def display_question(question_no: int, question: str, question_type: str, options_data: List[Tuple]) -> None:
     '''Display question and its options to user'''
 
     print(f'\n{question_no}) {question}')
@@ -101,7 +101,7 @@ def get_user_response(question_type: str) -> str:
             user_choice = validations.regex_validator(
                 prompt='Choose an option: ',
                 regex_pattern=RegexPattern.NUMERIC_PATTERN,
-                error_msg='Select a number from above options!'
+                error_msg=DisplayMessage.INVALID_CHOICE
             )
             if user_choice not in range(1, 5):
                 print(DisplayMessage.MCQ_WRONG_OPTION_MSG)
@@ -113,7 +113,7 @@ def get_user_response(question_type: str) -> str:
             user_choice = validations.regex_validator(
                 prompt='Choose an option: ',
                 regex_pattern=RegexPattern.NUMERIC_PATTERN,
-                error_msg='Select a number from above options!'
+                error_msg=DisplayMessage.INVALID_CHOICE
             )
             match user_choice:
                 case 1:
@@ -126,12 +126,12 @@ def get_user_response(question_type: str) -> str:
         user_answer = validations.regex_validator(
             prompt='-> Enter your answer: ',
             regex_pattern=RegexPattern.OPTION_TEXT_PATTERN,
-            error_msg='Invalid option!'
+            error_msg=DisplayMessage.INVALID_TEXT.format(Headers.OPTION)
         )
         return user_answer
 
 
-def save_quiz_score(username: str, score: int):
+def save_quiz_score(username: str, score: int) -> None:
     '''Saving User's Quiz Score'''
 
     logger.debug('Saving score for: %s', username)

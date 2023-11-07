@@ -2,7 +2,7 @@
 
 import logging
 
-from config.display_menu import DisplayMessage
+from config.display_menu import DisplayMessage, Headers
 from controllers import user_controller as UserController
 from utils.custom_error import DataNotFoundError, LoginError
 from utils.pretty_print import pretty_print
@@ -10,7 +10,7 @@ from utils.pretty_print import pretty_print
 logger = logging.getLogger(__name__)
 
 
-def display_users_by_role(role: str):
+def display_users_by_role(role: str) -> None:
     '''Display users on console by role'''
 
     logger.debug('Display all %ss', role)
@@ -23,11 +23,11 @@ def display_users_by_role(role: str):
     print(DisplayMessage.DISPLAY_USERS_MSG.format(user=role.title()))
     pretty_print(
         data=data,
-        headers=['Username', 'Name', 'Email', 'Registration Date']
+        headers=(Headers.USERNAME, Headers.NAME, Headers.EMAIL, Headers.REG_DATE)
     )
 
 
-def display_user_score(username: str):
+def display_user_score(username: str) -> None:
     '''Display past scores of user'''
 
     logger.debug('Display score for: %s', username)
@@ -38,13 +38,13 @@ def display_user_score(username: str):
         return
 
     print(DisplayMessage.SCORE_DATA_MSG)
-    pretty_print(data, ['Time', 'Score'])
+    pretty_print(data=data, headers=(Headers.TIME, Headers.SCORE))
 
     scores = [scores[1] for scores in data]
     print(DisplayMessage.HIGHEST_SCORE_MSG.format(score=max(scores)))
 
 
-def handle_create_admin():
+def handle_create_admin() -> None:
     '''Handle admin profile creation'''
 
     try:
@@ -54,7 +54,7 @@ def handle_create_admin():
         print(e)
 
 
-def handle_delete_user_by_email(role: str):
+def handle_delete_user_by_email(role: str) -> None:
     '''Handle user deletion by role'''
 
     try:
